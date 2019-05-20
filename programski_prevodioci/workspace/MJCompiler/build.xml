@@ -10,16 +10,17 @@
 		</delete>
 	</target>
 	-->
-	<!--
-	</target>
 	
-	<target name="cup">
+	
+	
+	<target name="lexerGen">
 			<java jar="lib/JFlex.jar" fork="true">
 		    	<arg value="-d"/>
 		    	<arg value="./src/rs/ac/bg/etf/pp1"/>
 		    	<arg value="spec/mjlexer.flex"/>
 			</java>
-	-->
+	</target>
+	<!--
 	<target name="lexerGen">
 		<java jar="lib/cup_v10.jar" fork="true">
 	    	<arg value="-d"/>
@@ -27,7 +28,7 @@
 	    	<arg value="spec/mjparser.cup"/>
 		</java>
 	</target>
-	
+	-->
 	<!--
 	<target name="compile" depends="lexerGen">
 		<javac srcdir="src/rs/ac/bg/etf/pp1" includeantruntime="false">

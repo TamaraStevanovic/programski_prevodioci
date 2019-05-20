@@ -38,7 +38,11 @@ public class MJTest {
 			}
 		} 
 		finally {
-			if (br != null) try { br.close(); } catch (IOException e1) { log.error(e1.getMessage(), e1); }
+			if (br != null)
+			try {
+				br.close();
+				}
+			catch (IOException e1) { log.error(e1.getMessage(), e1); }
 		}
 	}
 	

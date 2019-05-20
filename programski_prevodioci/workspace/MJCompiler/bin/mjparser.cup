@@ -54,109 +54,137 @@ scan with {:
 :}
 
 
-terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, COMMA, PRINT, RETURN, PLUS, EQUAL, VOID;
-terminal Integer NUMBER ;
-terminal String IDENT ;
+///////////////////////////////////////////
+terminal PROG, PRINT, RETURN, VOID, CONST, NEW, READ;
+terminal DO, WHILE, FOR, EXTENDS, CONTINUE, BREAK, CLASS, INTERFACE;
+terminal PLUS, MINUS, MUL, DIV, MOD, IS_EQ, IS_NOT_EQ, EQUALS;
+terminal LARGER, LARGER_OR_EQ, LESSER, LESSER_OR_EQ;
+terminal AND, OR, EQUAL, INC, DEC, SEMI, COMMA;
+terminal LPARENT, RPARENT, RBRACKET, LBRACKET, LBRACE, RBRACE;
 terminal IF, ELSE;
+terminal ENUM, DOT;
 
-nonterminal MethodDeclList, VarDecl;
-nonterminal FormalParamList, FormalParamDecl, FormPars, ActualPars, ActualParamList; 
-nonterminal StatementList, Statement, Addop;
-nonterminal Unmatched, Matched;
+terminal String IDENT ;
+terminal Integer NUM_CONST ;
+terminal Character CHAR_CONST;
+terminal Boolean BOOL_CONST;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
 
-Program ::= (Program) PROG ProgName:p VarDeclList LBRACE MethodDeclList RBRACE 
-;
+nonterminal Program, Declarations, DeclarationList;
+nonterminal TypeConst;
+nonterminal ConstDecl, ConstElem, SingleConstElem;
+nonterminal GlobVarDecl, GlobVarElem, GlobSingleVarElem;
+nonterminal EnumDecl, EnumElem, SingleEnumElem;
+nonterminal OptionMethodDecl, MethodDecl;
 
-ProgName ::= (ProgName) IDENT:pName 
-;
 
-VarDeclList ::= (VarDeclarations) VarDeclList VarDecl  
-				|
-				(NoVarDecl)/* epsilon */ 
-				;
-				
-VarDecl ::= (VarDecl) Type:varType IDENT:varName SEMI 
-;
+//nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
+//nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
 
-Type ::= (Type) IDENT:typeName 
-;
+Program ::=  PROG IDENT Declarations LBRACE OptionMethodDecl RBRACE;
 
-MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
-					|
-					(NoMethodDecl)/* epsilon */
-					;
+*Declarations ::= Declarations DeclarationList
+				| /*epsilon*/;
 
-MethodDecl ::= (MethodDecl) MethodTypeName
-			   LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE 
-			   ;
+*DeclarationList::= ConstDecl 
+				 | GlobVarDecl
+				 | EnumDecl
+				 //| ClassDecl
+				// | InterfaceDecl;
+				 
+*ConstDecl::= CONST Type ConstElem SEMI;
 
-MethodTypeName ::= (MethodTypeName) Type:retType IDENT:methName
-;
+*ConstElem ::= SingleConstElem
+			 | ConstElem COMA SingleConstElem;
+			
+*SingleConstElem ::= IDENT
+				   | IDENT EQUAL TypeConst
+				   | IDENT LBRACKET RBRACKET;
 
-FormPars ::= (FormParams) FormalParamList | (NoFormParam) /* epsilon */ ;
+*Type ::= IDENT;
 
-FormalParamList ::= (FormalParamDecls) FormalParamList COMMA FormalParamDecl
-					|
-					(SingleFormalParamDecl) FormalParamDecl
-					;
-					
-FormalParamDecl ::= (FormalParamDecl) Type IDENT ;
 
-StatementList ::= (Statements) StatementList Statement 
-					|
-				  (NoStmt) /* epsilon */
-				  ;
+*TypeConst ::= NUM_CONST
+			 | BOOL_CONST
+			 | CHAR_CONST;
+			 
+*GlobVarDecl ::= Type GlobVarElem SEMI;
 
-Statement ::= (MatchedStmt) Matched | (UnmachedStmt) Unmatched ;
+*GlobVarElem ::=  GlobSingleVarElem
+			| GlobVarElem COMA GlobsSingleVarElem;
 
-Unmatched ::= (UnmatchedIf) IF Expr Statement | (UnmatchedIfElse) IF Expr Matched ELSE Unmatched;
-	
+*GlobSingleVarElem ::= IDENT
+				 | IDENT LBRACKET RBRACKET;
+
+*EnumDecl ::= ENUM IDENT LBRACE EnumElem RBRACE;
+
+*EnumElem ::= EnumSingleElem
+		   | EnumElem COMA EnumSingleElem;
+		   
+*EnumSingleElem ::= IDENT
+				 | IDENT EQUALS NUM_CONST;  			 
+
+OptionMethodDecl ::= MethodDecl
+				   | /*epsilon*/;
+//2 slucaja-jedan fja bez arg, drugi fja sa argumentima
+MethodDecl ::= MethodTypeName IDENT LPARENT FormPars RPARENT VarDecl LBRACE StmtList RBRACE
+			 | MethodTypeName IDENT LPARENT RPARENT VarDecl LBRACE StmtList RBRACE;
+			 
+*MethodTypeName ::= Type
+				  | VOID;
 				  
-Matched ::= (Assignment) Designator:dest EQUAL Expr:e SEMI 
-			  |
-			  (ErrAssignment) Designator EQUAL error SEMI
-			  {: parser.log.debug("Uspesan oporavak od greske pri dodeli vrednosti."); :}
-			  |
-			  (PrintStmt) PRINT LPAREN Expr RPAREN SEMI 
-			  |
-			  (ReturnExpr) RETURN Expr:t SEMI
-			  |
-			  (ReturnNoExpr) RETURN SEMI
-			  | 
-			  (MatchedIf) IF Expr Matched ELSE Matched
-			  |
-			  (ProcCall) Designator:func LPAREN ActualPars RPAREN SEMI
-			  ;
-			  
-Expr ::= (AddExpr) Expr:te Addop Term:t
-		 |
-		 (TermExpr) Term:t
-		 ;
+//ne moze da bude prazno jer je to vec razdeljeno
+*FormPars ::= FormParam
+		    | FormPars COMA FormParam;
 
-Term ::= (Term) Factor:t 
-;
+*FormParam ::= Type IDENT
+			| Type IDENT LBRACKET RBRACKET;
 
-Factor ::= (Const) NUMBER
-			|
-		   (Var) Designator:d
-		    |
-		   (FuncCall) Designator:func LPAREN ActualPars RPAREN
-		   ;
 
-ActualPars ::= (Actuals) ActualParamList 
-				| 
-			   (NoActuals) /* epsilon */ 
-			   ;
-			   
-ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
-					|
-					(ActualParam) Expr
-					;
+*VarDecl ::= VarDecl VarElem
+		  | /*epsilon*/;
 
-Designator ::= (Designator) IDENT:name
-;
+*VarElem ::= Type SingleVarElem SEMI;
 
-Addop ::= (Addop) PLUS ;
+//proveriti da li se ovim lokalnim parametrima moze dodeliti pocetna vrednost
+//ako ne moze, onda je ovo ok
+*SingleVarElem ::= IDENT
+				| IDENT LBRACKET RBRACKET;
+		
+//stmt moze da obuhvata vise redova, a moze i da ga ne bude
+//ukoliko ga ima, moze da bude 1 i vise
+//za nivo A je moguce sa Designator , sa read i 2 mogucnosti sa PRINT	
+
+Stmt ::= DesignatorStmt SEMI
+		| READ LPARENT Designator RPARENT SEMI
+		| PRINT LPARENT Expr RPARENT SEMI //print with one argument
+		| PRINT LPARENT Expr COMA NUM_CONST RPARENT SEMI;
+
+DesignatorStmt ::= Designator EQUALS Expr
+				 | Designator INC
+				 | Designator DEC;
+				 
+Designator ::= IDENT DOT IDENT //ident.ident samo za nabrajanja
+			 | IDENT LBRACKET Expr RBRACKET;
+			 
+Expr ::= MINUS Term AddopTerm
+	   | Term Addop Term;
+	
+//Term ima bar jedan Factor i zatim mogu da se ponavljaju {Mullop Factor}   
+Term ::= Factor 
+		| Term Mullop Factor;
+
+Factor ::= TypeConst
+		 | NEW IDENT
+		 | LPARENT Expr RPARENT
+		 | LBRACKET Expt RBRACKET;
+		 
+
+Addop ::= PLUS
+		| MINUS;
+		
+Mullop ::= MUL
+		 | DIV
+		 | MOD;
+
+				 

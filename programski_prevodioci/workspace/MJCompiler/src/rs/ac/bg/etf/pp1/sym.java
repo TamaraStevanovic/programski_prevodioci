@@ -59,6 +59,12 @@ public class sym {
   public static final int LARGER = 44;
   public static final int DEC = 45;
   public static final int MUL = 46;
+  public static final int ENUM = 47;
+  public static final int DOT = 48;
+  public static final int EQUALS = 49;
+  
+
+  
 
 
   

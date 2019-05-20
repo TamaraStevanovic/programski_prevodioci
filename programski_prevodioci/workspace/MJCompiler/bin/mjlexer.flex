@@ -53,7 +53,10 @@ import java_cup.runtime.Symbol;
 "class"     { return new_symbol(sym.CLASS, yytext()); }
 "interface" { return new_symbol(sym.INTERFACE, yytext()); }
 
-
+"if"		{ return new_symbol(sym.IF, yytext()); }
+"else" 		{ return new_symbol(sym.ELSE, yytext()); }
+"enum"		{ return new_symbol(sym.ENUM, yytext()); }
+"." 		{ return new_symbol(sym.DOT, yytext()); }
 
 "+" 		{ return new_symbol(sym.PLUS, yytext()); }
 "-" 		{ return new_symbol(sym.MINUS, yytext()); }
@@ -79,6 +82,7 @@ import java_cup.runtime.Symbol;
 "]" 		{ return new_symbol(sym.RBRACKET, yytext()); }
 "{" 		{ return new_symbol(sym.LBRACE, yytext()); }
 "}"			{ return new_symbol(sym.RBRACE, yytext());}
+"="			{ return new_symbol(sym.EQUALS, yytext());}
 
 
 
