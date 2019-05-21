@@ -71,11 +71,19 @@ terminal Boolean BOOL_CONST;
 
 
 nonterminal Program, Declarations, DeclarationList;
-nonterminal TypeConst;
+nonterminal Type, TypeConst;
 nonterminal ConstDecl, ConstElem, SingleConstElem;
+nonterminal EnumDecl, EnumElem, EnumSingleElem;
 nonterminal GlobVarDecl, GlobVarElem, GlobSingleVarElem;
 nonterminal EnumDecl, EnumElem, SingleEnumElem;
-nonterminal OptionMethodDecl, MethodDecl;
+nonterminal OptionMethodDecl, MethodDecl, MethodTypeName;
+nonterminal FormPars, FormParam;
+nonterminal VarDecl, VarElem, SingleVarElem;
+nonterminal StmtList, Stmt; 
+nonterminal DesignatorStmt, Designator;
+nonterminal Expr, ExprList;
+nonterminal Term, Factor;
+nonterminal Addop, Mullop;
 
 
 //nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
@@ -83,77 +91,81 @@ nonterminal OptionMethodDecl, MethodDecl;
 
 Program ::=  PROG IDENT Declarations LBRACE OptionMethodDecl RBRACE;
 
-*Declarations ::= Declarations DeclarationList
+Declarations ::= Declarations DeclarationList
 				| /*epsilon*/;
 
-*DeclarationList::= ConstDecl 
+DeclarationList::= ConstDecl 
 				 | GlobVarDecl
 				 | EnumDecl
 				 //| ClassDecl
 				// | InterfaceDecl;
 				 
-*ConstDecl::= CONST Type ConstElem SEMI;
+ConstDecl::= CONST Type ConstElem SEMI;
 
-*ConstElem ::= SingleConstElem
+ConstElem ::= SingleConstElem
 			 | ConstElem COMA SingleConstElem;
 			
-*SingleConstElem ::= IDENT
+SingleConstElem ::= IDENT
 				   | IDENT EQUAL TypeConst
 				   | IDENT LBRACKET RBRACKET;
 
-*Type ::= IDENT;
+Type ::= IDENT;
 
 
-*TypeConst ::= NUM_CONST
+TypeConst ::= NUM_CONST
 			 | BOOL_CONST
 			 | CHAR_CONST;
 			 
-*GlobVarDecl ::= Type GlobVarElem SEMI;
+GlobVarDecl ::= Type GlobVarElem SEMI;
 
-*GlobVarElem ::=  GlobSingleVarElem
+GlobVarElem ::=  GlobSingleVarElem
 			| GlobVarElem COMA GlobsSingleVarElem;
 
-*GlobSingleVarElem ::= IDENT
+GlobSingleVarElem ::= IDENT
 				 | IDENT LBRACKET RBRACKET;
 
-*EnumDecl ::= ENUM IDENT LBRACE EnumElem RBRACE;
+EnumDecl ::= ENUM IDENT LBRACE EnumElem RBRACE;
 
-*EnumElem ::= EnumSingleElem
+EnumElem ::= EnumSingleElem
 		   | EnumElem COMA EnumSingleElem;
 		   
-*EnumSingleElem ::= IDENT
+EnumSingleElem ::= IDENT
 				 | IDENT EQUALS NUM_CONST;  			 
 
 OptionMethodDecl ::= MethodDecl
 				   | /*epsilon*/;
+				   
 //2 slucaja-jedan fja bez arg, drugi fja sa argumentima
 MethodDecl ::= MethodTypeName IDENT LPARENT FormPars RPARENT VarDecl LBRACE StmtList RBRACE
 			 | MethodTypeName IDENT LPARENT RPARENT VarDecl LBRACE StmtList RBRACE;
 			 
-*MethodTypeName ::= Type
+MethodTypeName ::= Type
 				  | VOID;
 				  
 //ne moze da bude prazno jer je to vec razdeljeno
-*FormPars ::= FormParam
+FormPars ::= FormParam
 		    | FormPars COMA FormParam;
 
-*FormParam ::= Type IDENT
+FormParam ::= Type IDENT
 			| Type IDENT LBRACKET RBRACKET;
 
 
-*VarDecl ::= VarDecl VarElem
+VarDecl ::= VarDecl VarElem
 		  | /*epsilon*/;
 
-*VarElem ::= Type SingleVarElem SEMI;
+VarElem ::= Type SingleVarElem SEMI;
 
 //proveriti da li se ovim lokalnim parametrima moze dodeliti pocetna vrednost
 //ako ne moze, onda je ovo ok
-*SingleVarElem ::= IDENT
+SingleVarElem ::= IDENT
 				| IDENT LBRACKET RBRACKET;
 		
 //stmt moze da obuhvata vise redova, a moze i da ga ne bude
 //ukoliko ga ima, moze da bude 1 i vise
 //za nivo A je moguce sa Designator , sa read i 2 mogucnosti sa PRINT	
+
+StmtList ::=StmtList Stmt
+		   | /*epsilon*/
 
 Stmt ::= DesignatorStmt SEMI
 		| READ LPARENT Designator RPARENT SEMI
@@ -165,11 +177,14 @@ DesignatorStmt ::= Designator EQUALS Expr
 				 | Designator DEC;
 				 
 Designator ::= IDENT DOT IDENT //ident.ident samo za nabrajanja
-			 | IDENT LBRACKET Expr RBRACKET;
+			 | IDENT LBRACKET Expr RBRACKET;			
 			 
-Expr ::= MINUS Term AddopTerm
-	   | Term Addop Term;
+Expr ::= MINUS ExpressionList
+	   | ExpressionList;
 	
+ExpressionList ::=	Term
+				 | 	ExprList Addop Term	
+
 //Term ima bar jedan Factor i zatim mogu da se ponavljaju {Mullop Factor}   
 Term ::= Factor 
 		| Term Mullop Factor;
@@ -177,13 +192,13 @@ Term ::= Factor
 Factor ::= TypeConst
 		 | NEW IDENT
 		 | LPARENT Expr RPARENT
-		 | LBRACKET Expt RBRACKET;
+		 | LBRACKET Expr RBRACKET;
 		 
 
-Addop ::= PLUS
+*Addop ::= PLUS
 		| MINUS;
 		
-Mullop ::= MUL
+*Mullop ::= MUL
 		 | DIV
 		 | MOD;
 
