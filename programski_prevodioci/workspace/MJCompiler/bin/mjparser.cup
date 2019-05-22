@@ -89,10 +89,10 @@ nonterminal Addop, Mullop;
 //nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
 //nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
 
-Program ::=  PROG IDENT Declarations LBRACE OptionMethodDecl RBRACE;
+Program ::= (Program) PROG IDENT Declarations LBRACE OptionMethodDecl RBRACE;
 
-Declarations ::= Declarations DeclarationList
-				| /*epsilon*/;
+Declarations ::= (Declarations) Declarations DeclarationList
+				|(NoDeclarations) /*epsilon*/;
 
 DeclarationList::= ConstDecl 
 				 | GlobVarDecl
