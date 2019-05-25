@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a2fb0d3b-b61b-4490-9c5b-4f19c908f189" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/mjlexer.flex" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/mjlexer.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/mjparser.cup" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/mjparser.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/mjparser_astbuild.cup" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/mjparser_astbuild.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CUP$MJParser$actions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CodeGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CounterVisitor$FormParamCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CounterVisitor$FormParamCounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CounterVisitor$VarCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CounterVisitor$VarCounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CounterVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/CounterVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/MJParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/MJParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/MJParserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/MJTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/MJTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/SemanticPass.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/SemanticPass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/Yylex.class" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/Yylex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ActualParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ActualParamList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ActualParams.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ActualPars.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Actuals.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/AddExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Addop.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Assignment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Const.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Designator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ErrAssignment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Expr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Factor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/FormParams.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/FormPars.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/FormalParamDecl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/FormalParamDecls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/FormalParamList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/FuncCall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Matched.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/MatchedIf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/MatchedStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/MethodDecl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/MethodDeclList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/MethodDeclarations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/MethodTypeName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/NoActuals.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/NoFormParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/NoMethodDecl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/NoStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/NoVarDecl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/PreorderVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/PrintStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ProcCall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ProgName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Program.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ReturnExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/ReturnNoExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/SingleFormalParamDecl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Statement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/StatementList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Statements.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/SyntaxNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Term.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/TermExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Type.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/UnmachedStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Unmatched.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/UnmatchedIf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/UnmatchedIfElse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Var.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/VarDecl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/VarDeclList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/VarDeclarations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/Visitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/ast/VisitorAdaptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/bin/rs/ac/bg/etf/pp1/sym.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/spec/mjlexer.flex" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/spec/mjlexer.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/spec/mjparser.cup" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/spec/mjparser.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/spec/mjparser_astbuild.cup" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/spec/mjparser_astbuild.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/MJParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/Yylex.java" beforeDir="false" afterPath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/Yylex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ActualParam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ActualParamList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ActualParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ActualPars.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Actuals.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/AddExpr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Addop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Assignment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Const.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Designator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ErrAssignment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Expr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Factor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/FormParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/FormPars.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/FormalParamDecl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/FormalParamDecls.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/FormalParamList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/FuncCall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Matched.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/MatchedIf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/MatchedStmt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/MethodDecl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/MethodDeclList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/MethodDeclarations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/MethodTypeName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/NoActuals.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/NoFormParam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/NoMethodDecl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/NoStmt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/NoVarDecl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/PreorderVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/PrintStmt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ProcCall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ProgName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Program.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ReturnExpr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/ReturnNoExpr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/SingleFormalParamDecl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Statement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/StatementList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Statements.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/SyntaxNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Term.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/TermExpr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/UnmachedStmt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Unmatched.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/UnmatchedIf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/UnmatchedIfElse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Var.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/VarDecl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/VarDeclList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/VarDeclarations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/Visitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/ast/VisitorAdaptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MJCompiler/src/rs/ac/bg/etf/pp1/sym.java" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MJCompiler/bin/mjlexer.flex">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MJCompiler/bin/mjparser.cup">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MJCompiler/bin/mjparser_astbuild.cup">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MJCompiler/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-693" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="67" />
+    <option name="y" value="88" />
+    <option name="width" value="644" />
+    <option name="height" value="555" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+              <item name="bg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+              <item name="bg" type="462c0819:PsiDirectoryNode" />
+              <item name="etf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+              <item name="bg" type="462c0819:PsiDirectoryNode" />
+              <item name="etf" type="462c0819:PsiDirectoryNode" />
+              <item name="pp1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+              <item name="bg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+              <item name="bg" type="462c0819:PsiDirectoryNode" />
+              <item name="etf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="MJCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="rs" type="462c0819:PsiDirectoryNode" />
+              <item name="ac" type="462c0819:PsiDirectoryNode" />
+              <item name="bg" type="462c0819:PsiDirectoryNode" />
+              <item name="etf" type="462c0819:PsiDirectoryNode" />
+              <item name="pp1" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558805250259" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a2fb0d3b-b61b-4490-9c5b-4f19c908f189" name="Default Changelist" comment="" />
+      <created>1558805075715</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558805075715</updated>
+      <workItem from="1558805078118" duration="212000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="212000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="88" width="644" height="555" extended-state="0" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.67725754" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.4741784" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/MJCompiler/bin/mjlexer.flex">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MJCompiler/bin/mjparser.cup">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MJCompiler/bin/mjparser_astbuild.cup">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MJCompiler/test/rs/ac/bg/etf/pp1/MJParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MJCompiler/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-693" />
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
