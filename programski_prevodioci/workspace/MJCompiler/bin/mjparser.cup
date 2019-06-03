@@ -54,13 +54,13 @@ scan with {:
 :}
 
 
-terminal PROG, PRINT, RETURN, VOID, CONST, NEW, READ;
-terminal PLUS, MINUS, MUL, DIV, MOD, IS_EQ, IS_NOT_EQ, EQUAL;
-terminal LARGER, LARGER_OR_EQ, LESSER, LESSER_OR_EQ;
-terminal AND, OR, INC, DEC, SEMI, COMMA;
+terminal PROG, PRINT, VOID, CONST, NEW, READ;
+terminal PLUS, MINUS, MUL, DIV, MOD, EQUAL;
+terminal INC, DEC, SEMI, COMMA;
 terminal LPARENT, RPARENT, RBRACKET, LBRACKET, LBRACE, RBRACE;
-terminal IF, ELSE;
 terminal ENUM, DOT;
+
+terminal RETURN;
 
 terminal String IDENT ;
 terminal Integer NUM_CONST ;
@@ -70,12 +70,12 @@ terminal Boolean BOOL_CONST;
 
 nonterminal Program, Declarations, DeclarationList;
 
-nonterminal Type, TypeConst;
-nonterminal ConstDecl, ConstType, ConstElem, SingleConstElem, SingleConstName;
-nonterminal GlobVarDecl, GlobVarElem, GlobVarType, GlobSingleVarElem;
-nonterminal EnumDecl,EnumType,  EnumElem, EnumSingleElem;
+nonterminal  TypeConst;
+nonterminal ConstDecl, ConstElem, SingleConstElem;
+nonterminal GlobVarDecl, GlobVarElem, GlobSingleVarElem;
+nonterminal EnumDecl,  EnumElem, EnumSingleElem;
 
-nonterminal OptionMethodDecl, MethodDeclList, MethodDecl, MethodTypeName;
+nonterminal  MethodDeclList, MethodDecl;
 nonterminal FormPars, FormParam;
 nonterminal VarDeclList;
 nonterminal StmtList, Stmt; 
@@ -85,146 +85,138 @@ nonterminal EnumIdent, EnumValue;
 nonterminal Term, Factor;
 nonterminal Addop, Mullop;
 
-
+nonterminal ProgName;
 
 
 //nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
 //nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
 
-Program ::= (Program) PROG IDENT Declarations LBRACE OptionMethodDecl RBRACE;
+Program ::= (Program) PROG ProgName Declarations:decl LBRACE MethodDeclList:methodDec RBRACE;
 
-Declarations ::= (Declarations) Declarations DeclarationList
+ProgName ::= (ProgName) IDENT:progName;
+
+Declarations ::= (Declarations1) Declarations DeclarationList
 				|(NoDeclarations) /*epsilon*/
 				;
 
-DeclarationList ::= ConstDecl 
-				 | GlobVarDecl
-				 | EnumDecl
+DeclarationList ::= (DeclarationsConstDecl) ConstDecl 
+				 | (DeclarationsGlobVarDecl) GlobVarDecl
+				 | (DeclarationsEnumDecl)EnumDecl
 				 ;
 				 
-ConstDecl::= CONST ConstType ConstElem SEMI;
+ConstDecl::= (ConstDeclaration)CONST IDENT:constType ConstElem SEMI;
 
-ConstType ::= Type;
 
-ConstElem ::= SingleConstElem
-			 | ConstElem COMMA SingleConstElem
+ConstElem ::= (SingleConstElemDecl)SingleConstElem
+			 | (ManyConstElemDecl)ConstElem COMMA SingleConstElem
 			 ;
 			
-SingleConstElem ::= SingleConstName EQUAL TypeConst;
+SingleConstElem ::= (SingleConstElem)IDENT:constName EQUAL TypeConst;
 
-SingleConstName ::= Type;
 
-Type ::= IDENT;
 
-TypeConst ::= NUM_CONST
-			 | BOOL_CONST
-			 | CHAR_CONST
+TypeConst ::= (NumberConst)NUM_CONST :value
+			 | (BooleanConst)BOOL_CONST:value
+			 | (CharacterConst)CHAR_CONST:value
 			 ;
 			 
-GlobVarDecl ::= GlobVarType GlobVarElem SEMI;
+GlobVarDecl ::= (GlobVarDecl) IDENT:varType GlobVarElem SEMI;
 
-GlobVarType ::= Type;
 
-GlobVarElem ::= GlobSingleVarElem
-			  | GlobVarElem COMMA GlobSingleVarElem
+GlobVarElem ::= (GlobSingleVarElement) GlobSingleVarElem
+			  | (ManyGlobVarElements)GlobVarElem COMMA GlobSingleVarElem
 			  ;
 
-GlobSingleVarElem ::= IDENT
-				 | IDENT LBRACKET RBRACKET
+GlobSingleVarElem ::= (GlobVarSingleDefWithoutBracket)IDENT:varName
+				 | (GlobVarSingleDefWithBracket)IDENT:varName LBRACKET RBRACKET
 				 ;
 
-EnumDecl ::= ENUM EnumType LBRACE EnumElem RBRACE;
+EnumDecl ::=(EnumDecl) ENUM IDENT:enumDeclName LBRACE EnumElem RBRACE;
 
-EnumType ::= Type;
 
-EnumElem ::= EnumSingleElem
-		   | EnumElem COMMA EnumSingleElem
+EnumElem ::=(EnumSingleElement) EnumSingleElem
+		   | (EnumManyElements)EnumElem COMMA EnumSingleElem
 		   ;
 		   
-EnumSingleElem ::= IDENT
-				 | IDENT EQUAL NUM_CONST
+EnumSingleElem ::= (EnumSingleDefDefault)IDENT:enumName
+				 | (EnumSingleDef)IDENT:enumName EQUAL NUM_CONST
 				 ;  			 
 
-OptionMethodDecl ::= MethodDeclList
-				   | /*epsilon*/
-				   ;
-	
-MethodDeclList ::= MethodDecl
-				  | MethodDeclList MethodDecl
+MethodDeclList ::= (MethodDeclList1)MethodDeclList MethodDecl
+				 |(NoMethodDecl) /*epsilon*/
 				  ;	
 				   
-MethodDecl ::= MethodTypeName IDENT LPARENT FormPars RPARENT VarDeclList LBRACE StmtList RBRACE
-			 | MethodTypeName IDENT LPARENT RPARENT VarDecl LBRACE StmtList RBRACE
+MethodDecl ::= (MethodDeclWithFormPars) IDENT :retType IDENT:methodName LPARENT FormPars RPARENT VarDeclList LBRACE StmtList RBRACE
+			|(MethodDeclVoidWithFormPars) VOID:retType IDENT:methodName LPARENT FormPars RPARENT VarDeclList LBRACE StmtList RBRACE
+			 | (MethodDeclWithoutFormPars)IDENT :retType IDENT LPARENT RPARENT VarDeclList LBRACE StmtList RBRACE
+			 | (MethodDeclVoidWithoutFormPars)VOID:retType IDENT LPARENT RPARENT VarDeclList LBRACE StmtList RBRACE
 			 ;
-			 
-MethodTypeName ::= Type
-				  | VOID
-				  ;
+
 				  
-FormPars ::= FormParam
-		    | FormPars COMMA FormParam
+FormPars ::= (FormalParameterOne) FormParam
+		    | (FormalParametersMany) FormPars COMMA FormParam
 		    ;
 
-FormParam ::= Type IDENT
-			| Type IDENT LBRACKET RBRACKET
+FormParam ::= (FormalParamDef)IDENT:typeName IDENT
+			| (FormalParamArrayDef)IDENT:typeName IDENT LBRACKET RBRACKET
 			;
 
-VarDeclList ::= VarDeclList GlobVarDecl 
-			| /*epsilon*/
+VarDeclList ::= (VarDeclarationList) GlobVarDecl 
+			| (NoVarDeclarationList)/*epsilon*/
 			;
 		
 
-StmtList ::= StmtList Stmt
-		   | /*epsilon*/
+StmtList ::= (Statements)StmtList Stmt
+		   | (NoStatements)/*epsilon*/
 		   ;
 
-Stmt ::= DesignatorStmt SEMI
-		| READ LPARENT Designator RPARENT SEMI
-		| PRINT LPARENT Expr RPARENT SEMI 
-		| PRINT LPARENT Expr COMMA NUM_CONST RPARENT SEMI
+Stmt ::=(Assignment) DesignatorStmt SEMI
+		| (ReadStatement)READ LPARENT Designator RPARENT SEMI
+		| (PrintStatementTwoArg)PRINT LPARENT Expr RPARENT SEMI 
+		| (PrintStatementOneArg)PRINT LPARENT Expr COMMA NUM_CONST RPARENT SEMI
 		;
 
-DesignatorStmt ::= Designator EQUAL Expr
-				 | Designator INC
-				 | Designator DEC
+DesignatorStmt ::= (DesignatorStmtAssign)Designator:dest EQUAL Expr:e
+				 | (DesignatorStmtINC)Designator INC
+				 | (DesignatorStmtDEc)Designator DEC
 				 ;
 				 
-Designator ::= (DesignatorIdent) IDENT
-			 |	EnumIdent DOT EnumValue 
-			 | 	DesignatorIdentity LBRACKET Expr RBRACKET
+Designator ::= (DesignatorSingle) IDENT:name
+			 |	(DesinatorWithDOT)EnumIdent DOT EnumValue 
+			 | 	(DesignatorWithExpr)DesignatorIdentity LBRACKET Expr RBRACKET
 			 ;		
 			 
-DesignatorIdentity ::= IDENT;			 
+DesignatorIdentity ::= (DesignatorName) IDENT:designatorName;			 
 			 
-EnumIdent ::= IDENT;
+EnumIdent ::= (EnumIdentity)IDENT:identity;
 
-EnumValue ::= IDENT;			 
+EnumValue ::= (EnumValue)IDENT:identity;			 
 	
-Expr ::=	Term
+Expr ::=	(ExprTerm)Term
 			|
-			MINUS Term
+			(ExprMinusTerm)MINUS Term
 			|
-			Expr Addop Term
+			(ExprList)Expr Addop Term
 			;
 
-Term ::= Factor 
-		| Term Mullop Factor
+Term ::= (TermSingleFactor) Factor 
+		| (TermManyFactors)Term Mullop Factor
 		;
 
-Factor ::= TypeConst
-		 | NEW IDENT LBRACKET Expr RBRACKET
-		 | NEW IDENT
-		 | LPARENT Expr RPARENT
+Factor ::= (FactorConst)TypeConst
+		 | (FactorNewArray)NEW IDENT LBRACKET Expr RBRACKET
+		 | (FactorNew)NEW IDENT
+		 | (FactorRegularExpr)LPARENT Expr RPARENT
 		 ;
 		 
 
-Addop ::= PLUS
-		| MINUS
+Addop ::= (AddOperationPlus)PLUS
+		| (AddOperationMinus)MINUS
 		;
 		
-Mullop ::= MUL
-		 | DIV
-		 | MOD
+Mullop ::=(MultiplyOpTimes) MUL
+		 | (MultiplyOpDivide)DIV
+		 | (MultiplyOpMod)MOD
 		 ;
 
 				 

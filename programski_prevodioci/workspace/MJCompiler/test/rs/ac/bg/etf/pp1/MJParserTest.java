@@ -43,12 +43,12 @@ public class MJParserTest {
 	        SyntaxNode prog = (SyntaxNode)(s.value);
 	        
 			Tab.init(); // Universe scope
-			SemanticPass semanticCheck = new SemanticPass();
-			prog.traverseBottomUp(semanticCheck);
+			SemanticAnalyzer semantic = new SemanticAnalyzer();
+			prog.traverseBottomUp(semantic);
 			
-	        log.info("Print calls = " + semanticCheck.printCallCount);
 	        Tab.dump();
 	        
+	        /*
 	        if (!p.errorDetected && semanticCheck.passed()) {
 	        	File objFile = new File(args[1]);
 	        	log.info("Generating bytecode file: " + objFile.getAbsolutePath());
@@ -66,6 +66,7 @@ public class MJParserTest {
 	        else {
 	        	log.error("Parsiranje NIJE uspesno zavrseno!");
 	        }
+	        */
 		}
 	}
 }

@@ -44,17 +44,7 @@ import java_cup.runtime.Symbol;
 "new"       { return new_symbol(sym.NEW, yytext()); }
 "read"      { return new_symbol(sym.READ, yytext()); }
 
-"do"      	{ return new_symbol(sym.DO, yytext()); }
-"while"     { return new_symbol(sym.WHILE, yytext()); }
-"for"		{ return new_symbol(sym.FOR, yytext()); }
-"extends"   { return new_symbol(sym.EXTENDS, yytext()); }
-"continue"  { return new_symbol(sym.CONTINUE, yytext()); }
-"break"     { return new_symbol(sym.BREAK, yytext()); }
-"class"     { return new_symbol(sym.CLASS, yytext()); }
-"interface" { return new_symbol(sym.INTERFACE, yytext()); }
 
-"if"		{ return new_symbol(sym.IF, yytext()); }
-"else" 		{ return new_symbol(sym.ELSE, yytext()); }
 "enum"		{ return new_symbol(sym.ENUM, yytext()); }
 "." 		{ return new_symbol(sym.DOT, yytext()); }
 
@@ -63,14 +53,6 @@ import java_cup.runtime.Symbol;
 "*" 		{ return new_symbol(sym.MUL, yytext()); }
 "/" 		{ return new_symbol(sym.DIV, yytext()); }
 "%" 		{ return new_symbol(sym.MOD, yytext()); }
-"==" 		{ return new_symbol(sym.IS_EQ, yytext()); }
-"!=" 		{ return new_symbol(sym.IS_NOT_EQ, yytext()); }
-">" 		{ return new_symbol(sym.LARGER, yytext()); }
-">=" 		{ return new_symbol(sym.LARGER_OR_EQ, yytext()); }
-"<" 		{ return new_symbol(sym.LESSER, yytext()); }
-"<=" 		{ return new_symbol(sym.LESSER_OR_EQ, yytext()); }
-"&&" 		{ return new_symbol(sym.AND, yytext()); }
-"||" 		{ return new_symbol(sym.OR, yytext()); }
 "=" 		{ return new_symbol(sym.EQUAL, yytext()); }
 "++" 		{ return new_symbol(sym.INC, yytext()); }
 "--" 		{ return new_symbol(sym.DEC, yytext()); }
