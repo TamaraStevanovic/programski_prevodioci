@@ -1,0 +1,33 @@
+INFO  20:27:05,868 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  20:27:05,914 - #2 program
+INFO  20:27:05,914 - #27 MJProgram
+INFO  20:27:05,914 - #22 {
+INFO  20:27:05,916 - #4 void
+INFO  20:27:05,917 - #27 main
+INFO  20:27:05,917 - #18 (
+INFO  20:27:05,918 - #19 )
+INFO  20:27:05,918 - #27 int
+INFO  20:27:05,921 - #27 x
+INFO  20:27:05,922 - #16 ;
+INFO  20:27:05,923 - #22 {
+INFO  20:27:05,924 - #27 x
+INFO  20:27:05,925 - #13 =
+INFO  20:27:05,925 - #28 100
+INFO  20:27:05,925 - #16 ;
+INFO  20:27:05,926 - #3 print
+INFO  20:27:05,926 - #18 (
+INFO  20:27:05,927 - #27 x
+INFO  20:27:05,927 - #17 ,
+INFO  20:27:05,927 - #28 5
+INFO  20:27:05,927 - #19 )
+INFO  20:27:05,927 - #16 ;
+INFO  20:27:05,927 - #3 print
+INFO  20:27:05,928 - #18 (
+INFO  20:27:05,928 - #27 x
+INFO  20:27:05,928 - #17 ,
+INFO  20:27:05,928 - #28 5
+INFO  20:27:05,928 - #19 )
+INFO  20:27:05,928 - #16 ;
+INFO  20:27:05,928 - #23 }
+INFO  20:27:05,928 - #23 }
+INFO  20:27:05,940 - Generating bytecode file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj

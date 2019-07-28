@@ -1,21 +1,20 @@
 // generated with ast extension for cup
 // version 0.8
-// 29/4/2019 19:31:16
+// 12/5/2019 23:8:3
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class MethodDeclWithFormPars extends MethodDecl {
 
-    private String retType;
-    private String methodName;
+    private MethodTypeName MethodTypeName;
     private FormPars FormPars;
     private VarDeclList VarDeclList;
     private StmtList StmtList;
 
-    public MethodDeclWithFormPars (String retType, String methodName, FormPars FormPars, VarDeclList VarDeclList, StmtList StmtList) {
-        this.retType=retType;
-        this.methodName=methodName;
+    public MethodDeclWithFormPars (MethodTypeName MethodTypeName, FormPars FormPars, VarDeclList VarDeclList, StmtList StmtList) {
+        this.MethodTypeName=MethodTypeName;
+        if(MethodTypeName!=null) MethodTypeName.setParent(this);
         this.FormPars=FormPars;
         if(FormPars!=null) FormPars.setParent(this);
         this.VarDeclList=VarDeclList;
@@ -24,20 +23,12 @@ public class MethodDeclWithFormPars extends MethodDecl {
         if(StmtList!=null) StmtList.setParent(this);
     }
 
-    public String getRetType() {
-        return retType;
+    public MethodTypeName getMethodTypeName() {
+        return MethodTypeName;
     }
 
-    public void setRetType(String retType) {
-        this.retType=retType;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public void setMethodName(String methodName) {
-        this.methodName=methodName;
+    public void setMethodTypeName(MethodTypeName MethodTypeName) {
+        this.MethodTypeName=MethodTypeName;
     }
 
     public FormPars getFormPars() {
@@ -69,6 +60,7 @@ public class MethodDeclWithFormPars extends MethodDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(MethodTypeName!=null) MethodTypeName.accept(visitor);
         if(FormPars!=null) FormPars.accept(visitor);
         if(VarDeclList!=null) VarDeclList.accept(visitor);
         if(StmtList!=null) StmtList.accept(visitor);
@@ -76,12 +68,14 @@ public class MethodDeclWithFormPars extends MethodDecl {
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(MethodTypeName!=null) MethodTypeName.traverseTopDown(visitor);
         if(FormPars!=null) FormPars.traverseTopDown(visitor);
         if(VarDeclList!=null) VarDeclList.traverseTopDown(visitor);
         if(StmtList!=null) StmtList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(MethodTypeName!=null) MethodTypeName.traverseBottomUp(visitor);
         if(FormPars!=null) FormPars.traverseBottomUp(visitor);
         if(VarDeclList!=null) VarDeclList.traverseBottomUp(visitor);
         if(StmtList!=null) StmtList.traverseBottomUp(visitor);
@@ -93,10 +87,10 @@ public class MethodDeclWithFormPars extends MethodDecl {
         buffer.append(tab);
         buffer.append("MethodDeclWithFormPars(\n");
 
-        buffer.append(" "+tab+retType);
-        buffer.append("\n");
-
-        buffer.append(" "+tab+methodName);
+        if(MethodTypeName!=null)
+            buffer.append(MethodTypeName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(FormPars!=null)

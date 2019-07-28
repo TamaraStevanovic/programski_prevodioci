@@ -1,27 +1,28 @@
 // generated with ast extension for cup
 // version 0.8
-// 29/4/2019 19:31:16
+// 12/5/2019 23:8:3
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ConstDeclaration extends ConstDecl {
 
-    private String constType;
+    private Type Type;
     private ConstElem ConstElem;
 
-    public ConstDeclaration (String constType, ConstElem ConstElem) {
-        this.constType=constType;
+    public ConstDeclaration (Type Type, ConstElem ConstElem) {
+        this.Type=Type;
+        if(Type!=null) Type.setParent(this);
         this.ConstElem=ConstElem;
         if(ConstElem!=null) ConstElem.setParent(this);
     }
 
-    public String getConstType() {
-        return constType;
+    public Type getType() {
+        return Type;
     }
 
-    public void setConstType(String constType) {
-        this.constType=constType;
+    public void setType(Type Type) {
+        this.Type=Type;
     }
 
     public ConstElem getConstElem() {
@@ -37,15 +38,18 @@ public class ConstDeclaration extends ConstDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Type!=null) Type.accept(visitor);
         if(ConstElem!=null) ConstElem.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Type!=null) Type.traverseTopDown(visitor);
         if(ConstElem!=null) ConstElem.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Type!=null) Type.traverseBottomUp(visitor);
         if(ConstElem!=null) ConstElem.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -55,7 +59,10 @@ public class ConstDeclaration extends ConstDecl {
         buffer.append(tab);
         buffer.append("ConstDeclaration(\n");
 
-        buffer.append(" "+tab+constType);
+        if(Type!=null)
+            buffer.append(Type.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(ConstElem!=null)

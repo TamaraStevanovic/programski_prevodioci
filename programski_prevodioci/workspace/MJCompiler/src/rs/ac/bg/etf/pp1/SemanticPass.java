@@ -1,25 +1,7 @@
 package rs.ac.bg.etf.pp1;
 import org.apache.log4j.Logger;
 
-import rs.ac.bg.etf.pp1.ast.AddExpr;
-import rs.ac.bg.etf.pp1.ast.Assignment;
-import rs.ac.bg.etf.pp1.ast.Const;
-import rs.ac.bg.etf.pp1.ast.Designator;
-import rs.ac.bg.etf.pp1.ast.FuncCall;
-import rs.ac.bg.etf.pp1.ast.MethodDecl;
-import rs.ac.bg.etf.pp1.ast.MethodTypeName;
-import rs.ac.bg.etf.pp1.ast.PrintStmt;
-import rs.ac.bg.etf.pp1.ast.ProcCall;
-import rs.ac.bg.etf.pp1.ast.ProgName;
-import rs.ac.bg.etf.pp1.ast.Program;
-import rs.ac.bg.etf.pp1.ast.ReturnExpr;
-import rs.ac.bg.etf.pp1.ast.SyntaxNode;
-import rs.ac.bg.etf.pp1.ast.Term;
-import rs.ac.bg.etf.pp1.ast.TermExpr;
-import rs.ac.bg.etf.pp1.ast.Type;
-import rs.ac.bg.etf.pp1.ast.Var;
-import rs.ac.bg.etf.pp1.ast.VarDecl;
-import rs.ac.bg.etf.pp1.ast.VisitorAdaptor;
+import rs.ac.bg.etf.pp1.ast.*;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
 import rs.etf.pp1.symboltable.concepts.Struct;
@@ -31,6 +13,8 @@ public class SemanticPass extends VisitorAdaptor {
 	Obj currentMethod = null;
 	boolean returnFound = false;
 	int nVars;
+	
+	Struct currentType;
 
 	Logger log = Logger.getLogger(getClass());
 
@@ -50,18 +34,101 @@ public class SemanticPass extends VisitorAdaptor {
 			msg.append (" na liniji ").append(line);
 		log.info(msg.toString());
 	}
+	/////////////////////////////////////////////////////////////////////
 	
-	public void visit(Program program) {		
-		nVars = Tab.currentScope.getnVars();
+    public void visit(DesignatorSingle DesignatorSingle) {
+    	String name = DesignatorSingle.getName();
+    	Obj o = Tab.find(name);
+    	if (o != Tab.noObj) {
+    		// uspeh
+    		DesignatorSingle.obj = o;
+    	}
+    	else {
+    		report_error("Nije definisan simbol " + name, DesignatorSingle);
+    	}
+    }
+		
+	public void visit(Program program) {
+		//obj je dva nivoa dole od neterminala Program;
+		//na dole uvek mozemo da dohvatamo sta nam treba
 		Tab.chainLocalSymbols(program.getProgName().obj);
 		Tab.closeScope();
 	}
 
 	public void visit(ProgName progName) {
-		progName.obj = Tab.insert(Obj.Prog, progName.getPName(), Tab.noType);
+		progName.obj = Tab.insert(Obj.Prog, progName.getProgName(), Tab.noType);
 		Tab.openScope();     	
 	}
+	
+    public void visit(Type Type) {
+    	currentType = Tab.noType;
+    	String typeName = Type.getTypeName();
+    	Obj typeObj = Tab.find(typeName);
+    	if (typeObj != Tab.noObj) {
+    		if (typeObj.getKind() == Obj.Type) {
+    			currentType = typeObj.getType();
+    		}
+    		else {
+    			report_error(typeObj.getName() + "nije tip", Type);
+    		}
+    	}else {
+    		report_error("Nedefinisan tip " + typeName, Type);
+    	}
+    	
+    	Type.struct = currentType;
+    }
+	
+    public void visit(GlobVarSingleDefWithoutBracket GlobVarSingleDefWithoutBracket) {
+    	String name = GlobVarSingleDefWithoutBracket.getVarName();
+    	if (Tab.find(name) == Tab.noObj) {
+        	Tab.insert(Obj.Var, name, currentType);
+    	}
+    	else {
+    		report_error("Visestruko definisanje simbola " + name, GlobVarSingleDefWithoutBracket);
+    	}
+    }
+    
+    public void visit(SingleConstElem SingleConstElem) {
+    	String name = SingleConstElem.getConstName();
+    	Obj o = Tab.insert(Obj.Con, name, currentType);
+    	int address = SingleConstElem.getTypeConst().struct.getKind();
+    	o.setAdr(address);
+    }
+    
+    public void visit(CharacterConst CharacterConst) { visit(); }
+    public void visit(BooleanConst BooleanConst) { visit(); }
+    
+    public void visit(NumberConst NumberConst) {
+    	//kada posecujemo ovaj cvor napravimo struct cvor sa njegovom vrednoscu
+    	//a posle ce TypeConst biti bas taj cvor ako je u pitanju NUMBER
+    	//i onda ce se sa SingleConstElem.getTypeConst().struct.getKind();
+    	//dohvatiti ta vrednost
+    	
+    	int value = NumberConst.getValue();
+    	Struct s = new Struct(value);
+    	NumberConst.struct = s;
+    }
+    
+    public void visit (MethodTypeAndName methodTypeAndName) {
+    	Struct type = methodTypeAndName.getType().struct;
+    	String name = methodTypeAndName.getMethodName();
+    	methodTypeAndName.obj = Tab.insert(Obj.Meth, name, type);
+    	Tab.openScope();
+    }
 
+    public void visit(MethodVoidAndName methodVoidAndName) {
+    	Struct type = Tab.noType;
+    	String name = methodVoidAndName.getMethodName();
+    	methodVoidAndName.obj = Tab.insert(Obj.Meth, name, type);
+    	Tab.openScope();
+    }
+    
+    public void visit(MethodDeclWithoutFormPars methodDeclWithoutFormPars) {
+    	Tab.chainLocalSymbols(methodDeclWithoutFormPars.getMethodTypeName().obj);
+    	Tab.closeScope();
+    }
+	
+	/*
 	public void visit(VarDecl varDecl) {
 		report_info("Deklarisana promenljiva "+ varDecl.getVarName(), varDecl);
 		Obj varNode = Tab.insert(Obj.Var, varDecl.getVarName(), varDecl.getType().struct);
@@ -179,6 +246,8 @@ public class SemanticPass extends VisitorAdaptor {
 		}
 		designator.obj = obj;
 	}
+
+	*/
 	
 	public boolean passed() {
 		return !errorDetected;

@@ -1,0 +1,42 @@
+INFO  23:05:06,407 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  23:05:06,442 - #2 program
+INFO  23:05:06,442 - #27 MJProgram
+INFO  23:05:06,442 - #27 int
+INFO  23:05:06,444 - #27 x
+INFO  23:05:06,444 - #16 ;
+INFO  23:05:06,445 - #27 int
+INFO  23:05:06,446 - #27 y
+INFO  23:05:06,446 - #16 ;
+INFO  23:05:06,446 - #5 const
+INFO  23:05:06,447 - #27 int
+INFO  23:05:06,447 - #27 a
+INFO  23:05:06,447 - #13 =
+INFO  23:05:06,447 - #28 1
+INFO  23:05:06,447 - #17 ,
+INFO  23:05:06,448 - #27 b
+INFO  23:05:06,448 - #13 =
+INFO  23:05:06,448 - #28 2
+INFO  23:05:06,449 - #17 ,
+INFO  23:05:06,449 - #27 c
+INFO  23:05:06,449 - #13 =
+INFO  23:05:06,449 - #28 3
+INFO  23:05:06,449 - #16 ;
+INFO  23:05:06,450 - #27 int
+INFO  23:05:06,450 - #27 x
+INFO  23:05:06,450 - #16 ;
+INFO  23:05:06,450 - #22 {
+INFO  23:05:06,450 - #4 void
+INFO  23:05:06,451 - #27 main
+INFO  23:05:06,451 - #18 (
+INFO  23:05:06,452 - #19 )
+INFO  23:05:06,452 - #27 int
+INFO  23:05:06,452 - #27 aa
+INFO  23:05:06,452 - #17 ,
+INFO  23:05:06,452 - #27 bb
+INFO  23:05:06,452 - #17 ,
+INFO  23:05:06,453 - #27 cc
+INFO  23:05:06,453 - #16 ;
+INFO  23:05:06,453 - #27 char
+ERROR 23:05:06,453 - 
+Sintaksna greska na liniji 9
+ERROR 23:05:06,453 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 9

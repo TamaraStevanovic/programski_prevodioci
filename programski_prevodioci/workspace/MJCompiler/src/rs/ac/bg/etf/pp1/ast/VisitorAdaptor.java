@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 29/4/2019 19:31:16
+// 12/5/2019 23:8:3
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,8 +8,8 @@ package rs.ac.bg.etf.pp1.ast;
 public abstract class VisitorAdaptor implements Visitor { 
 
     public void visit(Designator Designator) { }
-    public void visit(EnumSingleElem EnumSingleElem) { }
     public void visit(MethodDecl MethodDecl) { }
+    public void visit(EnumSingleElem EnumSingleElem) { }
     public void visit(Factor Factor) { }
     public void visit(DesignatorIdentity DesignatorIdentity) { }
     public void visit(Stmt Stmt) { }
@@ -31,12 +31,17 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(TypeConst TypeConst) { }
     public void visit(ConstElem ConstElem) { }
     public void visit(Term Term) { }
+    public void visit(MethodTypeName MethodTypeName) { }
+    public void visit(ActPars ActPars) { }
     public void visit(StmtList StmtList) { }
     public void visit(MultiplyOpMod MultiplyOpMod) { visit(); }
     public void visit(MultiplyOpDivide MultiplyOpDivide) { visit(); }
     public void visit(MultiplyOpTimes MultiplyOpTimes) { visit(); }
     public void visit(AddOperationMinus AddOperationMinus) { visit(); }
     public void visit(AddOperationPlus AddOperationPlus) { visit(); }
+    public void visit(FactorDesignator FactorDesignator) { visit(); }
+    public void visit(FactorDesingatorWithoutParams FactorDesingatorWithoutParams) { visit(); }
+    public void visit(FactorDesignatorWithParams FactorDesignatorWithParams) { visit(); }
     public void visit(FactorRegularExpr FactorRegularExpr) { visit(); }
     public void visit(FactorNew FactorNew) { visit(); }
     public void visit(FactorNewArray FactorNewArray) { visit(); }
@@ -48,13 +53,19 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ExprTerm ExprTerm) { visit(); }
     public void visit(EnumValue EnumValue) { visit(); }
     public void visit(EnumIdentity EnumIdentity) { visit(); }
+    public void visit(ActParameters ActParameters) { visit(); }
+    public void visit(SingleActParameter SingleActParameter) { visit(); }
     public void visit(DesignatorName DesignatorName) { visit(); }
     public void visit(DesignatorWithExpr DesignatorWithExpr) { visit(); }
     public void visit(DesinatorWithDOT DesinatorWithDOT) { visit(); }
     public void visit(DesignatorSingle DesignatorSingle) { visit(); }
-    public void visit(DesignatorStmtDEc DesignatorStmtDEc) { visit(); }
+    public void visit(DesignatorStmtWithParams DesignatorStmtWithParams) { visit(); }
+    public void visit(DesignatorStmtWithoutParams DesignatorStmtWithoutParams) { visit(); }
+    public void visit(DesignatorStmtDEC DesignatorStmtDEC) { visit(); }
     public void visit(DesignatorStmtINC DesignatorStmtINC) { visit(); }
     public void visit(DesignatorStmtAssign DesignatorStmtAssign) { visit(); }
+    public void visit(ReturnStmtWithExpr ReturnStmtWithExpr) { visit(); }
+    public void visit(ReturnStmtWithoutExpr ReturnStmtWithoutExpr) { visit(); }
     public void visit(PrintStatementOneArg PrintStatementOneArg) { visit(); }
     public void visit(PrintStatementTwoArg PrintStatementTwoArg) { visit(); }
     public void visit(ReadStatement ReadStatement) { visit(); }
@@ -62,14 +73,14 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NoStatements NoStatements) { visit(); }
     public void visit(Statements Statements) { visit(); }
     public void visit(NoVarDeclarationList NoVarDeclarationList) { visit(); }
-    public void visit(VarDeclarationList VarDeclarationList) { visit(); }
+    public void visit(VarDeclList1 VarDeclList1) { visit(); }
     public void visit(FormalParamArrayDef FormalParamArrayDef) { visit(); }
     public void visit(FormalParamDef FormalParamDef) { visit(); }
     public void visit(FormalParametersMany FormalParametersMany) { visit(); }
     public void visit(FormalParameterOne FormalParameterOne) { visit(); }
-    public void visit(MethodDeclVoidWithoutFormPars MethodDeclVoidWithoutFormPars) { visit(); }
+    public void visit(MethodVoidAndName MethodVoidAndName) { visit(); }
+    public void visit(MethodTypeAndName MethodTypeAndName) { visit(); }
     public void visit(MethodDeclWithoutFormPars MethodDeclWithoutFormPars) { visit(); }
-    public void visit(MethodDeclVoidWithFormPars MethodDeclVoidWithFormPars) { visit(); }
     public void visit(MethodDeclWithFormPars MethodDeclWithFormPars) { visit(); }
     public void visit(NoMethodDecl NoMethodDecl) { visit(); }
     public void visit(MethodDeclList1 MethodDeclList1) { visit(); }
@@ -95,6 +106,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DeclarationsConstDecl DeclarationsConstDecl) { visit(); }
     public void visit(NoDeclarations NoDeclarations) { visit(); }
     public void visit(Declarations1 Declarations1) { visit(); }
+    public void visit(Type Type) { visit(); }
     public void visit(ProgName ProgName) { visit(); }
     public void visit(Program Program) { visit(); }
 

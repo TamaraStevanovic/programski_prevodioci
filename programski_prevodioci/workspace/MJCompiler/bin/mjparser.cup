@@ -5,6 +5,7 @@ import org.apache.log4j.*;
 
 // import java.io.*;
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.etf.pp1.symboltable.*;
 
 
 parser code {:
@@ -68,32 +69,37 @@ terminal Character CHAR_CONST;
 terminal Boolean BOOL_CONST;
 
 
-nonterminal Program, Declarations, DeclarationList;
-
-nonterminal  TypeConst;
+nonterminal Declarations, DeclarationList;
 nonterminal ConstDecl, ConstElem, SingleConstElem;
 nonterminal GlobVarDecl, GlobVarElem, GlobSingleVarElem;
 nonterminal EnumDecl,  EnumElem, EnumSingleElem;
-
-nonterminal  MethodDeclList, MethodDecl;
+nonterminal MethodDeclList;
 nonterminal FormPars, FormParam;
 nonterminal VarDeclList;
 nonterminal StmtList, Stmt; 
-nonterminal DesignatorStmt, Designator, DesignatorIdentity;
-nonterminal Expr;
 nonterminal EnumIdent, EnumValue;
-nonterminal Term, Factor;
+nonterminal Factor;
 nonterminal Addop, Mullop;
+nonterminal ActPars;
 
-nonterminal ProgName;
 
 
-//nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
-//nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
+nonterminal  rs.etf.pp1.symboltable.concepts.Struct Type, Expr, Term;
 
-Program ::= (Program) PROG ProgName Declarations:decl LBRACE MethodDeclList:methodDec RBRACE;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName ,DesignatorStmt, Designator,DesignatorIdentity;
+//nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList;
 
+// ovim se dodaje polje tipa Struct, imena struct, u cvor stabla TypeConst
+nonterminal rs.etf.pp1.symboltable.concepts.Struct TypeConst;
+
+//+
+Program ::= (Program) PROG ProgName:p Declarations:decl LBRACE MethodDeclList:methodDec RBRACE;
+
+//+
 ProgName ::= (ProgName) IDENT:progName;
+
+//+
+Type ::= (Type) IDENT:typeName;
 
 Declarations ::= (Declarations1) Declarations DeclarationList
 				|(NoDeclarations) /*epsilon*/
@@ -104,13 +110,14 @@ DeclarationList ::= (DeclarationsConstDecl) ConstDecl
 				 | (DeclarationsEnumDecl)EnumDecl
 				 ;
 				 
-ConstDecl::= (ConstDeclaration)CONST IDENT:constType ConstElem SEMI;
+ConstDecl::= (ConstDeclaration)CONST Type:constType ConstElem SEMI;
 
 
 ConstElem ::= (SingleConstElemDecl)SingleConstElem
 			 | (ManyConstElemDecl)ConstElem COMMA SingleConstElem
 			 ;
-			
+			 
+//+			
 SingleConstElem ::= (SingleConstElem)IDENT:constName EQUAL TypeConst;
 
 
@@ -120,7 +127,7 @@ TypeConst ::= (NumberConst)NUM_CONST :value
 			 | (CharacterConst)CHAR_CONST:value
 			 ;
 			 
-GlobVarDecl ::= (GlobVarDecl) IDENT:varType GlobVarElem SEMI;
+GlobVarDecl ::= (GlobVarDecl) Type:varType GlobVarElem SEMI;
 
 
 GlobVarElem ::= (GlobSingleVarElement) GlobSingleVarElem
@@ -144,24 +151,25 @@ EnumSingleElem ::= (EnumSingleDefDefault)IDENT:enumName
 
 MethodDeclList ::= (MethodDeclList1)MethodDeclList MethodDecl
 				 |(NoMethodDecl) /*epsilon*/
-				  ;	
-				   
-MethodDecl ::= (MethodDeclWithFormPars) IDENT :retType IDENT:methodName LPARENT FormPars RPARENT VarDeclList LBRACE StmtList RBRACE
-			|(MethodDeclVoidWithFormPars) VOID:retType IDENT:methodName LPARENT FormPars RPARENT VarDeclList LBRACE StmtList RBRACE
-			 | (MethodDeclWithoutFormPars)IDENT :retType IDENT LPARENT RPARENT VarDeclList LBRACE StmtList RBRACE
-			 | (MethodDeclVoidWithoutFormPars)VOID:retType IDENT LPARENT RPARENT VarDeclList LBRACE StmtList RBRACE
+				  ;
+				  
+MethodDecl ::= (MethodDeclWithFormPars) MethodTypeName LPARENT FormPars RPARENT VarDeclList LBRACE StmtList RBRACE
+			 | (MethodDeclWithoutFormPars) MethodTypeName LPARENT RPARENT VarDeclList LBRACE StmtList RBRACE
 			 ;
-
+			 
+MethodTypeName ::=(MethodTypeAndName) Type:retType IDENT:methodName
+				| (MethodVoidAndName) VOID:retType IDENT:methodName
+				;
 				  
 FormPars ::= (FormalParameterOne) FormParam
 		    | (FormalParametersMany) FormPars COMMA FormParam
 		    ;
 
-FormParam ::= (FormalParamDef)IDENT:typeName IDENT
-			| (FormalParamArrayDef)IDENT:typeName IDENT LBRACKET RBRACKET
+FormParam ::= (FormalParamDef)Type IDENT
+			| (FormalParamArrayDef)Type IDENT LBRACKET RBRACKET
 			;
 
-VarDeclList ::= (VarDeclarationList) GlobVarDecl 
+VarDeclList ::= (VarDeclList1) VarDeclList GlobVarDecl
 			| (NoVarDeclarationList)/*epsilon*/
 			;
 		
@@ -174,19 +182,26 @@ Stmt ::=(Assignment) DesignatorStmt SEMI
 		| (ReadStatement)READ LPARENT Designator RPARENT SEMI
 		| (PrintStatementTwoArg)PRINT LPARENT Expr RPARENT SEMI 
 		| (PrintStatementOneArg)PRINT LPARENT Expr COMMA NUM_CONST RPARENT SEMI
+		| (ReturnStmtWithoutExpr)RETURN SEMI
+		| (ReturnStmtWithExpr) RETURN Expr SEMI
 		;
 
 DesignatorStmt ::= (DesignatorStmtAssign)Designator:dest EQUAL Expr:e
 				 | (DesignatorStmtINC)Designator INC
-				 | (DesignatorStmtDEc)Designator DEC
+				 | (DesignatorStmtDEC)Designator DEC
+				 | (DesignatorStmtWithoutParams) Designator LPARENT RPARENT
+				 | (DesignatorStmtWithParams) Designator LPARENT ActPars RPARENT
 				 ;
-				 
+//+				 
 Designator ::= (DesignatorSingle) IDENT:name
 			 |	(DesinatorWithDOT)EnumIdent DOT EnumValue 
 			 | 	(DesignatorWithExpr)DesignatorIdentity LBRACKET Expr RBRACKET
 			 ;		
 			 
 DesignatorIdentity ::= (DesignatorName) IDENT:designatorName;			 
+			 
+ActPars ::= (SingleActParameter)Expr
+			|(ActParameters) ActPars COMMA Expr;			 
 			 
 EnumIdent ::= (EnumIdentity)IDENT:identity;
 
@@ -204,9 +219,12 @@ Term ::= (TermSingleFactor) Factor
 		;
 
 Factor ::= (FactorConst)TypeConst
-		 | (FactorNewArray)NEW IDENT LBRACKET Expr RBRACKET
-		 | (FactorNew)NEW IDENT
+		 | (FactorNewArray)NEW Type LBRACKET Expr RBRACKET
+		 | (FactorNew)NEW Type
 		 | (FactorRegularExpr)LPARENT Expr RPARENT
+		 | (FactorDesignatorWithParams) Designator LPARENT ActPars RPARENT
+		 | (FactorDesingatorWithoutParams) Designator LPARENT RPARENT
+		 | (FactorDesignator) Designator
 		 ;
 		 
 

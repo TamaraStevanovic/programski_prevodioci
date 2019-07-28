@@ -1,0 +1,30 @@
+INFO  22:31:58,460 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  22:31:58,496 - #2 program
+INFO  22:31:58,496 - #27 MJProgram
+INFO  22:31:58,496 - #27 int
+INFO  22:31:58,497 - #27 x
+INFO  22:31:58,498 - #16 ;
+INFO  22:31:58,499 - #27 int
+INFO  22:31:58,500 - #27 y
+INFO  22:31:58,500 - #16 ;
+INFO  22:31:58,500 - #5 const
+INFO  22:31:58,500 - #27 int
+INFO  22:31:58,500 - #27 a
+INFO  22:31:58,501 - #13 =
+INFO  22:31:58,501 - #28 1
+INFO  22:31:58,501 - #17 ,
+INFO  22:31:58,502 - #27 b
+INFO  22:31:58,502 - #13 =
+INFO  22:31:58,502 - #28 2
+INFO  22:31:58,502 - #17 ,
+INFO  22:31:58,503 - #27 c
+INFO  22:31:58,503 - #13 =
+INFO  22:31:58,503 - #28 3
+INFO  22:31:58,503 - #16 ;
+INFO  22:31:58,503 - #5 const
+INFO  22:31:58,504 - #27 int
+INFO  22:31:58,504 - #27 a
+INFO  22:31:58,504 - #16 ;
+ERROR 22:31:58,504 - 
+Sintaksna greska na liniji 4
+ERROR 22:31:58,504 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 4

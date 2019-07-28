@@ -5,6 +5,7 @@ import org.apache.log4j.*;
 
 // import java.io.*;
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.etf.pp1.symboltable.*;
 
 
 parser code {:
@@ -68,11 +69,8 @@ terminal Character CHAR_CONST;
 terminal Boolean BOOL_CONST;
 
 
-nonterminal Program Program;
 nonterminal Declarations Declarations;
 nonterminal DeclarationList DeclarationList;
-
-nonterminal  TypeConst TypeConst;
 nonterminal ConstDecl ConstDecl;
 nonterminal ConstElem ConstElem;
 nonterminal SingleConstElem SingleConstElem;
@@ -82,34 +80,35 @@ nonterminal GlobSingleVarElem GlobSingleVarElem;
 nonterminal EnumDecl EnumDecl;
 nonterminal  EnumElem EnumElem;
 nonterminal EnumSingleElem EnumSingleElem;
-
-nonterminal  MethodDeclList MethodDeclList;
-nonterminal MethodDecl MethodDecl;
+nonterminal MethodDeclList MethodDeclList;
 nonterminal FormPars FormPars;
 nonterminal FormParam FormParam;
 nonterminal VarDeclList VarDeclList;
 nonterminal StmtList StmtList;
 nonterminal Stmt Stmt; 
-nonterminal DesignatorStmt DesignatorStmt;
-nonterminal Designator Designator;
-nonterminal DesignatorIdentity DesignatorIdentity;
-nonterminal Expr Expr;
 nonterminal EnumIdent EnumIdent;
 nonterminal EnumValue EnumValue;
-nonterminal Term Term;
 nonterminal Factor Factor;
 nonterminal Addop Addop;
 nonterminal Mullop Mullop;
+nonterminal ActPars ActPars;
 
-nonterminal ProgName ProgName;
 
 
-//nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
-//nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
+nonterminal  rs.etf.pp1.symboltable.concepts.Struct Type, Expr, Term;
 
-Program ::= (Program) PROG ProgName:P1 Declarations:decl LBRACE MethodDeclList:methodDec RBRACE {: RESULT=new Program(P1, decl, methodDec); RESULT.setLine(P1left); :};
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName ,DesignatorStmt, Designator,DesignatorIdentity;
+//nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList;
+
+// ovim se dodaje polje tipa Struct, imena struct, u cvor stabla TypeConst
+nonterminal rs.etf.pp1.symboltable.concepts.Struct TypeConst;
+
+
+Program ::= (Program) PROG ProgName:p Declarations:decl LBRACE MethodDeclList:methodDec RBRACE {: RESULT=new Program(p, decl, methodDec); RESULT.setLine(pleft); :};
 
 ProgName ::= (ProgName) IDENT:progName {: RESULT=new ProgName(progName); RESULT.setLine(progNameleft); :};
+
+Type ::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(typeNameleft); :};
 
 Declarations ::= (Declarations1) Declarations:D1 DeclarationList:D2 {: RESULT=new Declarations1(D1, D2); RESULT.setLine(D1left); :}
 				|(NoDeclarations) {: RESULT=new NoDeclarations(); :} /*epsilon*/
@@ -120,7 +119,7 @@ DeclarationList ::= (DeclarationsConstDecl) ConstDecl:C1 {: RESULT=new Declarati
 				 | (DeclarationsEnumDecl)EnumDecl:E1 {: RESULT=new DeclarationsEnumDecl(E1); RESULT.setLine(E1left); :}
 				 ;
 				 
-ConstDecl::= (ConstDeclaration)CONST IDENT:constType ConstElem:C1 SEMI {: RESULT=new ConstDeclaration(constType, C1); RESULT.setLine(constTypeleft); :};
+ConstDecl::= (ConstDeclaration)CONST Type:constType ConstElem:C1 SEMI {: RESULT=new ConstDeclaration(constType, C1); RESULT.setLine(constTypeleft); :};
 
 
 ConstElem ::= (SingleConstElemDecl)SingleConstElem:S1 {: RESULT=new SingleConstElemDecl(S1); RESULT.setLine(S1left); :}
@@ -136,7 +135,7 @@ TypeConst ::= (NumberConst)NUM_CONST :value {: RESULT=new NumberConst(value); RE
 			 | (CharacterConst)CHAR_CONST:value {: RESULT=new CharacterConst(value); RESULT.setLine(valueleft); :}
 			 ;
 			 
-GlobVarDecl ::= (GlobVarDecl) IDENT:varType GlobVarElem:G1 SEMI {: RESULT=new GlobVarDecl(varType, G1); RESULT.setLine(varTypeleft); :};
+GlobVarDecl ::= (GlobVarDecl) Type:varType GlobVarElem:G1 SEMI {: RESULT=new GlobVarDecl(varType, G1); RESULT.setLine(varTypeleft); :};
 
 
 GlobVarElem ::= (GlobSingleVarElement) GlobSingleVarElem:G1 {: RESULT=new GlobSingleVarElement(G1); RESULT.setLine(G1left); :}
@@ -160,24 +159,25 @@ EnumSingleElem ::= (EnumSingleDefDefault)IDENT:enumName {: RESULT=new EnumSingle
 
 MethodDeclList ::= (MethodDeclList1)MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclList1(M1, M2); RESULT.setLine(M1left); :}
 				 |(NoMethodDecl) {: RESULT=new NoMethodDecl(); :} /*epsilon*/
-				  ;	
-				   
-MethodDecl ::= (MethodDeclWithFormPars) IDENT :retType IDENT:methodName LPARENT FormPars:F1 RPARENT VarDeclList:V2 LBRACE StmtList:S3 RBRACE {: RESULT=new MethodDeclWithFormPars(retType, methodName, F1, V2, S3); RESULT.setLine(retTypeleft); :}
-			|(MethodDeclVoidWithFormPars) VOID:retType IDENT:methodName LPARENT FormPars:F1 RPARENT VarDeclList:V2 LBRACE StmtList:S3 RBRACE {: RESULT=new MethodDeclVoidWithFormPars(methodName, F1, V2, S3); RESULT.setLine(methodNameleft); :}
-			 | (MethodDeclWithoutFormPars)IDENT :retType IDENT:I1 LPARENT RPARENT VarDeclList:V2 LBRACE StmtList:S3 RBRACE {: RESULT=new MethodDeclWithoutFormPars(retType, I1, V2, S3); RESULT.setLine(retTypeleft); :}
-			 | (MethodDeclVoidWithoutFormPars)VOID:retType IDENT:I1 LPARENT RPARENT VarDeclList:V2 LBRACE StmtList:S3 RBRACE {: RESULT=new MethodDeclVoidWithoutFormPars(I1, V2, S3); RESULT.setLine(I1left); :}
+				  ;
+				  
+MethodDecl ::= (MethodDeclWithFormPars) MethodTypeName:M1 LPARENT FormPars:F2 RPARENT VarDeclList:V3 LBRACE StmtList:S4 RBRACE {: RESULT=new MethodDeclWithFormPars(M1, F2, V3, S4); RESULT.setLine(M1left); :}
+			 | (MethodDeclWithoutFormPars) MethodTypeName:M1 LPARENT RPARENT VarDeclList:V2 LBRACE StmtList:S3 RBRACE {: RESULT=new MethodDeclWithoutFormPars(M1, V2, S3); RESULT.setLine(M1left); :}
 			 ;
-
+			 
+MethodTypeName ::=(MethodTypeAndName) Type:retType IDENT:methodName {: RESULT=new MethodTypeAndName(retType, methodName); RESULT.setLine(retTypeleft); :}
+				| (MethodVoidAndName) VOID:retType IDENT:methodName {: RESULT=new MethodVoidAndName(methodName); RESULT.setLine(methodNameleft); :}
+				;
 				  
 FormPars ::= (FormalParameterOne) FormParam:F1 {: RESULT=new FormalParameterOne(F1); RESULT.setLine(F1left); :}
 		    | (FormalParametersMany) FormPars:F1 COMMA FormParam:F2 {: RESULT=new FormalParametersMany(F1, F2); RESULT.setLine(F1left); :}
 		    ;
 
-FormParam ::= (FormalParamDef)IDENT:typeName IDENT:I1 {: RESULT=new FormalParamDef(typeName, I1); RESULT.setLine(typeNameleft); :}
-			| (FormalParamArrayDef)IDENT:typeName IDENT:I1 LBRACKET RBRACKET {: RESULT=new FormalParamArrayDef(typeName, I1); RESULT.setLine(typeNameleft); :}
+FormParam ::= (FormalParamDef)Type:T1 IDENT:I2 {: RESULT=new FormalParamDef(T1, I2); RESULT.setLine(T1left); :}
+			| (FormalParamArrayDef)Type:T1 IDENT:I2 LBRACKET RBRACKET {: RESULT=new FormalParamArrayDef(T1, I2); RESULT.setLine(T1left); :}
 			;
 
-VarDeclList ::= (VarDeclarationList) GlobVarDecl:G1 {: RESULT=new VarDeclarationList(G1); RESULT.setLine(G1left); :} 
+VarDeclList ::= (VarDeclList1) VarDeclList:V1 GlobVarDecl:G2 {: RESULT=new VarDeclList1(V1, G2); RESULT.setLine(V1left); :}
 			| (NoVarDeclarationList) {: RESULT=new NoVarDeclarationList(); :}/*epsilon*/
 			;
 		
@@ -190,11 +190,15 @@ Stmt ::=(Assignment) DesignatorStmt:D1 SEMI {: RESULT=new Assignment(D1); RESULT
 		| (ReadStatement)READ LPARENT Designator:D1 RPARENT SEMI {: RESULT=new ReadStatement(D1); RESULT.setLine(D1left); :}
 		| (PrintStatementTwoArg)PRINT LPARENT Expr:E1 RPARENT SEMI {: RESULT=new PrintStatementTwoArg(E1); RESULT.setLine(E1left); :} 
 		| (PrintStatementOneArg)PRINT LPARENT Expr:E1 COMMA NUM_CONST:N2 RPARENT SEMI {: RESULT=new PrintStatementOneArg(E1, N2); RESULT.setLine(E1left); :}
+		| (ReturnStmtWithoutExpr)RETURN SEMI {: RESULT=new ReturnStmtWithoutExpr(); :}
+		| (ReturnStmtWithExpr) RETURN Expr:E1 SEMI {: RESULT=new ReturnStmtWithExpr(E1); RESULT.setLine(E1left); :}
 		;
 
 DesignatorStmt ::= (DesignatorStmtAssign)Designator:dest EQUAL Expr:e {: RESULT=new DesignatorStmtAssign(dest, e); RESULT.setLine(destleft); :}
 				 | (DesignatorStmtINC)Designator:D1 INC {: RESULT=new DesignatorStmtINC(D1); RESULT.setLine(D1left); :}
-				 | (DesignatorStmtDEc)Designator:D1 DEC {: RESULT=new DesignatorStmtDEc(D1); RESULT.setLine(D1left); :}
+				 | (DesignatorStmtDEC)Designator:D1 DEC {: RESULT=new DesignatorStmtDEC(D1); RESULT.setLine(D1left); :}
+				 | (DesignatorStmtWithoutParams) Designator:D1 LPARENT RPARENT {: RESULT=new DesignatorStmtWithoutParams(D1); RESULT.setLine(D1left); :}
+				 | (DesignatorStmtWithParams) Designator:D1 LPARENT ActPars:A2 RPARENT {: RESULT=new DesignatorStmtWithParams(D1, A2); RESULT.setLine(D1left); :}
 				 ;
 				 
 Designator ::= (DesignatorSingle) IDENT:name {: RESULT=new DesignatorSingle(name); RESULT.setLine(nameleft); :}
@@ -203,6 +207,9 @@ Designator ::= (DesignatorSingle) IDENT:name {: RESULT=new DesignatorSingle(name
 			 ;		
 			 
 DesignatorIdentity ::= (DesignatorName) IDENT:designatorName {: RESULT=new DesignatorName(designatorName); RESULT.setLine(designatorNameleft); :};			 
+			 
+ActPars ::= (SingleActParameter)Expr:E1 {: RESULT=new SingleActParameter(E1); RESULT.setLine(E1left); :}
+			|(ActParameters) ActPars:A1 COMMA Expr:E2 {: RESULT=new ActParameters(A1, E2); RESULT.setLine(A1left); :};			 
 			 
 EnumIdent ::= (EnumIdentity)IDENT:identity {: RESULT=new EnumIdentity(identity); RESULT.setLine(identityleft); :};
 
@@ -220,9 +227,12 @@ Term ::= (TermSingleFactor) Factor:F1 {: RESULT=new TermSingleFactor(F1); RESULT
 		;
 
 Factor ::= (FactorConst)TypeConst:T1 {: RESULT=new FactorConst(T1); RESULT.setLine(T1left); :}
-		 | (FactorNewArray)NEW IDENT:I1 LBRACKET Expr:E2 RBRACKET {: RESULT=new FactorNewArray(I1, E2); RESULT.setLine(I1left); :}
-		 | (FactorNew)NEW IDENT:I1 {: RESULT=new FactorNew(I1); RESULT.setLine(I1left); :}
+		 | (FactorNewArray)NEW Type:T1 LBRACKET Expr:E2 RBRACKET {: RESULT=new FactorNewArray(T1, E2); RESULT.setLine(T1left); :}
+		 | (FactorNew)NEW Type:T1 {: RESULT=new FactorNew(T1); RESULT.setLine(T1left); :}
 		 | (FactorRegularExpr)LPARENT Expr:E1 RPARENT {: RESULT=new FactorRegularExpr(E1); RESULT.setLine(E1left); :}
+		 | (FactorDesignatorWithParams) Designator:D1 LPARENT ActPars:A2 RPARENT {: RESULT=new FactorDesignatorWithParams(D1, A2); RESULT.setLine(D1left); :}
+		 | (FactorDesingatorWithoutParams) Designator:D1 LPARENT RPARENT {: RESULT=new FactorDesingatorWithoutParams(D1); RESULT.setLine(D1left); :}
+		 | (FactorDesignator) Designator:D1 {: RESULT=new FactorDesignator(D1); RESULT.setLine(D1left); :}
 		 ;
 		 
 

@@ -1,0 +1,27 @@
+INFO  20:23:04,093 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  20:23:04,126 - #2 program
+INFO  20:23:04,126 - #27 MJProgram
+INFO  20:23:04,126 - #22 {
+INFO  20:23:04,127 - #4 void
+INFO  20:23:04,128 - #27 main
+INFO  20:23:04,128 - #18 (
+INFO  20:23:04,128 - #19 )
+INFO  20:23:04,128 - #27 int
+INFO  20:23:04,129 - #27 x
+INFO  20:23:04,129 - #16 ;
+INFO  20:23:04,130 - #22 {
+INFO  20:23:04,131 - #27 x
+INFO  20:23:04,131 - #13 =
+INFO  20:23:04,132 - #28 100
+INFO  20:23:04,132 - #16 ;
+INFO  20:23:04,133 - #3 print
+INFO  20:23:04,133 - #18 (
+INFO  20:23:04,134 - #27 x
+INFO  20:23:04,134 - #17 ,
+INFO  20:23:04,134 - #28 5
+INFO  20:23:04,134 - #19 )
+INFO  20:23:04,134 - #16 ;
+INFO  20:23:04,134 - #23 }
+INFO  20:23:04,135 - #23 }
+INFO  20:23:04,146 - Generating bytecode file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj
+INFO  20:23:04,148 - Parsiranje uspesno zavrseno!

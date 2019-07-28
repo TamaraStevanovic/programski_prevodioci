@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 29/4/2019 19:31:16
+// 12/5/2019 23:8:3
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,21 +9,22 @@ public class GlobVarDecl implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String varType;
+    private Type Type;
     private GlobVarElem GlobVarElem;
 
-    public GlobVarDecl (String varType, GlobVarElem GlobVarElem) {
-        this.varType=varType;
+    public GlobVarDecl (Type Type, GlobVarElem GlobVarElem) {
+        this.Type=Type;
+        if(Type!=null) Type.setParent(this);
         this.GlobVarElem=GlobVarElem;
         if(GlobVarElem!=null) GlobVarElem.setParent(this);
     }
 
-    public String getVarType() {
-        return varType;
+    public Type getType() {
+        return Type;
     }
 
-    public void setVarType(String varType) {
-        this.varType=varType;
+    public void setType(Type Type) {
+        this.Type=Type;
     }
 
     public GlobVarElem getGlobVarElem() {
@@ -55,15 +56,18 @@ public class GlobVarDecl implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Type!=null) Type.accept(visitor);
         if(GlobVarElem!=null) GlobVarElem.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Type!=null) Type.traverseTopDown(visitor);
         if(GlobVarElem!=null) GlobVarElem.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Type!=null) Type.traverseBottomUp(visitor);
         if(GlobVarElem!=null) GlobVarElem.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -73,7 +77,10 @@ public class GlobVarDecl implements SyntaxNode {
         buffer.append(tab);
         buffer.append("GlobVarDecl(\n");
 
-        buffer.append(" "+tab+varType);
+        if(Type!=null)
+            buffer.append(Type.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(GlobVarElem!=null)

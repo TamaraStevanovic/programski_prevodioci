@@ -1,25 +1,52 @@
 package rs.ac.bg.etf.pp1;
 
-import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
-import rs.ac.bg.etf.pp1.CounterVisitor.VarCounter;
-import rs.ac.bg.etf.pp1.ast.AddExpr;
-import rs.ac.bg.etf.pp1.ast.Assignment;
-import rs.ac.bg.etf.pp1.ast.Const;
-import rs.ac.bg.etf.pp1.ast.Designator;
-import rs.ac.bg.etf.pp1.ast.FormalParamDecl;
-import rs.ac.bg.etf.pp1.ast.FuncCall;
-import rs.ac.bg.etf.pp1.ast.MethodDecl;
-import rs.ac.bg.etf.pp1.ast.MethodTypeName;
-import rs.ac.bg.etf.pp1.ast.PrintStmt;
-import rs.ac.bg.etf.pp1.ast.ReturnExpr;
-import rs.ac.bg.etf.pp1.ast.ReturnNoExpr;
-import rs.ac.bg.etf.pp1.ast.SyntaxNode;
-import rs.ac.bg.etf.pp1.ast.VarDecl;
-import rs.ac.bg.etf.pp1.ast.VisitorAdaptor;
+import rs.ac.bg.etf.pp1.ast.*;
 import rs.etf.pp1.mj.runtime.Code;
+import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
 
 public class CodeGenerator extends VisitorAdaptor {
+	
+	public void visit(PrintStatementOneArg printStatementOneArg) {
+		int len = printStatementOneArg.getN2();
+		Code.loadConst(len);
+		Code.put(Code.print);
+	}
+	
+	public void visit(FactorConst factorConst) {
+		int val = factorConst.getTypeConst().struct.getKind();
+		Code.loadConst(val);
+	}
+	
+	public void visit(FactorDesignator factorDesignator) {
+		Code.load(factorDesignator.getDesignator().obj);
+	}
+	
+	public void visit(MethodVoidAndName methodVoidAndName) {
+		methodVoidAndName.obj.setAdr(Code.pc);
+		if (methodVoidAndName.obj.getName().equals("main")) {
+			Code.mainPc = Code.pc;
+		}
+		int fp = 0;
+		int v = 0;
+		Code.put(Code.enter);
+		Code.put(fp);
+		Code.put(v);
+	}
+	
+	public void visit(MethodDeclWithoutFormPars methodDeclWithoutFormPars) {
+		Code.put(Code.exit);
+		if (methodDeclWithoutFormPars.getMethodTypeName().obj.getType() == Tab.noType) {
+			Code.put(Code.return_);
+		}
+	}
+	
+	public void visit(DesignatorStmtAssign designatorStmtAssign) {
+		Obj designator = designatorStmtAssign.getDesignator().obj;
+		Code.store(designator);
+	}
+	
+	/*
 	
 	private int varCount;
 	
@@ -115,4 +142,6 @@ public class CodeGenerator extends VisitorAdaptor {
 	public void visit(AddExpr AddExpr) {
 		Code.put(Code.add);
 	}
+	
+	*/
 }

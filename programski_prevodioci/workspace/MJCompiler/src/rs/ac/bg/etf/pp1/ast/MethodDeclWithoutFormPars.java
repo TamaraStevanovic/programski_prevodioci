@@ -1,40 +1,31 @@
 // generated with ast extension for cup
 // version 0.8
-// 29/4/2019 19:31:16
+// 12/5/2019 23:8:3
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class MethodDeclWithoutFormPars extends MethodDecl {
 
-    private String retType;
-    private String I1;
+    private MethodTypeName MethodTypeName;
     private VarDeclList VarDeclList;
     private StmtList StmtList;
 
-    public MethodDeclWithoutFormPars (String retType, String I1, VarDeclList VarDeclList, StmtList StmtList) {
-        this.retType=retType;
-        this.I1=I1;
+    public MethodDeclWithoutFormPars (MethodTypeName MethodTypeName, VarDeclList VarDeclList, StmtList StmtList) {
+        this.MethodTypeName=MethodTypeName;
+        if(MethodTypeName!=null) MethodTypeName.setParent(this);
         this.VarDeclList=VarDeclList;
         if(VarDeclList!=null) VarDeclList.setParent(this);
         this.StmtList=StmtList;
         if(StmtList!=null) StmtList.setParent(this);
     }
 
-    public String getRetType() {
-        return retType;
+    public MethodTypeName getMethodTypeName() {
+        return MethodTypeName;
     }
 
-    public void setRetType(String retType) {
-        this.retType=retType;
-    }
-
-    public String getI1() {
-        return I1;
-    }
-
-    public void setI1(String I1) {
-        this.I1=I1;
+    public void setMethodTypeName(MethodTypeName MethodTypeName) {
+        this.MethodTypeName=MethodTypeName;
     }
 
     public VarDeclList getVarDeclList() {
@@ -58,17 +49,20 @@ public class MethodDeclWithoutFormPars extends MethodDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(MethodTypeName!=null) MethodTypeName.accept(visitor);
         if(VarDeclList!=null) VarDeclList.accept(visitor);
         if(StmtList!=null) StmtList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(MethodTypeName!=null) MethodTypeName.traverseTopDown(visitor);
         if(VarDeclList!=null) VarDeclList.traverseTopDown(visitor);
         if(StmtList!=null) StmtList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(MethodTypeName!=null) MethodTypeName.traverseBottomUp(visitor);
         if(VarDeclList!=null) VarDeclList.traverseBottomUp(visitor);
         if(StmtList!=null) StmtList.traverseBottomUp(visitor);
         accept(visitor);
@@ -79,10 +73,10 @@ public class MethodDeclWithoutFormPars extends MethodDecl {
         buffer.append(tab);
         buffer.append("MethodDeclWithoutFormPars(\n");
 
-        buffer.append(" "+tab+retType);
-        buffer.append("\n");
-
-        buffer.append(" "+tab+I1);
+        if(MethodTypeName!=null)
+            buffer.append(MethodTypeName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(VarDeclList!=null)

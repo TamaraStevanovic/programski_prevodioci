@@ -1,0 +1,30 @@
+INFO  22:03:04,723 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  22:03:04,762 - #2 program
+INFO  22:03:04,762 - #27 MJProgram
+INFO  22:03:04,762 - #27 int
+INFO  22:03:04,764 - #27 x
+INFO  22:03:04,765 - #16 ;
+INFO  22:03:04,765 - #27 int
+INFO  22:03:04,766 - #27 y
+INFO  22:03:04,767 - #16 ;
+INFO  22:03:04,767 - #22 {
+INFO  22:03:04,767 - #4 void
+INFO  22:03:04,768 - #27 main
+INFO  22:03:04,768 - #18 (
+INFO  22:03:04,769 - #19 )
+INFO  22:03:04,769 - #22 {
+INFO  22:03:04,770 - #27 x
+INFO  22:03:04,770 - #14 ++
+INFO  22:03:04,771 - #16 ;
+INFO  22:03:04,771 - #27 y
+INFO  22:03:04,772 - #15 --
+INFO  22:03:04,772 - #16 ;
+INFO  22:03:04,772 - #27 z
+INFO  22:03:04,772 - #13 =
+INFO  22:03:04,772 - #27 x
+INFO  22:03:04,773 - #8 +
+INFO  22:03:04,774 - #27 y
+INFO  22:03:04,775 - #16 ;
+INFO  22:03:04,776 - #23 }
+INFO  22:03:04,776 - #23 }
+ERROR 22:03:04,786 - Nije definisan simbol z na liniji 8

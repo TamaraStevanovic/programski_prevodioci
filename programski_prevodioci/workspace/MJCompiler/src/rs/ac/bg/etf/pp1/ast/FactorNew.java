@@ -1,24 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 29/4/2019 19:31:16
+// 12/5/2019 23:8:3
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class FactorNew extends Factor {
 
-    private String I1;
+    private Type Type;
 
-    public FactorNew (String I1) {
-        this.I1=I1;
+    public FactorNew (Type Type) {
+        this.Type=Type;
+        if(Type!=null) Type.setParent(this);
     }
 
-    public String getI1() {
-        return I1;
+    public Type getType() {
+        return Type;
     }
 
-    public void setI1(String I1) {
-        this.I1=I1;
+    public void setType(Type Type) {
+        this.Type=Type;
     }
 
     public void accept(Visitor visitor) {
@@ -26,13 +27,16 @@ public class FactorNew extends Factor {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Type!=null) Type.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Type!=null) Type.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Type!=null) Type.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -41,7 +45,10 @@ public class FactorNew extends Factor {
         buffer.append(tab);
         buffer.append("FactorNew(\n");
 
-        buffer.append(" "+tab+I1);
+        if(Type!=null)
+            buffer.append(Type.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
