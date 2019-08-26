@@ -1,0 +1,102 @@
+INFO  14:29:11,600 - Compiling source file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  14:29:11,618 - #2 program
+INFO  14:29:11,618 - #27 Prog
+INFO  14:29:11,618 - #27 int
+INFO  14:29:11,618 - #27 x
+INFO  14:29:11,619 - #16 ;
+INFO  14:29:11,619 - #22 {
+INFO  14:29:11,619 - #4 void
+INFO  14:29:11,620 - #27 g
+INFO  14:29:11,620 - #18 (
+INFO  14:29:11,620 - #27 int
+INFO  14:29:11,620 - #27 a
+INFO  14:29:11,620 - #17 ,
+INFO  14:29:11,620 - #27 int
+INFO  14:29:11,620 - #27 b
+INFO  14:29:11,620 - #17 ,
+INFO  14:29:11,620 - #27 int
+INFO  14:29:11,620 - #27 c
+INFO  14:29:11,621 - #19 )
+INFO  14:29:11,621 - #27 boolean
+INFO  14:29:11,621 - #27 i2
+INFO  14:29:11,621 - #17 ,
+INFO  14:29:11,621 - #27 i4
+INFO  14:29:11,621 - #17 ,
+INFO  14:29:11,621 - #27 i7
+INFO  14:29:11,621 - #16 ;
+INFO  14:29:11,621 - #22 {
+INFO  14:29:11,622 - #23 }
+INFO  14:29:11,622 - #27 int
+INFO  14:29:11,622 - #27 sqr
+INFO  14:29:11,623 - #18 (
+INFO  14:29:11,623 - #27 int
+INFO  14:29:11,623 - #27 i
+INFO  14:29:11,623 - #19 )
+INFO  14:29:11,623 - #27 int
+INFO  14:29:11,623 - #27 ret
+INFO  14:29:11,623 - #16 ;
+INFO  14:29:11,623 - #22 {
+INFO  14:29:11,623 - #27 ret
+INFO  14:29:11,623 - #13 =
+INFO  14:29:11,623 - #27 i
+INFO  14:29:11,624 - #10 *
+INFO  14:29:11,624 - #27 i
+INFO  14:29:11,624 - #16 ;
+INFO  14:29:11,625 - #26 return
+INFO  14:29:11,625 - #27 ret
+INFO  14:29:11,625 - #16 ;
+INFO  14:29:11,625 - #23 }
+INFO  14:29:11,625 - #4 void
+INFO  14:29:11,625 - #27 main
+INFO  14:29:11,625 - #18 (
+INFO  14:29:11,625 - #19 )
+INFO  14:29:11,625 - #27 int
+INFO  14:29:11,625 - #27 y
+INFO  14:29:11,626 - #16 ;
+INFO  14:29:11,626 - #22 {
+INFO  14:29:11,626 - #27 y
+INFO  14:29:11,626 - #13 =
+INFO  14:29:11,626 - #28 101
+INFO  14:29:11,626 - #16 ;
+INFO  14:29:11,626 - #27 x
+INFO  14:29:11,626 - #13 =
+INFO  14:29:11,626 - #27 y
+INFO  14:29:11,626 - #12 %
+INFO  14:29:11,626 - #28 17
+INFO  14:29:11,627 - #16 ;
+INFO  14:29:11,627 - #3 print
+INFO  14:29:11,627 - #18 (
+INFO  14:29:11,627 - #27 x
+INFO  14:29:11,627 - #19 )
+INFO  14:29:11,627 - #16 ;
+INFO  14:29:11,627 - #3 print
+INFO  14:29:11,627 - #18 (
+INFO  14:29:11,628 - #27 x
+INFO  14:29:11,628 - #17 ,
+INFO  14:29:11,628 - #28 10
+INFO  14:29:11,628 - #19 )
+INFO  14:29:11,628 - #16 ;
+INFO  14:29:11,628 - #3 print
+INFO  14:29:11,628 - #18 (
+INFO  14:29:11,628 - #28 3
+INFO  14:29:11,628 - #19 )
+INFO  14:29:11,628 - #16 ;
+INFO  14:29:11,629 - #23 }
+INFO  14:29:11,629 - #23 }
+INFO  14:29:11,636 - sad si u factorDesignator  na liniji 16
+INFO  14:29:11,637 - sad si u factorDesignator  na liniji 16
+INFO  14:29:11,637 - sad si u factorDesignator  na liniji 17
+INFO  14:29:11,637 - sad si u factorConst  na liniji 23
+INFO  14:29:11,637 - tip strukture je sledeci 1 na liniji 23
+INFO  14:29:11,637 - sad si u factorDesignator  na liniji 24
+INFO  14:29:11,637 - sad si u factorConst  na liniji 24
+INFO  14:29:11,637 - tip strukture je sledeci 1 na liniji 24
+INFO  14:29:11,637 - sad si u factorDesignator  na liniji 25
+INFO  14:29:11,638 - Obradjuje se print naredba na liniji 25
+INFO  14:29:11,638 - sad si u factorDesignator  na liniji 26
+INFO  14:29:11,638 - Obradjuje se print naredba na liniji 26
+INFO  14:29:11,638 - sad si u factorConst  na liniji 27
+INFO  14:29:11,638 - tip strukture je sledeci 1 na liniji 27
+INFO  14:29:11,638 - Obradjuje se print naredba na liniji 27
+INFO  14:29:11,639 - Generating bytecode file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj
+INFO  14:29:11,640 - Parsiranje uspesno zavrseno!

@@ -76,7 +76,6 @@ nonterminal ConstElem ConstElem;
 nonterminal SingleConstElem SingleConstElem;
 nonterminal GlobVarDecl GlobVarDecl;
 nonterminal GlobVarElem GlobVarElem;
-nonterminal GlobSingleVarElem GlobSingleVarElem;
 nonterminal  EnumElem EnumElem;
 nonterminal MethodDeclList MethodDeclList;
 nonterminal FormPars FormPars;
@@ -89,7 +88,7 @@ nonterminal java.util.List ActPars;
 
 nonterminal  rs.etf.pp1.symboltable.concepts.Struct Type, Expr, Term, Factor;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName 
+nonterminal rs.etf.pp1.symboltable.concepts.Obj GlobSingleVarElem, ProgName, Program, MethodDecl, MethodTypeName 
 ,DesignatorStmt, Designator,DesignatorIdentity, EnumDeclName, EnumSingleElem, FormParam, EnumValue;
 //nonterminal rs.etf.pp1.symboltable.concepts.Struct  VarDeclList;
 
@@ -194,7 +193,7 @@ DesignatorStmt ::= (DesignatorStmtAssign)Designator:D1 EQUAL Expr:e {: RESULT=ne
 				 			 
 Designator ::= (DesignatorSingle) IDENT:name {: RESULT=new DesignatorSingle(name); RESULT.setLine(nameleft); :}
 			 |	(DesignatorWithDOT)IDENT:enumIdentity DOT IDENT:enumVal {: RESULT=new DesignatorWithDOT(enumIdentity, enumVal); RESULT.setLine(enumIdentityleft); :} 
-			 | 	(DesignatorWithExpr)IDENT:designatorName LBRACKET Expr:E1 RBRACKET {: RESULT=new DesignatorWithExpr(designatorName, E1); RESULT.setLine(designatorNameleft); :}
+			 | 	(DesignatorWithExpr)DesignatorIdentity:D1 LBRACKET Expr:E2 RBRACKET {: RESULT=new DesignatorWithExpr(D1, E2); RESULT.setLine(D1left); :}
 			 ;		
 			 
 DesignatorIdentity ::= (DesignatorName) IDENT:designatorName {: RESULT=new DesignatorName(designatorName); RESULT.setLine(designatorNameleft); :};			 

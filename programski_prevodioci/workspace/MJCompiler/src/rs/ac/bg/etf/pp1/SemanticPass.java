@@ -115,9 +115,10 @@ public class SemanticPass extends VisitorAdaptor {
 	public void visit(GlobVarSingleDefWithoutBracket GlobVarSingleDefWithoutBracket) {
 		String name = GlobVarSingleDefWithoutBracket.getVarName();
 		if (Tab.currentScope().findSymbol(name) == null) {
-			Tab.insert(Obj.Var, name, currentType);
+			GlobVarSingleDefWithoutBracket.obj = Tab.insert(Obj.Var, name, currentType);
 		} else {
 			report_error("Visestruko definisanje simbola " + name, GlobVarSingleDefWithoutBracket);
+			GlobVarSingleDefWithoutBracket.obj = Tab.noObj;
 		}
 	}
 
@@ -125,9 +126,10 @@ public class SemanticPass extends VisitorAdaptor {
 	public void visit(GlobVarSingleDefWithBracket GlobVarSingleDefWithBracket) {
 		String name = GlobVarSingleDefWithBracket.getVarName();
 		if (Tab.currentScope().findSymbol(name) == null) {
-			Tab.insert(Obj.Var, name, new Struct(Struct.Array, currentType));
+			GlobVarSingleDefWithBracket.obj = Tab.insert(Obj.Var, name, new Struct(Struct.Array, currentType));
 		} else {
 			report_error("Visestruko definisanje simbola " + name, GlobVarSingleDefWithBracket);
+			GlobVarSingleDefWithBracket.obj = Tab.noObj;
 		}
 	}
 	//////////////////// CONSTANTS
@@ -153,7 +155,7 @@ public class SemanticPass extends VisitorAdaptor {
 	public void visit(BooleanConst BooleanConst) {
 		boolean value = BooleanConst.getValue();
 		Struct s = new Struct(value ? 1 : 0);
-		s.setElementType(boolType); 
+		s.setElementType(boolType);
 		BooleanConst.struct = s;
 	}
 
@@ -243,7 +245,8 @@ public class SemanticPass extends VisitorAdaptor {
 			// nije nadjen i treba ga dodati
 			// tip nije int, nego new Struct(Struct.ENUM)!
 			// Obj enumNode= Tab.insert(Obj.Type, typeObj.getName(), Tab.intType);
-			Obj enumNode = Tab.insert(Obj.Type, EnumDeclName.getEnumDeclName(), currentEnumType = new Struct(Struct.Enum));
+			Obj enumNode = Tab.insert(Obj.Type, EnumDeclName.getEnumDeclName(),
+					currentEnumType = new Struct(Struct.Enum));
 			EnumDeclName.obj = enumNode;
 			// nakon ovoga, uradi Tab.OpenScope();
 			Tab.openScope();
@@ -494,34 +497,25 @@ public class SemanticPass extends VisitorAdaptor {
 
 	}
 
+	public void visit(DesignatorName designatorName) {
+		designatorName.obj= Tab.find(designatorName.getDesignatorName());
+
+	}
+
 	public void visit(DesignatorWithExpr designatorWithExpr) {
-		Obj o = Tab.find(designatorWithExpr.getDesignatorName());
-		if (o == Tab.noObj) {
-			// nije ga nasao
-			designatorWithExpr.obj = Tab.noObj;
-//			Struct t = designatorWithExpr.obj.getType().getElemType();
-//			designatorWithExpr.obj = new Obj(Obj.Elem, " ", t);// jel ovdenebitno sta ubacujem?
-//
-//			if (designatorWithExpr.obj.getType() != Tab.intType) {
-//				report_error("Expression unutar zagrade kod identifikatora niza "
-//						+ designatorWithExpr.getDesignatorName() + "nije integer", designatorWithExpr);
-//				return;
-//			}
-//			report_error(designatorWithExpr.getDesignatorName()
-//					+ "nije deklarisan kao niz i(ili) se ne nalazi u tabeli simbola ", designatorWithExpr);
-		} else {
+		Obj o = designatorWithExpr.getDesignatorIdentity().obj;
 			// nasao ga je u TS
 			if (o.getType().getKind() == Struct.Array) {
 				designatorWithExpr.obj = new Obj(Obj.Elem, o.getName(), o.getType().getElemType());
-				if (designatorWithExpr.getExpr().struct != Tab.intType && designatorWithExpr.getExpr().struct.getKind() != Struct.Enum) {
+				if (designatorWithExpr.getExpr().struct != Tab.intType
+						&& designatorWithExpr.getExpr().struct.getKind() != Struct.Enum) {
 					report_error("Expression nije tipa integer ", designatorWithExpr);
 					return;
 				}
 				report_info("Pronadjen je simbol niza ", designatorWithExpr);
-			}
-			else {
-				report_error(designatorWithExpr.getDesignatorName() + " nije niz", designatorWithExpr);
-			}
+			} else {
+				report_error(o.getName() + " nije niz", designatorWithExpr);
+			
 		}
 
 	}
@@ -546,7 +540,7 @@ public class SemanticPass extends VisitorAdaptor {
 		} else {
 
 		}
-		if (!desType.compatibleWith(exprType)) {
+		if (!desType.assignableTo(exprType)) {
 			report_error("Tipovi nisu kompatibilni za dodelu", designatorStmtAssign);
 		}
 
@@ -561,8 +555,7 @@ public class SemanticPass extends VisitorAdaptor {
 		// (ExprList)Expr Addop Term
 		System.out.println("sad si u ExprList");
 		if ((exprList.getExpr().struct != Tab.intType && exprList.getExpr().struct.getKind() != Struct.Enum)
-				|| (exprList.getTerm().struct != Tab.intType
-						&& exprList.getTerm().struct.getKind() != Struct.Enum)) {
+				|| (exprList.getTerm().struct != Tab.intType && exprList.getTerm().struct.getKind() != Struct.Enum)) {
 //slucaj da hocemo da sabiramo nesto sto nisu enumi ili integeri
 			exprList.struct = Tab.noType;
 			report_error("(ExprList)Tipovi nisu kompatibilni", exprList);
@@ -588,13 +581,13 @@ public class SemanticPass extends VisitorAdaptor {
 	}
 
 	public void visit(TermManyFactors termManyFactors) {
-		//System.out.println("Term:" + termManyFactors.getTerm().struct.getKind());
-		//System.out.println("Fact:" + termManyFactors.getFactor().struct.getKind());
-		
-		if ((termManyFactors.getTerm().struct != Tab.intType && termManyFactors.getTerm().struct.getKind() != Struct.Enum)
+		// System.out.println("Term:" + termManyFactors.getTerm().struct.getKind());
+		// System.out.println("Fact:" + termManyFactors.getFactor().struct.getKind());
+
+		if ((termManyFactors.getTerm().struct != Tab.intType
+				&& termManyFactors.getTerm().struct.getKind() != Struct.Enum)
 				|| (termManyFactors.getFactor().struct != Tab.intType
-						&& termManyFactors.getFactor().struct.getKind() != Struct.Enum))
-		{
+						&& termManyFactors.getFactor().struct.getKind() != Struct.Enum)) {
 			termManyFactors.struct = Tab.noType;
 			report_error("Clanovi izraza nisu integeri", termManyFactors);
 			return;
@@ -604,7 +597,8 @@ public class SemanticPass extends VisitorAdaptor {
 
 	public void visit(TermSingleFactor termSingleFactor) {
 		termSingleFactor.struct = termSingleFactor.getFactor().struct;
-		//System.out.println("TTTTTTTTTTermSingleFactor ima sledeci kind " + termSingleFactor.struct.getKind());
+		// System.out.println("TTTTTTTTTTermSingleFactor ima sledeci kind " +
+		// termSingleFactor.struct.getKind());
 	}
 
 	//////////////////////// FACTORS //////////////////////////////////////////////
@@ -680,7 +674,8 @@ public class SemanticPass extends VisitorAdaptor {
 
 	public void visit(FactorNewArray factorNewArray) {
 		// new int[1+2+x]
-		if (factorNewArray.getExpr().struct != Tab.intType && factorNewArray.getExpr().struct.getKind() != Struct.Enum) {
+		if (factorNewArray.getExpr().struct != Tab.intType
+				&& factorNewArray.getExpr().struct.getKind() != Struct.Enum) {
 			report_error("Expression za alokaciju niza nije tipa int!", factorNewArray);
 		}
 		// proveri zasto Klac koristi newOpFlag

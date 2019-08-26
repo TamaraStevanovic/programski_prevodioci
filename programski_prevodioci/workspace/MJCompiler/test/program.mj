@@ -1,30 +1,58 @@
-program Prog
+// Test301
 
-int x;
+program test301
 
+	enum Broj { NULA, JEDAN, PET=5, DESET=10}
+
+	const int jedan = 1;
+	const int pet = 5;
+
+	int niz[];
+	char nizch[];
+	
 {
+	void main()	
+		int bodovi;
+		Broj nula, jedan;
+	{
+		nula = Broj.NULA;
+		jedan = Broj.JEDAN;	
 
-void g(int a, int b, int c)
-	boolean i2,i4,i7;
-{
-
+		bodovi = 0;
+		bodovi++;
+		bodovi = bodovi + jedan;
+		bodovi = bodovi * pet;
+		bodovi--;
+		print(bodovi); 
+			
+		
+		niz = new int[2];
+		niz[nula] = pet;
+		niz[1] = Broj.DESET;
+		bodovi = niz[1]/niz[0];
+		print(bodovi); 
+		print(niz[Broj.JEDAN]);
+		
+		
+		nizch = new char[3];
+		nizch[0] = 'a';
+		nizch[jedan] = 'b';
+		nizch[pet - 3] = 'c';
+		print( nizch[2 - 1]);
+		print( nizch[jedan * 2]);
+			
+		
+		bodovi = bodovi + ((pet * jedan - 1) * 2 - (3 % 2 + 3 * 2 - 3) - Broj.JEDAN * 0); 
+		print(bodovi);
+			
+			
+		//read(bodovi);
+		bodovi = 23;
+		bodovi = bodovi + 1;
+		print(bodovi);
+			
+	
+	}
 }
 
-int sqr(int i)
-	int ret;
-{
-	ret = i*i;
-	return ret;
-}
 
-void main()
-	int y;
-{
-	y = 101;
-	x = y % 17;
-	print(x);
-	print(x,10);
-	print(3);
-}
-
-}

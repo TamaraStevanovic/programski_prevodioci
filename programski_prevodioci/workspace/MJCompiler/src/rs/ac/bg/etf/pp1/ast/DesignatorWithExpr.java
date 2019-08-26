@@ -1,27 +1,28 @@
 // generated with ast extension for cup
 // version 0.8
-// 25/7/2019 19:10:15
+// 26/7/2019 19:57:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class DesignatorWithExpr extends Designator {
 
-    private String designatorName;
+    private DesignatorIdentity DesignatorIdentity;
     private Expr Expr;
 
-    public DesignatorWithExpr (String designatorName, Expr Expr) {
-        this.designatorName=designatorName;
+    public DesignatorWithExpr (DesignatorIdentity DesignatorIdentity, Expr Expr) {
+        this.DesignatorIdentity=DesignatorIdentity;
+        if(DesignatorIdentity!=null) DesignatorIdentity.setParent(this);
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
     }
 
-    public String getDesignatorName() {
-        return designatorName;
+    public DesignatorIdentity getDesignatorIdentity() {
+        return DesignatorIdentity;
     }
 
-    public void setDesignatorName(String designatorName) {
-        this.designatorName=designatorName;
+    public void setDesignatorIdentity(DesignatorIdentity DesignatorIdentity) {
+        this.DesignatorIdentity=DesignatorIdentity;
     }
 
     public Expr getExpr() {
@@ -37,15 +38,18 @@ public class DesignatorWithExpr extends Designator {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(DesignatorIdentity!=null) DesignatorIdentity.accept(visitor);
         if(Expr!=null) Expr.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(DesignatorIdentity!=null) DesignatorIdentity.traverseTopDown(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(DesignatorIdentity!=null) DesignatorIdentity.traverseBottomUp(visitor);
         if(Expr!=null) Expr.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -55,7 +59,10 @@ public class DesignatorWithExpr extends Designator {
         buffer.append(tab);
         buffer.append("DesignatorWithExpr(\n");
 
-        buffer.append(" "+tab+designatorName);
+        if(DesignatorIdentity!=null)
+            buffer.append(DesignatorIdentity.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(Expr!=null)

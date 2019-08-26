@@ -22,6 +22,20 @@ public class CodeGenerator extends VisitorAdaptor {
 		return mainPc;
 	}
 
+	// GLOBAL VARIABLES
+	public void visit(GlobVarSingleDefWithoutBracket globVarSingleDefWithoutBracket) {
+		Obj var = globVarSingleDefWithoutBracket.obj;
+		if (var.getLevel() == 0) {
+			var.setAdr(Code.dataSize++);
+		}
+	}
+	
+	public void visit(GlobVarSingleDefWithBracket globVarSingleDefWithBracket) {
+		Obj var = globVarSingleDefWithBracket.obj;
+		if (var.getLevel() == 0) {
+			var.setAdr(Code.dataSize++);
+		}
+	}
 	/////////////////// METHOD
 	/////////////////// (4)///////////////////////////////////////////////////////
 	public void visit(MethodTypeAndName methodTypeAndName) {
@@ -35,6 +49,8 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.put(Code.enter);
 		Code.put(fp);
 		Code.put(v);
+		
+		returnDetected = false;
 	}
 
 	public void visit(MethodVoidAndName methodVoidAndName) {
@@ -48,18 +64,19 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.put(fp);
 		Code.put(fp + v);
 		// potrebo je staviti i formalne parametre i lokalne var
+		returnDetected = false;
 
 	}
 
 	public void visit(MethodDeclWithoutFormPars methodDeclWithoutFormPars) {
-		if (methodDeclWithoutFormPars.getMethodTypeName().obj.getType() == Tab.noType) {
+		if (!returnDetected) {
 			Code.put(Code.exit);
 			Code.put(Code.return_);
 		}
 	}
 
 	public void visit(MethodDeclWithFormPars methodDeclWithFormPars) {
-		if (methodDeclWithFormPars.getMethodTypeName().obj.getType() == Tab.noType) {
+		if (!returnDetected) {
 			Code.put(Code.exit);
 			Code.put(Code.return_);
 		}
@@ -68,9 +85,8 @@ public class CodeGenerator extends VisitorAdaptor {
 	///////////////////// PRINT /////////////////////////////////////
 	public void visit(PrintStatementOneArg printStatementOneArg) {
 		int len = printStatementOneArg.getN2();
-		// Code.loadConst(len);
-		// Code.put(Code.print);
-		if (printStatementOneArg.getExpr().struct.getKind() == Tab.intType.getKind()) {
+		Code.loadConst(len);
+		if (printStatementOneArg.getExpr().struct == Tab.charType) {
 			Code.put(Code.bprint);
 		} else {
 			Code.put(Code.print);
@@ -78,7 +94,7 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(PrintStatementTwoArg print) {
-		if (print.getExpr().struct.getKind() == Tab.charType.getKind()) {
+		if (print.getExpr().struct == Tab.charType) {
 			Code.loadConst(1);
 			Code.put(Code.bprint);
 		} else {
@@ -92,14 +108,34 @@ public class CodeGenerator extends VisitorAdaptor {
 		Obj obj = call.getDesignator().obj;
 		int adr = obj.getAdr() - Code.pc;
 		Code.put(Code.call);
-		Code.put4(adr);
+		Code.put2(adr);
+		if (obj.getType() != Tab.noType) {
+			Code.put(Code.pop);
+		}
+	}
+	
+	public void visit(DesignatorStmtWithParams call) {
+		Obj obj = call.getDesignator().obj;
+		int adr = obj.getAdr() - Code.pc;
+		Code.put(Code.call);
+		Code.put2(adr);
+		if (obj.getType() != Tab.noType) {
+			Code.put(Code.pop);
+		}
+	}
+	
+	public void visit(FactorDesingatorWithoutParams call) {
+		Obj obj = call.getDesignator().obj;
+		int adr = obj.getAdr() - Code.pc;
+		Code.put(Code.call);
+		Code.put2(adr);
 	}
 
 	public void visit(FactorDesignatorWithParams call) {
 		Obj obj = call.getDesignator().obj;
 		int adr = obj.getAdr() - Code.pc;
 		Code.put(Code.call);
-		Code.put4(adr);
+		Code.put2(adr);
 	}
 //	@Override
 //	public void visit(FuncCall FuncCall) {
@@ -166,24 +202,24 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(ReadStatement readStmt) {
-		Code.put(Code.read);
-
+		if (readStmt.getDesignator().obj.getType() == Tab.charType) {
+			Code.put(Code.bread);
+		} else {
+			Code.put(Code.read);
+		}
 		Code.store(readStmt.getDesignator().obj);
 	}
 
 	public void visit(DesignatorStmtINC increment) {
-		Obj obj = Tab.insert(Obj.Con, "", Tab.intType);
-		obj.setAdr(1);
-		Code.load(obj);
+		Code.load(increment.getDesignator().obj);
+		Code.loadConst(1);
 		Code.put(Code.add);
-
 		Code.store(increment.getDesignator().obj);
 	}
 
 	public void visit(DesignatorStmtDEC decrement) {
-		Obj obj = Tab.insert(Obj.Con, "", Tab.intType);
-		obj.setAdr(1);
-		Code.load(obj);// stavljamo keca na expr stack
+		Code.load(decrement.getDesignator().obj);
+		Code.loadConst(1);
 		Code.put(Code.sub);// satvljamo operator za oduzimanje
 		Code.store(decrement.getDesignator().obj);// cuvamo u designatoru
 	}
@@ -205,27 +241,36 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.store(designator);
 	}
 
-	public void visit(EnumSingleElement enumSingleElement) {
-		// ovo se valjda radi samo kad se enum nadje sa desne strane tj u okviru expr-a
-		Obj o = enumSingleElement.getEnumSingleElem().obj;
-		Code.load(o);
-	}
-
+//	public void visit(EnumSingleElement enumSingleElement) {
+//		// ovo se valjda radi samo kad se enum nadje sa desne strane tj u okviru expr-a
+//		Obj o = enumSingleElement.getEnumSingleElem().obj;
+//		Code.load(o);
+//	}
+//ne treba kod jer je ovo deklarisanje enuma!
 	/*
 	 * ovo ispod su sve smene kada se ovim cvorovima pristupa iz grane expr-a tj sve
 	 * mora da bude sastavni deo expr-a
 	 */
-	public void visit(DesignatorSingle designatorSingle) {
-		//
+//	public void visit(DesignatorSingle designatorSingle) {
+//		//NISTA NE RADIMO!
+//
+//	}
+
+//	public void visit(DesignatorWithDOT designatorWithDOT) {
+//lic void visit(DesignatorSingle designatorSingle) {
+//	//NISTA NE RADIMO!
+	//
+//	}
+	public void visit(DesignatorName designatorName) {
+		Code.load(designatorName.obj);
 
 	}
 
-	public void visit(DesignatorWithDOT designatorWithDOT) {
-
-	}
 
 	public void visit(DesignatorWithExpr designatorWithExpr) {
 		// nisam sigurna da ovde treba bilo sta da se uradi
+		//ovde necemo ista, jer ne zelimo preko parenta
+		//radimo u koraku iznad
 	}
 
 	public void visit(FactorConst factorConst) {
@@ -240,6 +285,15 @@ public class CodeGenerator extends VisitorAdaptor {
 		// tj Expr-a
 		// zato je valjda dovoljno samo da se uradi load
 		Code.load(factorDesignator.getDesignator().obj);
+	}
+	
+	public void visit(FactorNewArray factorNewArray) {
+		Code.put(Code.newarray);
+		if (factorNewArray.getType().struct == Tab.charType) {
+			Code.put(0);
+		} else {
+			Code.put(1);
+		}
 	}
 	//ovo sam sad dodala
 	/////////// iznad je u progresu//

@@ -71,7 +71,7 @@ terminal Boolean BOOL_CONST;
 
 nonterminal Declarations, DeclarationList;
 nonterminal ConstDecl, ConstElem, SingleConstElem;
-nonterminal GlobVarDecl, GlobVarElem, GlobSingleVarElem;
+nonterminal GlobVarDecl, GlobVarElem;
 nonterminal  EnumElem;
 nonterminal MethodDeclList;
 nonterminal FormPars;
@@ -83,7 +83,7 @@ nonterminal java.util.List ActPars;
 
 nonterminal  rs.etf.pp1.symboltable.concepts.Struct Type, Expr, Term, Factor;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName 
+nonterminal rs.etf.pp1.symboltable.concepts.Obj GlobSingleVarElem, ProgName, Program, MethodDecl, MethodTypeName 
 ,DesignatorStmt, Designator,DesignatorIdentity, EnumDeclName, EnumSingleElem, FormParam, EnumValue;
 //nonterminal rs.etf.pp1.symboltable.concepts.Struct  VarDeclList;
 
@@ -188,7 +188,7 @@ DesignatorStmt ::= (DesignatorStmtAssign)Designator EQUAL Expr:e
 				 			 
 Designator ::= (DesignatorSingle) IDENT:name
 			 |	(DesignatorWithDOT)IDENT:enumIdentity DOT IDENT:enumVal 
-			 | 	(DesignatorWithExpr)IDENT:designatorName LBRACKET Expr RBRACKET
+			 | 	(DesignatorWithExpr)DesignatorIdentity LBRACKET Expr RBRACKET
 			 ;		
 			 
 DesignatorIdentity ::= (DesignatorName) IDENT:designatorName;			 
