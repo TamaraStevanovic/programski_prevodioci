@@ -1,0 +1,43 @@
+INFO  13:00:12,153 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  13:00:12,187 - #2 program
+INFO  13:00:12,187 - #27 MJProgram
+INFO  13:00:12,187 - #22 {
+INFO  13:00:12,189 - #4 void
+INFO  13:00:12,189 - #27 main
+INFO  13:00:12,189 - #18 (
+INFO  13:00:12,190 - #19 )
+INFO  13:00:12,190 - #27 int
+INFO  13:00:12,190 - #27 x
+INFO  13:00:12,191 - #16 ;
+INFO  13:00:12,192 - #22 {
+INFO  13:00:12,193 - #27 x
+INFO  13:00:12,193 - #13 =
+INFO  13:00:12,194 - #28 100
+INFO  13:00:12,194 - #16 ;
+INFO  13:00:12,195 - #3 print
+INFO  13:00:12,195 - #18 (
+INFO  13:00:12,195 - #27 x
+INFO  13:00:12,195 - #17 ,
+INFO  13:00:12,196 - #28 5
+INFO  13:00:12,196 - #19 )
+INFO  13:00:12,196 - #16 ;
+INFO  13:00:12,196 - #3 print
+INFO  13:00:12,196 - #18 (
+INFO  13:00:12,196 - #27 x
+INFO  13:00:12,196 - #17 ,
+INFO  13:00:12,197 - #28 5
+INFO  13:00:12,197 - #19 )
+INFO  13:00:12,197 - #16 ;
+INFO  13:00:12,197 - #23 }
+INFO  13:00:12,197 - #23 }
+INFO  13:00:12,208 - sad si u factorConst  na liniji 7
+INFO  13:00:12,208 - tip struckture je sledeci null na liniji 7
+ERROR 13:00:12,209 - Expression nije tipa integer! na liniji 7
+ERROR 13:00:12,209 - Tipovi nisu kompatibilni za dodelu na liniji 7
+INFO  13:00:12,209 - sad si u factorDesignator  na liniji 8
+ERROR 13:00:12,209 - Expression nije tipa integer! na liniji 8
+INFO  13:00:12,209 - Obradjuje se print naredba na liniji 8
+INFO  13:00:12,209 - sad si u factorDesignator  na liniji 9
+ERROR 13:00:12,209 - Expression nije tipa integer! na liniji 9
+INFO  13:00:12,210 - Obradjuje se print naredba na liniji 9
+ERROR 13:00:12,211 - Parsiranje NIJE uspesno zavrseno!

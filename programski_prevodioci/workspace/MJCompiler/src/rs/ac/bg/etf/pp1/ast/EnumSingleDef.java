@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 12/5/2019 23:8:3
+// 25/7/2019 19:10:15
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,11 +8,11 @@ package rs.ac.bg.etf.pp1.ast;
 public class EnumSingleDef extends EnumSingleElem {
 
     private String enumName;
-    private Integer N1;
+    private Integer val;
 
-    public EnumSingleDef (String enumName, Integer N1) {
+    public EnumSingleDef (String enumName, Integer val) {
         this.enumName=enumName;
-        this.N1=N1;
+        this.val=val;
     }
 
     public String getEnumName() {
@@ -23,12 +23,12 @@ public class EnumSingleDef extends EnumSingleElem {
         this.enumName=enumName;
     }
 
-    public Integer getN1() {
-        return N1;
+    public Integer getVal() {
+        return val;
     }
 
-    public void setN1(Integer N1) {
-        this.N1=N1;
+    public void setVal(Integer val) {
+        this.val=val;
     }
 
     public void accept(Visitor visitor) {
@@ -54,7 +54,7 @@ public class EnumSingleDef extends EnumSingleElem {
         buffer.append(" "+tab+enumName);
         buffer.append("\n");
 
-        buffer.append(" "+tab+N1);
+        buffer.append(" "+tab+val);
         buffer.append("\n");
 
         buffer.append(tab);

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 12/5/2019 23:8:3
+// 25/7/2019 19:10:15
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,21 +9,24 @@ public class EnumDecl implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String enumDeclName;
+    public rs.etf.pp1.symboltable.concepts.Struct struct = null;
+
+    private EnumDeclName EnumDeclName;
     private EnumElem EnumElem;
 
-    public EnumDecl (String enumDeclName, EnumElem EnumElem) {
-        this.enumDeclName=enumDeclName;
+    public EnumDecl (EnumDeclName EnumDeclName, EnumElem EnumElem) {
+        this.EnumDeclName=EnumDeclName;
+        if(EnumDeclName!=null) EnumDeclName.setParent(this);
         this.EnumElem=EnumElem;
         if(EnumElem!=null) EnumElem.setParent(this);
     }
 
-    public String getEnumDeclName() {
-        return enumDeclName;
+    public EnumDeclName getEnumDeclName() {
+        return EnumDeclName;
     }
 
-    public void setEnumDeclName(String enumDeclName) {
-        this.enumDeclName=enumDeclName;
+    public void setEnumDeclName(EnumDeclName EnumDeclName) {
+        this.EnumDeclName=EnumDeclName;
     }
 
     public EnumElem getEnumElem() {
@@ -55,15 +58,18 @@ public class EnumDecl implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(EnumDeclName!=null) EnumDeclName.accept(visitor);
         if(EnumElem!=null) EnumElem.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(EnumDeclName!=null) EnumDeclName.traverseTopDown(visitor);
         if(EnumElem!=null) EnumElem.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(EnumDeclName!=null) EnumDeclName.traverseBottomUp(visitor);
         if(EnumElem!=null) EnumElem.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -73,7 +79,10 @@ public class EnumDecl implements SyntaxNode {
         buffer.append(tab);
         buffer.append("EnumDecl(\n");
 
-        buffer.append(" "+tab+enumDeclName);
+        if(EnumDeclName!=null)
+            buffer.append(EnumDeclName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(EnumElem!=null)

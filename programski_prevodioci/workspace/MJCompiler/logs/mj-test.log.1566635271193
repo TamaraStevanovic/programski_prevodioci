@@ -1,0 +1,100 @@
+INFO  10:26:26,595 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  10:26:26,634 - #2 program
+INFO  10:26:26,634 - #27 Prog
+INFO  10:26:26,635 - #27 int
+INFO  10:26:26,637 - #27 x
+INFO  10:26:26,638 - #16 ;
+INFO  10:26:26,638 - #22 {
+INFO  10:26:26,639 - #4 void
+INFO  10:26:26,640 - #27 g
+INFO  10:26:26,640 - #18 (
+INFO  10:26:26,640 - #27 int
+INFO  10:26:26,641 - #27 a
+INFO  10:26:26,641 - #17 ,
+INFO  10:26:26,641 - #27 int
+INFO  10:26:26,641 - #27 b
+INFO  10:26:26,641 - #17 ,
+INFO  10:26:26,642 - #27 int
+INFO  10:26:26,642 - #27 c
+INFO  10:26:26,642 - #19 )
+INFO  10:26:26,642 - #27 boolean
+INFO  10:26:26,643 - #27 i2
+INFO  10:26:26,643 - #17 ,
+INFO  10:26:26,643 - #27 i4
+INFO  10:26:26,643 - #17 ,
+INFO  10:26:26,644 - #27 i7
+INFO  10:26:26,644 - #16 ;
+INFO  10:26:26,644 - #22 {
+INFO  10:26:26,644 - #23 }
+INFO  10:26:26,645 - #27 int
+INFO  10:26:26,646 - #27 f1
+INFO  10:26:26,646 - #18 (
+INFO  10:26:26,646 - #19 )
+INFO  10:26:26,646 - #22 {
+INFO  10:26:26,646 - #23 }
+INFO  10:26:26,646 - #27 int
+INFO  10:26:26,647 - #27 sqr
+INFO  10:26:26,647 - #18 (
+INFO  10:26:26,647 - #27 int
+INFO  10:26:26,647 - #27 i
+INFO  10:26:26,647 - #19 )
+INFO  10:26:26,647 - #27 int
+INFO  10:26:26,647 - #27 ret
+INFO  10:26:26,647 - #16 ;
+INFO  10:26:26,648 - #22 {
+INFO  10:26:26,648 - #27 ret
+INFO  10:26:26,648 - #13 =
+INFO  10:26:26,648 - #27 i
+INFO  10:26:26,648 - #10 *
+INFO  10:26:26,649 - #27 i
+INFO  10:26:26,650 - #16 ;
+INFO  10:26:26,650 - #26 return
+INFO  10:26:26,651 - #27 ret
+INFO  10:26:26,651 - #16 ;
+INFO  10:26:26,651 - #23 }
+INFO  10:26:26,651 - #4 void
+INFO  10:26:26,651 - #27 main
+INFO  10:26:26,652 - #18 (
+INFO  10:26:26,652 - #19 )
+INFO  10:26:26,652 - #27 int
+INFO  10:26:26,652 - #27 y
+INFO  10:26:26,652 - #16 ;
+INFO  10:26:26,652 - #22 {
+INFO  10:26:26,652 - #27 y
+INFO  10:26:26,652 - #13 =
+INFO  10:26:26,653 - #28 101
+INFO  10:26:26,653 - #16 ;
+INFO  10:26:26,653 - #27 x
+INFO  10:26:26,653 - #13 =
+INFO  10:26:26,653 - #27 y
+INFO  10:26:26,654 - #12 %
+INFO  10:26:26,654 - #28 17
+INFO  10:26:26,655 - #16 ;
+INFO  10:26:26,655 - #3 print
+INFO  10:26:26,655 - #18 (
+INFO  10:26:26,655 - #27 x
+INFO  10:26:26,655 - #19 )
+INFO  10:26:26,655 - #16 ;
+INFO  10:26:26,656 - #3 print
+INFO  10:26:26,656 - #18 (
+INFO  10:26:26,656 - #27 x
+INFO  10:26:26,656 - #17 ,
+INFO  10:26:26,656 - #28 10
+INFO  10:26:26,656 - #19 )
+INFO  10:26:26,656 - #16 ;
+INFO  10:26:26,657 - #23 }
+INFO  10:26:26,657 - #23 }
+ERROR 10:26:26,667 - Nedostaje return naredba funkciji f1 na liniji 13
+INFO  10:26:26,668 - sad si u factorDesignator  na liniji 20
+INFO  10:26:26,668 - sad si u factorDesignator  na liniji 20
+INFO  10:26:26,669 - sad si u factorDesignator  na liniji 21
+INFO  10:26:26,669 - sad si u factorConst  na liniji 27
+INFO  10:26:26,670 - tip strukture je sledeci 1 na liniji 27
+INFO  10:26:26,670 - sad si u factorDesignator  na liniji 28
+INFO  10:26:26,670 - sad si u factorConst  na liniji 28
+INFO  10:26:26,670 - tip strukture je sledeci 1 na liniji 28
+INFO  10:26:26,670 - sad si u factorDesignator  na liniji 29
+INFO  10:26:26,671 - Obradjuje se print naredba na liniji 29
+INFO  10:26:26,671 - sad si u factorDesignator  na liniji 30
+INFO  10:26:26,671 - Obradjuje se print naredba na liniji 30
+ERROR 10:26:26,672 - Parsiranje NIJE uspesno zavrseno!

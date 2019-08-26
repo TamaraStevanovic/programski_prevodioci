@@ -1,39 +1,39 @@
 // generated with ast extension for cup
 // version 0.8
-// 12/5/2019 23:8:3
+// 25/7/2019 19:10:16
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public interface Visitor { 
 
-    public void visit(Designator Designator);
+    public void visit(DeclarationList DeclarationList);
+    public void visit(GlobSingleVarElem GlobSingleVarElem);
     public void visit(MethodDecl MethodDecl);
-    public void visit(EnumSingleElem EnumSingleElem);
-    public void visit(Factor Factor);
+    public void visit(Mullop Mullop);
+    public void visit(GlobVarElem GlobVarElem);
     public void visit(DesignatorIdentity DesignatorIdentity);
+    public void visit(Addop Addop);
+    public void visit(DesignatorStmt DesignatorStmt);
+    public void visit(Factor Factor);
+    public void visit(TypeConst TypeConst);
+    public void visit(Designator Designator);
+    public void visit(Term Term);
+    public void visit(StmtList StmtList);
+    public void visit(Declarations Declarations);
+    public void visit(VarDeclList VarDeclList);
+    public void visit(Expr Expr);
+    public void visit(EnumSingleElem EnumSingleElem);
+    public void visit(ActPars ActPars);
+    public void visit(MethodTypeName MethodTypeName);
+    public void visit(ConstElem ConstElem);
+    public void visit(EnumIdent EnumIdent);
     public void visit(Stmt Stmt);
     public void visit(ConstDecl ConstDecl);
-    public void visit(EnumIdent EnumIdent);
-    public void visit(FormParam FormParam);
-    public void visit(GlobVarElem GlobVarElem);
-    public void visit(GlobSingleVarElem GlobSingleVarElem);
-    public void visit(Declarations Declarations);
-    public void visit(Expr Expr);
-    public void visit(FormPars FormPars);
-    public void visit(VarDeclList VarDeclList);
-    public void visit(DeclarationList DeclarationList);
-    public void visit(EnumElem EnumElem);
-    public void visit(DesignatorStmt DesignatorStmt);
-    public void visit(Mullop Mullop);
-    public void visit(Addop Addop);
     public void visit(MethodDeclList MethodDeclList);
-    public void visit(TypeConst TypeConst);
-    public void visit(ConstElem ConstElem);
-    public void visit(Term Term);
-    public void visit(MethodTypeName MethodTypeName);
-    public void visit(ActPars ActPars);
-    public void visit(StmtList StmtList);
+    public void visit(EnumElem EnumElem);
+    public void visit(FormPars FormPars);
+    public void visit(FormParam FormParam);
     public void visit(MultiplyOpMod MultiplyOpMod);
     public void visit(MultiplyOpDivide MultiplyOpDivide);
     public void visit(MultiplyOpTimes MultiplyOpTimes);
@@ -57,7 +57,7 @@ public interface Visitor {
     public void visit(SingleActParameter SingleActParameter);
     public void visit(DesignatorName DesignatorName);
     public void visit(DesignatorWithExpr DesignatorWithExpr);
-    public void visit(DesinatorWithDOT DesinatorWithDOT);
+    public void visit(DesignatorWithDOT DesignatorWithDOT);
     public void visit(DesignatorSingle DesignatorSingle);
     public void visit(DesignatorStmtWithParams DesignatorStmtWithParams);
     public void visit(DesignatorStmtWithoutParams DesignatorStmtWithoutParams);
@@ -88,6 +88,7 @@ public interface Visitor {
     public void visit(EnumSingleDefDefault EnumSingleDefDefault);
     public void visit(EnumManyElements EnumManyElements);
     public void visit(EnumSingleElement EnumSingleElement);
+    public void visit(EnumDeclName EnumDeclName);
     public void visit(EnumDecl EnumDecl);
     public void visit(GlobVarSingleDefWithBracket GlobVarSingleDefWithBracket);
     public void visit(GlobVarSingleDefWithoutBracket GlobVarSingleDefWithoutBracket);

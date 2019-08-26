@@ -1,0 +1,5 @@
+INFO  14:35:37,704 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  14:35:37,742 - #11 /
+ERROR 14:35:37,742 - 
+Sintaksna greska na liniji 1
+ERROR 14:35:37,742 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 1

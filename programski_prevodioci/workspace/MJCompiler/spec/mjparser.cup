@@ -4,6 +4,7 @@ import java_cup.runtime.*;
 import org.apache.log4j.*;
 
 // import java.io.*;
+import java.util.*;
 import rs.ac.bg.etf.pp1.ast.*;
 import rs.etf.pp1.symboltable.*;
 
@@ -68,37 +69,32 @@ terminal Integer NUM_CONST ;
 terminal Character CHAR_CONST;
 terminal Boolean BOOL_CONST;
 
-
 nonterminal Declarations, DeclarationList;
 nonterminal ConstDecl, ConstElem, SingleConstElem;
 nonterminal GlobVarDecl, GlobVarElem, GlobSingleVarElem;
-nonterminal EnumDecl,  EnumElem, EnumSingleElem;
+nonterminal  EnumElem;
 nonterminal MethodDeclList;
-nonterminal FormPars, FormParam;
+nonterminal FormPars;
 nonterminal VarDeclList;
 nonterminal StmtList, Stmt; 
-nonterminal EnumIdent, EnumValue;
-nonterminal Factor;
-nonterminal Addop, Mullop;
-nonterminal ActPars;
+nonterminal EnumIdent; 
+nonterminal java.util.List ActPars;
 
 
+nonterminal  rs.etf.pp1.symboltable.concepts.Struct Type, Expr, Term, Factor;
 
-nonterminal  rs.etf.pp1.symboltable.concepts.Struct Type, Expr, Term;
-
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName ,DesignatorStmt, Designator,DesignatorIdentity;
-//nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName 
+,DesignatorStmt, Designator,DesignatorIdentity, EnumDeclName, EnumSingleElem, FormParam, EnumValue;
+//nonterminal rs.etf.pp1.symboltable.concepts.Struct  VarDeclList;
 
 // ovim se dodaje polje tipa Struct, imena struct, u cvor stabla TypeConst
-nonterminal rs.etf.pp1.symboltable.concepts.Struct TypeConst;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct TypeConst, EnumDecl,Addop, Mullop, ;
 
-//+
+
 Program ::= (Program) PROG ProgName:p Declarations:decl LBRACE MethodDeclList:methodDec RBRACE;
 
-//+
 ProgName ::= (ProgName) IDENT:progName;
 
-//+
 Type ::= (Type) IDENT:typeName;
 
 Declarations ::= (Declarations1) Declarations DeclarationList
@@ -116,11 +112,8 @@ ConstDecl::= (ConstDeclaration)CONST Type:constType ConstElem SEMI;
 ConstElem ::= (SingleConstElemDecl)SingleConstElem
 			 | (ManyConstElemDecl)ConstElem COMMA SingleConstElem
 			 ;
-			 
-//+			
+			 		
 SingleConstElem ::= (SingleConstElem)IDENT:constName EQUAL TypeConst;
-
-
 
 TypeConst ::= (NumberConst)NUM_CONST :value
 			 | (BooleanConst)BOOL_CONST:value
@@ -138,15 +131,16 @@ GlobSingleVarElem ::= (GlobVarSingleDefWithoutBracket)IDENT:varName
 				 | (GlobVarSingleDefWithBracket)IDENT:varName LBRACKET RBRACKET
 				 ;
 
-EnumDecl ::=(EnumDecl) ENUM IDENT:enumDeclName LBRACE EnumElem RBRACE;
+EnumDecl ::=(EnumDecl) ENUM EnumDeclName LBRACE EnumElem RBRACE;
 
+EnumDeclName ::=(EnumDeclName) IDENT: enumDeclName;
 
 EnumElem ::=(EnumSingleElement) EnumSingleElem
 		   | (EnumManyElements)EnumElem COMMA EnumSingleElem
 		   ;
 		   
 EnumSingleElem ::= (EnumSingleDefDefault)IDENT:enumName
-				 | (EnumSingleDef)IDENT:enumName EQUAL NUM_CONST
+				 | (EnumSingleDef)IDENT:enumName EQUAL NUM_CONST:val
 				 ;  			 
 
 MethodDeclList ::= (MethodDeclList1)MethodDeclList MethodDecl
@@ -165,15 +159,14 @@ FormPars ::= (FormalParameterOne) FormParam
 		    | (FormalParametersMany) FormPars COMMA FormParam
 		    ;
 
-FormParam ::= (FormalParamDef)Type IDENT
-			| (FormalParamArrayDef)Type IDENT LBRACKET RBRACKET
+FormParam ::= (FormalParamDef)Type IDENT:paramName
+			| (FormalParamArrayDef)Type IDENT:paramName LBRACKET RBRACKET
 			;
 
 VarDeclList ::= (VarDeclList1) VarDeclList GlobVarDecl
 			| (NoVarDeclarationList)/*epsilon*/
 			;
 		
-
 StmtList ::= (Statements)StmtList Stmt
 		   | (NoStatements)/*epsilon*/
 		   ;
@@ -186,16 +179,16 @@ Stmt ::=(Assignment) DesignatorStmt SEMI
 		| (ReturnStmtWithExpr) RETURN Expr SEMI
 		;
 
-DesignatorStmt ::= (DesignatorStmtAssign)Designator:dest EQUAL Expr:e
+DesignatorStmt ::= (DesignatorStmtAssign)Designator EQUAL Expr:e
 				 | (DesignatorStmtINC)Designator INC
 				 | (DesignatorStmtDEC)Designator DEC
 				 | (DesignatorStmtWithoutParams) Designator LPARENT RPARENT
 				 | (DesignatorStmtWithParams) Designator LPARENT ActPars RPARENT
 				 ;
-//+				 
+				 			 
 Designator ::= (DesignatorSingle) IDENT:name
-			 |	(DesinatorWithDOT)EnumIdent DOT EnumValue 
-			 | 	(DesignatorWithExpr)DesignatorIdentity LBRACKET Expr RBRACKET
+			 |	(DesignatorWithDOT)IDENT:enumIdentity DOT IDENT:enumVal 
+			 | 	(DesignatorWithExpr)IDENT:designatorName LBRACKET Expr RBRACKET
 			 ;		
 			 
 DesignatorIdentity ::= (DesignatorName) IDENT:designatorName;			 

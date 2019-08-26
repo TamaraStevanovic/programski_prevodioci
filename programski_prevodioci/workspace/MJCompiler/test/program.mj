@@ -1,11 +1,30 @@
-program MJProgram
+program Prog
+
+int x;
+
 {
-	
-	void main()
-		int x;
-	{
-		x = 100;
-		print(x, 5);
-		print(x,5);
-	}
+
+void g(int a, int b, int c)
+	boolean i2,i4,i7;
+{
+
+}
+
+int sqr(int i)
+	int ret;
+{
+	ret = i*i;
+	return ret;
+}
+
+void main()
+	int y;
+{
+	y = 101;
+	x = y % 17;
+	print(x);
+	print(x,10);
+	print(3);
+}
+
 }

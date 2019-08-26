@@ -1,0 +1,285 @@
+INFO  14:36:40,486 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  14:36:40,520 - #2 program
+INFO  14:36:40,520 - #27 Test301
+INFO  14:36:40,520 - #24 enum
+INFO  14:36:40,521 - #27 Broj
+INFO  14:36:40,521 - #22 {
+INFO  14:36:40,521 - #27 NULA
+INFO  14:36:40,521 - #17 ,
+INFO  14:36:40,522 - #27 JEDAN
+INFO  14:36:40,522 - #17 ,
+INFO  14:36:40,522 - #27 PET
+INFO  14:36:40,522 - #13 =
+INFO  14:36:40,522 - #28 5
+INFO  14:36:40,522 - #17 ,
+INFO  14:36:40,522 - #27 DESET
+INFO  14:36:40,522 - #13 =
+INFO  14:36:40,523 - #28 10
+INFO  14:36:40,523 - #23 }
+INFO  14:36:40,523 - #5 const
+INFO  14:36:40,524 - #27 int
+INFO  14:36:40,524 - #27 jedan
+INFO  14:36:40,525 - #13 =
+INFO  14:36:40,525 - #28 1
+INFO  14:36:40,525 - #16 ;
+INFO  14:36:40,526 - #5 const
+INFO  14:36:40,526 - #27 int
+INFO  14:36:40,527 - #27 pet
+INFO  14:36:40,527 - #13 =
+INFO  14:36:40,527 - #29 a
+INFO  14:36:40,527 - #16 ;
+INFO  14:36:40,527 - #27 int
+INFO  14:36:40,527 - #27 niz
+INFO  14:36:40,528 - #21 [
+INFO  14:36:40,528 - #20 ]
+INFO  14:36:40,528 - #16 ;
+INFO  14:36:40,528 - #27 char
+INFO  14:36:40,529 - #27 nizch
+INFO  14:36:40,529 - #21 [
+INFO  14:36:40,529 - #20 ]
+INFO  14:36:40,529 - #16 ;
+INFO  14:36:40,529 - #22 {
+INFO  14:36:40,529 - #4 void
+INFO  14:36:40,530 - #27 maina
+INFO  14:36:40,530 - #18 (
+INFO  14:36:40,530 - #19 )
+INFO  14:36:40,530 - #27 int
+INFO  14:36:40,531 - #27 bodovi
+INFO  14:36:40,531 - #16 ;
+INFO  14:36:40,531 - #27 Brojac
+INFO  14:36:40,532 - #27 nula
+INFO  14:36:40,532 - #17 ,
+INFO  14:36:40,532 - #27 pet
+INFO  14:36:40,532 - #16 ;
+INFO  14:36:40,532 - #22 {
+INFO  14:36:40,533 - #27 nula
+INFO  14:36:40,533 - #13 =
+INFO  14:36:40,534 - #27 Broj
+INFO  14:36:40,534 - #25 .
+INFO  14:36:40,534 - #27 NULA
+INFO  14:36:40,534 - #16 ;
+INFO  14:36:40,535 - #27 jedan
+INFO  14:36:40,535 - #13 =
+INFO  14:36:40,535 - #27 Broj
+INFO  14:36:40,535 - #25 .
+INFO  14:36:40,535 - #27 JEDAN
+INFO  14:36:40,535 - #16 ;
+INFO  14:36:40,536 - #27 bodovi
+INFO  14:36:40,536 - #13 =
+INFO  14:36:40,536 - #28 0
+INFO  14:36:40,536 - #16 ;
+INFO  14:36:40,536 - #27 bodovi
+INFO  14:36:40,536 - #14 ++
+INFO  14:36:40,536 - #16 ;
+INFO  14:36:40,536 - #27 bodovi
+INFO  14:36:40,536 - #13 =
+INFO  14:36:40,537 - #27 bodovi
+INFO  14:36:40,537 - #8 +
+INFO  14:36:40,537 - #27 jedan
+INFO  14:36:40,538 - #16 ;
+INFO  14:36:40,538 - #27 bodovi
+INFO  14:36:40,538 - #13 =
+INFO  14:36:40,538 - #27 bodovi
+INFO  14:36:40,539 - #10 *
+INFO  14:36:40,539 - #27 pet
+INFO  14:36:40,540 - #16 ;
+INFO  14:36:40,540 - #27 bodovi
+INFO  14:36:40,540 - #15 --
+INFO  14:36:40,540 - #16 ;
+INFO  14:36:40,541 - #3 print
+INFO  14:36:40,541 - #18 (
+INFO  14:36:40,541 - #27 bodovi
+INFO  14:36:40,541 - #19 )
+INFO  14:36:40,541 - #16 ;
+INFO  14:36:40,542 - #27 niz
+INFO  14:36:40,542 - #13 =
+INFO  14:36:40,542 - #6 new
+INFO  14:36:40,542 - #27 int
+INFO  14:36:40,542 - #21 [
+INFO  14:36:40,542 - #28 2
+INFO  14:36:40,542 - #20 ]
+INFO  14:36:40,543 - #16 ;
+INFO  14:36:40,543 - #27 niz
+INFO  14:36:40,543 - #21 [
+INFO  14:36:40,543 - #27 nula
+INFO  14:36:40,543 - #20 ]
+INFO  14:36:40,544 - #13 =
+INFO  14:36:40,544 - #27 pet
+INFO  14:36:40,544 - #16 ;
+INFO  14:36:40,544 - #27 niz
+INFO  14:36:40,544 - #21 [
+INFO  14:36:40,544 - #29 k
+INFO  14:36:40,544 - #20 ]
+INFO  14:36:40,545 - #13 =
+INFO  14:36:40,545 - #27 Broj
+INFO  14:36:40,545 - #25 .
+INFO  14:36:40,545 - #27 DESET
+INFO  14:36:40,545 - #16 ;
+INFO  14:36:40,545 - #27 bodovi
+INFO  14:36:40,545 - #13 =
+INFO  14:36:40,545 - #27 niz
+INFO  14:36:40,545 - #21 [
+INFO  14:36:40,546 - #28 1
+INFO  14:36:40,546 - #20 ]
+INFO  14:36:40,546 - #11 /
+INFO  14:36:40,546 - #27 niz
+INFO  14:36:40,547 - #21 [
+INFO  14:36:40,547 - #28 0
+INFO  14:36:40,547 - #20 ]
+INFO  14:36:40,547 - #16 ;
+INFO  14:36:40,548 - #3 print
+INFO  14:36:40,548 - #18 (
+INFO  14:36:40,548 - #27 bodovi
+INFO  14:36:40,548 - #19 )
+INFO  14:36:40,548 - #16 ;
+INFO  14:36:40,548 - #3 print
+INFO  14:36:40,548 - #18 (
+INFO  14:36:40,549 - #27 niz
+INFO  14:36:40,549 - #21 [
+INFO  14:36:40,549 - #27 Broj
+INFO  14:36:40,549 - #25 .
+INFO  14:36:40,549 - #27 JEDAN
+INFO  14:36:40,549 - #20 ]
+INFO  14:36:40,549 - #19 )
+INFO  14:36:40,549 - #16 ;
+INFO  14:36:40,549 - #27 nizch
+INFO  14:36:40,550 - #13 =
+INFO  14:36:40,550 - #6 new
+INFO  14:36:40,550 - #27 char
+INFO  14:36:40,550 - #21 [
+INFO  14:36:40,550 - #28 3
+INFO  14:36:40,550 - #20 ]
+INFO  14:36:40,550 - #16 ;
+INFO  14:36:40,550 - #27 nizch
+INFO  14:36:40,550 - #21 [
+INFO  14:36:40,551 - #28 0
+INFO  14:36:40,551 - #20 ]
+INFO  14:36:40,551 - #13 =
+INFO  14:36:40,551 - #29 a
+INFO  14:36:40,551 - #16 ;
+INFO  14:36:40,551 - #27 nizch
+INFO  14:36:40,551 - #21 [
+INFO  14:36:40,551 - #27 jedan
+INFO  14:36:40,551 - #20 ]
+INFO  14:36:40,552 - #13 =
+INFO  14:36:40,552 - #29 b
+INFO  14:36:40,552 - #16 ;
+INFO  14:36:40,552 - #27 nizch
+INFO  14:36:40,552 - #21 [
+INFO  14:36:40,552 - #27 pet
+INFO  14:36:40,552 - #9 -
+INFO  14:36:40,552 - #28 3
+INFO  14:36:40,553 - #20 ]
+INFO  14:36:40,553 - #13 =
+INFO  14:36:40,553 - #29 c
+INFO  14:36:40,553 - #16 ;
+INFO  14:36:40,553 - #3 print
+INFO  14:36:40,554 - #18 (
+INFO  14:36:40,554 - #27 nizch
+INFO  14:36:40,554 - #21 [
+INFO  14:36:40,554 - #28 2
+INFO  14:36:40,554 - #9 -
+INFO  14:36:40,554 - #28 1
+INFO  14:36:40,554 - #20 ]
+INFO  14:36:40,554 - #19 )
+INFO  14:36:40,554 - #16 ;
+INFO  14:36:40,554 - #3 print
+INFO  14:36:40,555 - #18 (
+INFO  14:36:40,555 - #27 nizch
+INFO  14:36:40,555 - #21 [
+INFO  14:36:40,556 - #27 jedan
+INFO  14:36:40,556 - #10 *
+INFO  14:36:40,556 - #28 2
+INFO  14:36:40,556 - #20 ]
+INFO  14:36:40,556 - #19 )
+INFO  14:36:40,556 - #16 ;
+INFO  14:36:40,556 - #27 bodovi
+INFO  14:36:40,556 - #13 =
+INFO  14:36:40,557 - #27 bodovi
+INFO  14:36:40,557 - #8 +
+INFO  14:36:40,557 - #18 (
+INFO  14:36:40,557 - #18 (
+INFO  14:36:40,557 - #27 pet
+INFO  14:36:40,557 - #10 *
+INFO  14:36:40,557 - #27 jedan
+INFO  14:36:40,557 - #9 -
+INFO  14:36:40,557 - #28 1
+INFO  14:36:40,557 - #19 )
+INFO  14:36:40,558 - #10 *
+INFO  14:36:40,558 - #28 2
+INFO  14:36:40,558 - #9 -
+INFO  14:36:40,558 - #18 (
+INFO  14:36:40,558 - #28 3
+INFO  14:36:40,559 - #12 %
+INFO  14:36:40,559 - #28 2
+INFO  14:36:40,559 - #8 +
+INFO  14:36:40,560 - #28 3
+INFO  14:36:40,560 - #10 *
+INFO  14:36:40,560 - #28 2
+INFO  14:36:40,560 - #9 -
+INFO  14:36:40,560 - #28 3
+INFO  14:36:40,560 - #19 )
+INFO  14:36:40,560 - #9 -
+INFO  14:36:40,561 - #27 Broj
+INFO  14:36:40,561 - #25 .
+INFO  14:36:40,561 - #27 JEDAN
+INFO  14:36:40,561 - #10 *
+INFO  14:36:40,561 - #28 0
+INFO  14:36:40,561 - #19 )
+INFO  14:36:40,561 - #16 ;
+INFO  14:36:40,561 - #3 print
+INFO  14:36:40,562 - #18 (
+INFO  14:36:40,562 - #27 bodovi
+INFO  14:36:40,562 - #19 )
+INFO  14:36:40,562 - #16 ;
+INFO  14:36:40,562 - #7 read
+INFO  14:36:40,562 - #18 (
+INFO  14:36:40,562 - #27 bodovi
+INFO  14:36:40,562 - #19 )
+INFO  14:36:40,562 - #16 ;
+INFO  14:36:40,563 - #27 bodovi
+INFO  14:36:40,563 - #13 =
+INFO  14:36:40,563 - #27 bodovi
+INFO  14:36:40,563 - #8 +
+INFO  14:36:40,563 - #28 1
+INFO  14:36:40,564 - #16 ;
+INFO  14:36:40,564 - #3 print
+INFO  14:36:40,564 - #18 (
+INFO  14:36:40,564 - #27 bodovi
+INFO  14:36:40,564 - #19 )
+INFO  14:36:40,564 - #16 ;
+INFO  14:36:40,564 - #23 }
+INFO  14:36:40,564 - #23 }
+INFO  14:36:40,579 - Deklarisana je konstanta NULA sa vrednoscu 0 na liniji 5
+INFO  14:36:40,579 - Deklarisana je konstanta JEDAN sa vrednoscu 1 na liniji 5
+INFO  14:36:40,579 - Deklarisana je konstanta PET sa vrednoscu 5 na liniji 5
+INFO  14:36:40,579 - Deklarisana je konstanta DESET sa vrednoscu 10 na liniji 5
+ERROR 14:36:40,580 - Nedefinisan tip Brojac na liniji 16
+ERROR 14:36:40,580 - Visestruko definisanje simbola pet na liniji 16
+INFO  14:36:40,580 - Obradjuje se enum naredba na liniji 18
+INFO  14:36:40,580 - sad si u factorDesignator  na liniji 18
+ERROR 14:36:40,581 - Tipovi nisu kompatibilni za dodelu na liniji 18
+INFO  14:36:40,581 - Obradjuje se enum naredba na liniji 19
+INFO  14:36:40,581 - sad si u factorDesignator  na liniji 19
+ERROR 14:36:40,581 - Designator nije ni promenljiva ni element niza  na liniji 19
+INFO  14:36:40,581 - sad si u factorConst  na liniji 21
+INFO  14:36:40,581 - tip strukture je sledeci 1 na liniji 21
+ERROR 14:36:40,582 - Expression nije tipa integer! na liniji 21
+ERROR 14:36:40,582 - Tipovi nisu kompatibilni za dodelu na liniji 21
+INFO  14:36:40,582 - sad si u factorDesignator  na liniji 23
+INFO  14:36:40,582 - sad si u factorDesignator  na liniji 23
+INFO  14:36:40,583 - sad si u factorDesignator  na liniji 24
+INFO  14:36:40,583 - sad si u factorDesignator  na liniji 24
+ERROR 14:36:40,583 - Expression nije tipa integer! na liniji 24
+ERROR 14:36:40,584 - Tipovi nisu kompatibilni za dodelu na liniji 24
+INFO  14:36:40,584 - sad si u factorDesignator  na liniji 26
+INFO  14:36:40,584 - Obradjuje se print naredba na liniji 26
+INFO  14:36:40,584 - sad si u factorConst  na liniji 29
+INFO  14:36:40,584 - tip strukture je sledeci 1 na liniji 29
+ERROR 14:36:40,584 - Expression nije tipa integer! na liniji 29
+ERROR 14:36:40,584 - Expression za alokaciju niza nije tipa int! na liniji 29
+ERROR 14:36:40,584 - Expression nije tipa integer! na liniji 29
+ERROR 14:36:40,585 - Tipovi nisu kompatibilni za dodelu na liniji 29
+INFO  14:36:40,585 - sad si u factorDesignator  na liniji 30
+ERROR 14:36:40,585 - Expression nije tipa integer! na liniji 30
+INFO  14:36:40,585 - sad si u factorDesignator  na liniji 30

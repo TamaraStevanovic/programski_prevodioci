@@ -1,0 +1,93 @@
+INFO  10:30:33,249 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  10:30:33,291 - #2 program
+INFO  10:30:33,292 - #27 Prog
+INFO  10:30:33,292 - #27 int
+INFO  10:30:33,293 - #27 x
+INFO  10:30:33,294 - #16 ;
+INFO  10:30:33,294 - #22 {
+INFO  10:30:33,295 - #4 void
+INFO  10:30:33,296 - #27 g
+INFO  10:30:33,296 - #18 (
+INFO  10:30:33,296 - #27 int
+INFO  10:30:33,297 - #27 a
+INFO  10:30:33,297 - #17 ,
+INFO  10:30:33,297 - #27 int
+INFO  10:30:33,297 - #27 b
+INFO  10:30:33,297 - #17 ,
+INFO  10:30:33,298 - #27 int
+INFO  10:30:33,298 - #27 c
+INFO  10:30:33,298 - #19 )
+INFO  10:30:33,298 - #27 boolean
+INFO  10:30:33,299 - #27 i2
+INFO  10:30:33,299 - #17 ,
+INFO  10:30:33,299 - #27 i4
+INFO  10:30:33,299 - #17 ,
+INFO  10:30:33,299 - #27 i7
+INFO  10:30:33,299 - #16 ;
+INFO  10:30:33,300 - #22 {
+INFO  10:30:33,300 - #23 }
+INFO  10:30:33,301 - #27 int
+INFO  10:30:33,301 - #27 sqr
+INFO  10:30:33,301 - #18 (
+INFO  10:30:33,302 - #27 int
+INFO  10:30:33,302 - #27 i
+INFO  10:30:33,302 - #19 )
+INFO  10:30:33,302 - #27 int
+INFO  10:30:33,302 - #27 ret
+INFO  10:30:33,303 - #16 ;
+INFO  10:30:33,303 - #22 {
+INFO  10:30:33,303 - #27 ret
+INFO  10:30:33,303 - #13 =
+INFO  10:30:33,303 - #27 i
+INFO  10:30:33,303 - #10 *
+INFO  10:30:33,304 - #27 i
+INFO  10:30:33,306 - #16 ;
+INFO  10:30:33,307 - #26 return
+INFO  10:30:33,307 - #27 ret
+INFO  10:30:33,307 - #16 ;
+INFO  10:30:33,307 - #23 }
+INFO  10:30:33,308 - #4 void
+INFO  10:30:33,308 - #27 main
+INFO  10:30:33,308 - #18 (
+INFO  10:30:33,308 - #19 )
+INFO  10:30:33,308 - #27 int
+INFO  10:30:33,308 - #27 y
+INFO  10:30:33,308 - #16 ;
+INFO  10:30:33,309 - #22 {
+INFO  10:30:33,309 - #27 y
+INFO  10:30:33,309 - #13 =
+INFO  10:30:33,309 - #28 101
+INFO  10:30:33,309 - #16 ;
+INFO  10:30:33,310 - #27 x
+INFO  10:30:33,310 - #13 =
+INFO  10:30:33,310 - #27 y
+INFO  10:30:33,310 - #12 %
+INFO  10:30:33,310 - #28 17
+INFO  10:30:33,311 - #16 ;
+INFO  10:30:33,311 - #3 print
+INFO  10:30:33,311 - #18 (
+INFO  10:30:33,311 - #27 x
+INFO  10:30:33,311 - #19 )
+INFO  10:30:33,311 - #16 ;
+INFO  10:30:33,311 - #3 print
+INFO  10:30:33,312 - #18 (
+INFO  10:30:33,312 - #27 x
+INFO  10:30:33,312 - #17 ,
+INFO  10:30:33,312 - #28 10
+INFO  10:30:33,312 - #19 )
+INFO  10:30:33,312 - #16 ;
+INFO  10:30:33,313 - #23 }
+INFO  10:30:33,313 - #23 }
+INFO  10:30:33,327 - sad si u factorDesignator  na liniji 16
+INFO  10:30:33,327 - sad si u factorDesignator  na liniji 16
+INFO  10:30:33,328 - sad si u factorDesignator  na liniji 17
+INFO  10:30:33,328 - sad si u factorConst  na liniji 23
+INFO  10:30:33,328 - tip strukture je sledeci 1 na liniji 23
+INFO  10:30:33,329 - sad si u factorDesignator  na liniji 24
+INFO  10:30:33,329 - sad si u factorConst  na liniji 24
+INFO  10:30:33,329 - tip strukture je sledeci 1 na liniji 24
+INFO  10:30:33,330 - sad si u factorDesignator  na liniji 25
+INFO  10:30:33,330 - Obradjuje se print naredba na liniji 25
+INFO  10:30:33,330 - sad si u factorDesignator  na liniji 26
+INFO  10:30:33,331 - Obradjuje se print naredba na liniji 26
+INFO  10:30:33,332 - Generating bytecode file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj

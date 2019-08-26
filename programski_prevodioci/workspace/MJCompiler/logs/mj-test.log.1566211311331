@@ -1,0 +1,33 @@
+INFO  12:26:07,922 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  12:26:07,949 - #2 program
+INFO  12:26:07,949 - #27 MJProgram
+INFO  12:26:07,949 - #22 {
+INFO  12:26:07,950 - #4 void
+INFO  12:26:07,951 - #27 main
+INFO  12:26:07,951 - #18 (
+INFO  12:26:07,951 - #19 )
+INFO  12:26:07,951 - #27 int
+INFO  12:26:07,952 - #27 x
+INFO  12:26:07,952 - #16 ;
+INFO  12:26:07,952 - #22 {
+INFO  12:26:07,953 - #27 x
+INFO  12:26:07,954 - #13 =
+INFO  12:26:07,954 - #28 100
+INFO  12:26:07,955 - #16 ;
+INFO  12:26:07,956 - #3 print
+INFO  12:26:07,956 - #18 (
+INFO  12:26:07,956 - #27 x
+INFO  12:26:07,956 - #17 ,
+INFO  12:26:07,957 - #28 5
+INFO  12:26:07,957 - #19 )
+INFO  12:26:07,957 - #16 ;
+INFO  12:26:07,957 - #3 print
+INFO  12:26:07,958 - #18 (
+INFO  12:26:07,958 - #27 x
+INFO  12:26:07,958 - #17 ,
+INFO  12:26:07,958 - #28 5
+INFO  12:26:07,958 - #19 )
+INFO  12:26:07,958 - #16 ;
+INFO  12:26:07,958 - #23 }
+INFO  12:26:07,959 - #23 }
+INFO  12:26:07,966 - sad si u factorConst  na liniji 7

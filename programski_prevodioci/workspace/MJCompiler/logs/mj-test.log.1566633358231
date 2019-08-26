@@ -1,0 +1,435 @@
+INFO  09:54:53,122 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  09:54:53,159 - #2 program
+INFO  09:54:53,159 - #27 test301
+INFO  09:54:53,159 - #24 enum
+INFO  09:54:53,160 - #27 Broj
+INFO  09:54:53,161 - #22 {
+INFO  09:54:53,161 - #27 NULA
+INFO  09:54:53,161 - #17 ,
+INFO  09:54:53,162 - #27 JEDAN
+INFO  09:54:53,162 - #17 ,
+INFO  09:54:53,162 - #27 PET
+INFO  09:54:53,162 - #13 =
+INFO  09:54:53,162 - #28 5
+INFO  09:54:53,162 - #17 ,
+INFO  09:54:53,162 - #27 DESET
+INFO  09:54:53,163 - #13 =
+INFO  09:54:53,163 - #28 10
+INFO  09:54:53,163 - #23 }
+INFO  09:54:53,163 - #5 const
+INFO  09:54:53,164 - #27 int
+INFO  09:54:53,164 - #27 jedan
+INFO  09:54:53,165 - #13 =
+INFO  09:54:53,165 - #28 1
+INFO  09:54:53,165 - #16 ;
+INFO  09:54:53,166 - #5 const
+INFO  09:54:53,166 - #27 int
+INFO  09:54:53,166 - #27 pet
+INFO  09:54:53,166 - #13 =
+INFO  09:54:53,166 - #28 5
+INFO  09:54:53,167 - #16 ;
+INFO  09:54:53,167 - #27 int
+INFO  09:54:53,167 - #27 niz
+INFO  09:54:53,167 - #21 [
+INFO  09:54:53,167 - #20 ]
+INFO  09:54:53,167 - #16 ;
+INFO  09:54:53,168 - #27 char
+INFO  09:54:53,169 - #27 nizch
+INFO  09:54:53,169 - #21 [
+INFO  09:54:53,169 - #20 ]
+INFO  09:54:53,169 - #16 ;
+INFO  09:54:53,169 - #22 {
+INFO  09:54:53,169 - #4 void
+INFO  09:54:53,170 - #27 main
+INFO  09:54:53,170 - #18 (
+INFO  09:54:53,170 - #19 )
+INFO  09:54:53,170 - #27 int
+INFO  09:54:53,171 - #27 bodovi
+INFO  09:54:53,171 - #16 ;
+INFO  09:54:53,171 - #27 Broj
+INFO  09:54:53,171 - #27 nula
+INFO  09:54:53,172 - #17 ,
+INFO  09:54:53,172 - #27 jedan
+INFO  09:54:53,172 - #16 ;
+INFO  09:54:53,172 - #22 {
+INFO  09:54:53,172 - #27 nula
+INFO  09:54:53,173 - #13 =
+INFO  09:54:53,173 - #27 Broj
+INFO  09:54:53,173 - #25 .
+INFO  09:54:53,173 - #27 NULA
+INFO  09:54:53,173 - #16 ;
+INFO  09:54:53,174 - #27 jedan
+INFO  09:54:53,175 - #13 =
+INFO  09:54:53,175 - #27 Broj
+INFO  09:54:53,175 - #25 .
+INFO  09:54:53,175 - #27 JEDAN
+INFO  09:54:53,175 - #16 ;
+INFO  09:54:53,175 - #27 nula
+INFO  09:54:53,175 - #13 =
+INFO  09:54:53,176 - #28 100
+INFO  09:54:53,176 - #16 ;
+INFO  09:54:53,176 - #27 bodovi
+INFO  09:54:53,176 - #13 =
+INFO  09:54:53,176 - #28 100
+INFO  09:54:53,176 - #16 ;
+INFO  09:54:53,176 - #27 nula
+INFO  09:54:53,177 - #13 =
+INFO  09:54:53,177 - #27 Broj
+INFO  09:54:53,177 - #25 .
+INFO  09:54:53,177 - #27 MILIJON
+INFO  09:54:53,177 - #16 ;
+INFO  09:54:53,177 - #27 bodovi
+INFO  09:54:53,177 - #13 =
+INFO  09:54:53,177 - #27 Broj
+INFO  09:54:53,177 - #25 .
+INFO  09:54:53,177 - #27 NULA
+INFO  09:54:53,178 - #8 +
+INFO  09:54:53,178 - #27 Broj
+INFO  09:54:53,179 - #25 .
+INFO  09:54:53,179 - #27 JEDAN
+INFO  09:54:53,179 - #16 ;
+INFO  09:54:53,179 - #27 jedan
+INFO  09:54:53,180 - #13 =
+INFO  09:54:53,180 - #27 Broj
+INFO  09:54:53,180 - #25 .
+INFO  09:54:53,180 - #27 NULA
+INFO  09:54:53,180 - #8 +
+INFO  09:54:53,180 - #27 Broj
+INFO  09:54:53,180 - #25 .
+INFO  09:54:53,180 - #27 JEDAN
+INFO  09:54:53,180 - #16 ;
+INFO  09:54:53,181 - #27 jedan
+INFO  09:54:53,181 - #13 =
+INFO  09:54:53,181 - #27 jedan
+INFO  09:54:53,181 - #16 ;
+INFO  09:54:53,181 - #27 nula
+INFO  09:54:53,181 - #13 =
+INFO  09:54:53,181 - #27 jedan
+INFO  09:54:53,181 - #16 ;
+INFO  09:54:53,181 - #27 bodovi
+INFO  09:54:53,182 - #13 =
+INFO  09:54:53,182 - #27 jedan
+INFO  09:54:53,182 - #16 ;
+INFO  09:54:53,182 - #27 bodovi
+INFO  09:54:53,182 - #13 =
+INFO  09:54:53,182 - #27 nula
+INFO  09:54:53,182 - #8 +
+INFO  09:54:53,182 - #27 jedan
+INFO  09:54:53,182 - #10 *
+INFO  09:54:53,183 - #27 Broj
+INFO  09:54:53,184 - #25 .
+INFO  09:54:53,184 - #27 JEDAN
+INFO  09:54:53,184 - #16 ;
+INFO  09:54:53,184 - #27 bodovi
+INFO  09:54:53,185 - #13 =
+INFO  09:54:53,185 - #28 0
+INFO  09:54:53,185 - #16 ;
+INFO  09:54:53,185 - #27 bodovi
+INFO  09:54:53,185 - #14 ++
+INFO  09:54:53,185 - #16 ;
+INFO  09:54:53,186 - #27 bodovi
+INFO  09:54:53,186 - #13 =
+INFO  09:54:53,186 - #27 bodovi
+INFO  09:54:53,186 - #8 +
+INFO  09:54:53,186 - #27 jedan
+INFO  09:54:53,186 - #16 ;
+INFO  09:54:53,186 - #27 bodovi
+INFO  09:54:53,187 - #13 =
+INFO  09:54:53,187 - #27 bodovi
+INFO  09:54:53,187 - #10 *
+INFO  09:54:53,187 - #27 pet
+INFO  09:54:53,187 - #16 ;
+INFO  09:54:53,187 - #27 bodovi
+INFO  09:54:53,187 - #15 --
+INFO  09:54:53,187 - #16 ;
+INFO  09:54:53,188 - #3 print
+INFO  09:54:53,188 - #18 (
+INFO  09:54:53,188 - #27 bodovi
+INFO  09:54:53,188 - #19 )
+INFO  09:54:53,188 - #16 ;
+INFO  09:54:53,188 - #27 niz
+INFO  09:54:53,188 - #13 =
+INFO  09:54:53,188 - #6 new
+INFO  09:54:53,189 - #27 int
+INFO  09:54:53,189 - #21 [
+INFO  09:54:53,189 - #28 2
+INFO  09:54:53,189 - #20 ]
+INFO  09:54:53,189 - #16 ;
+INFO  09:54:53,189 - #27 niz
+INFO  09:54:53,189 - #21 [
+INFO  09:54:53,189 - #27 nula
+INFO  09:54:53,190 - #20 ]
+INFO  09:54:53,190 - #13 =
+INFO  09:54:53,190 - #27 pet
+INFO  09:54:53,190 - #16 ;
+INFO  09:54:53,190 - #27 niz
+INFO  09:54:53,190 - #21 [
+INFO  09:54:53,190 - #28 1
+INFO  09:54:53,190 - #20 ]
+INFO  09:54:53,191 - #13 =
+INFO  09:54:53,191 - #27 Broj
+INFO  09:54:53,191 - #25 .
+INFO  09:54:53,191 - #27 DESET
+INFO  09:54:53,191 - #16 ;
+INFO  09:54:53,191 - #27 bodovi
+INFO  09:54:53,191 - #13 =
+INFO  09:54:53,191 - #27 niz
+INFO  09:54:53,191 - #21 [
+INFO  09:54:53,192 - #28 1
+INFO  09:54:53,192 - #20 ]
+INFO  09:54:53,192 - #11 /
+INFO  09:54:53,192 - #27 niz
+INFO  09:54:53,193 - #21 [
+INFO  09:54:53,193 - #28 0
+INFO  09:54:53,193 - #20 ]
+INFO  09:54:53,193 - #16 ;
+INFO  09:54:53,193 - #3 print
+INFO  09:54:53,193 - #18 (
+INFO  09:54:53,193 - #27 bodovi
+INFO  09:54:53,193 - #19 )
+INFO  09:54:53,194 - #16 ;
+INFO  09:54:53,194 - #3 print
+INFO  09:54:53,194 - #18 (
+INFO  09:54:53,194 - #27 niz
+INFO  09:54:53,194 - #21 [
+INFO  09:54:53,194 - #27 Broj
+INFO  09:54:53,194 - #25 .
+INFO  09:54:53,194 - #27 JEDAN
+INFO  09:54:53,194 - #20 ]
+INFO  09:54:53,195 - #19 )
+INFO  09:54:53,195 - #16 ;
+INFO  09:54:53,195 - #27 nizch
+INFO  09:54:53,195 - #13 =
+INFO  09:54:53,195 - #6 new
+INFO  09:54:53,195 - #27 char
+INFO  09:54:53,195 - #21 [
+INFO  09:54:53,196 - #28 3
+INFO  09:54:53,196 - #20 ]
+INFO  09:54:53,196 - #16 ;
+INFO  09:54:53,196 - #27 nizch
+INFO  09:54:53,196 - #21 [
+INFO  09:54:53,196 - #28 0
+INFO  09:54:53,196 - #20 ]
+INFO  09:54:53,196 - #13 =
+INFO  09:54:53,197 - #29 a
+INFO  09:54:53,197 - #16 ;
+INFO  09:54:53,197 - #27 nizch
+INFO  09:54:53,197 - #21 [
+INFO  09:54:53,197 - #27 jedan
+INFO  09:54:53,197 - #20 ]
+INFO  09:54:53,197 - #13 =
+INFO  09:54:53,198 - #29 b
+INFO  09:54:53,198 - #16 ;
+INFO  09:54:53,198 - #27 nizch
+INFO  09:54:53,198 - #21 [
+INFO  09:54:53,198 - #27 pet
+INFO  09:54:53,198 - #9 -
+INFO  09:54:53,198 - #28 3
+INFO  09:54:53,199 - #20 ]
+INFO  09:54:53,199 - #13 =
+INFO  09:54:53,199 - #29 c
+INFO  09:54:53,199 - #16 ;
+INFO  09:54:53,199 - #3 print
+INFO  09:54:53,200 - #18 (
+INFO  09:54:53,200 - #27 nizch
+INFO  09:54:53,200 - #21 [
+INFO  09:54:53,200 - #28 2
+INFO  09:54:53,200 - #9 -
+INFO  09:54:53,200 - #28 1
+INFO  09:54:53,200 - #20 ]
+INFO  09:54:53,200 - #19 )
+INFO  09:54:53,200 - #16 ;
+INFO  09:54:53,200 - #3 print
+INFO  09:54:53,201 - #18 (
+INFO  09:54:53,201 - #27 nizch
+INFO  09:54:53,201 - #21 [
+INFO  09:54:53,201 - #27 jedan
+INFO  09:54:53,201 - #10 *
+INFO  09:54:53,202 - #28 2
+INFO  09:54:53,202 - #20 ]
+INFO  09:54:53,202 - #19 )
+INFO  09:54:53,202 - #16 ;
+INFO  09:54:53,202 - #27 bodovi
+INFO  09:54:53,202 - #13 =
+INFO  09:54:53,202 - #27 bodovi
+INFO  09:54:53,202 - #8 +
+INFO  09:54:53,203 - #18 (
+INFO  09:54:53,203 - #18 (
+INFO  09:54:53,203 - #27 pet
+INFO  09:54:53,203 - #10 *
+INFO  09:54:53,203 - #27 jedan
+INFO  09:54:53,203 - #9 -
+INFO  09:54:53,203 - #28 1
+INFO  09:54:53,204 - #19 )
+INFO  09:54:53,204 - #10 *
+INFO  09:54:53,204 - #28 2
+INFO  09:54:53,204 - #9 -
+INFO  09:54:53,204 - #18 (
+INFO  09:54:53,204 - #28 3
+INFO  09:54:53,204 - #12 %
+INFO  09:54:53,205 - #28 2
+INFO  09:54:53,205 - #8 +
+INFO  09:54:53,205 - #28 3
+INFO  09:54:53,205 - #10 *
+INFO  09:54:53,206 - #28 2
+INFO  09:54:53,206 - #9 -
+INFO  09:54:53,206 - #28 3
+INFO  09:54:53,206 - #19 )
+INFO  09:54:53,206 - #9 -
+INFO  09:54:53,206 - #27 Broj
+INFO  09:54:53,206 - #25 .
+INFO  09:54:53,206 - #27 JEDAN
+INFO  09:54:53,206 - #10 *
+INFO  09:54:53,207 - #28 0
+INFO  09:54:53,207 - #19 )
+INFO  09:54:53,207 - #16 ;
+INFO  09:54:53,207 - #3 print
+INFO  09:54:53,207 - #18 (
+INFO  09:54:53,207 - #27 bodovi
+INFO  09:54:53,207 - #19 )
+INFO  09:54:53,207 - #16 ;
+INFO  09:54:53,208 - #7 read
+INFO  09:54:53,208 - #18 (
+INFO  09:54:53,208 - #27 bodovi
+INFO  09:54:53,208 - #19 )
+INFO  09:54:53,208 - #16 ;
+INFO  09:54:53,208 - #27 bodovi
+INFO  09:54:53,208 - #13 =
+INFO  09:54:53,208 - #27 bodovi
+INFO  09:54:53,209 - #8 +
+INFO  09:54:53,209 - #28 1
+INFO  09:54:53,209 - #16 ;
+INFO  09:54:53,209 - #3 print
+INFO  09:54:53,209 - #18 (
+INFO  09:54:53,209 - #27 bodovi
+INFO  09:54:53,209 - #19 )
+INFO  09:54:53,209 - #16 ;
+INFO  09:54:53,209 - #23 }
+INFO  09:54:53,210 - #23 }
+INFO  09:54:53,221 - Deklarisana je konstanta NULA sa vrednoscu 0 na liniji 5
+INFO  09:54:53,221 - Deklarisana je konstanta JEDAN sa vrednoscu 1 na liniji 5
+INFO  09:54:53,221 - Deklarisana je konstanta PET sa vrednoscu 5 na liniji 5
+INFO  09:54:53,221 - Deklarisana je konstanta DESET sa vrednoscu 10 na liniji 5
+INFO  09:54:53,222 - Obradjuje se enum naredba na liniji 18
+INFO  09:54:53,222 - sad si u factorDesignator  na liniji 18
+INFO  09:54:53,223 - Obradjuje se enum naredba na liniji 19
+INFO  09:54:53,223 - sad si u factorDesignator  na liniji 19
+INFO  09:54:53,223 - sad si u factorConst  na liniji 20
+INFO  09:54:53,223 - tip strukture je sledeci 1 na liniji 20
+ERROR 09:54:53,223 - Tipovi nisu kompatibilni za dodelu na liniji 20
+ERROR 09:54:53,224 - Tipovi nisu kompatibilni za dodelu na liniji 20
+INFO  09:54:53,224 - sad si u factorConst  na liniji 21
+INFO  09:54:53,224 - tip strukture je sledeci 1 na liniji 21
+ERROR 09:54:53,224 - Ne postoji trazena constanta u ovom enumu! na liniji 22
+INFO  09:54:53,224 - sad si u factorDesignator  na liniji 22
+ERROR 09:54:53,225 - Tipovi nisu kompatibilni za dodelu na liniji 22
+INFO  09:54:53,225 - Obradjuje se enum naredba na liniji 23
+INFO  09:54:53,225 - sad si u factorDesignator  na liniji 23
+INFO  09:54:53,225 - Obradjuje se enum naredba na liniji 23
+INFO  09:54:53,225 - sad si u factorDesignator  na liniji 23
+INFO  09:54:53,226 - Obradjuje se enum naredba na liniji 24
+INFO  09:54:53,226 - sad si u factorDesignator  na liniji 24
+INFO  09:54:53,226 - Obradjuje se enum naredba na liniji 24
+INFO  09:54:53,226 - sad si u factorDesignator  na liniji 24
+ERROR 09:54:53,226 - Tipovi nisu kompatibilni za dodelu na liniji 24
+ERROR 09:54:53,226 - Tipovi nisu kompatibilni za dodelu na liniji 24
+INFO  09:54:53,227 - sad si u factorDesignator  na liniji 25
+INFO  09:54:53,227 - sad si u factorDesignator  na liniji 26
+INFO  09:54:53,227 - sad si u factorDesignator  na liniji 27
+ERROR 09:54:53,228 - Tipovi nisu kompatibilni za dodelu na liniji 27
+INFO  09:54:53,228 - sad si u factorDesignator  na liniji 28
+INFO  09:54:53,228 - sad si u factorDesignator  na liniji 28
+INFO  09:54:53,228 - Obradjuje se enum naredba na liniji 28
+INFO  09:54:53,228 - sad si u factorDesignator  na liniji 28
+INFO  09:54:53,229 - sad si u factorConst  na liniji 29
+INFO  09:54:53,229 - tip strukture je sledeci 1 na liniji 29
+INFO  09:54:53,229 - sad si u factorDesignator  na liniji 31
+INFO  09:54:53,229 - sad si u factorDesignator  na liniji 31
+INFO  09:54:53,230 - sad si u factorDesignator  na liniji 32
+INFO  09:54:53,230 - sad si u factorDesignator  na liniji 32
+INFO  09:54:53,230 - sad si u factorDesignator  na liniji 34
+INFO  09:54:53,231 - Obradjuje se print naredba na liniji 34
+INFO  09:54:53,231 - sad si u factorConst  na liniji 37
+INFO  09:54:53,231 - tip strukture je sledeci 1 na liniji 37
+INFO  09:54:53,231 - sad si u factorDesignator  na liniji 38
+INFO  09:54:53,231 - Pronadjen je simbol niza  na liniji 38
+INFO  09:54:53,231 - sad si u factorDesignator  na liniji 38
+INFO  09:54:53,232 - sad si u factorConst  na liniji 39
+INFO  09:54:53,232 - tip strukture je sledeci 1 na liniji 39
+INFO  09:54:53,232 - Pronadjen je simbol niza  na liniji 39
+INFO  09:54:53,232 - Obradjuje se enum naredba na liniji 39
+INFO  09:54:53,232 - sad si u factorDesignator  na liniji 39
+INFO  09:54:53,232 - sad si u factorConst  na liniji 40
+INFO  09:54:53,232 - tip strukture je sledeci 1 na liniji 40
+INFO  09:54:53,232 - Pronadjen je simbol niza  na liniji 40
+INFO  09:54:53,232 - sad si u factorDesignator  na liniji 40
+INFO  09:54:53,233 - sad si u factorConst  na liniji 40
+INFO  09:54:53,233 - tip strukture je sledeci 1 na liniji 40
+INFO  09:54:53,233 - Pronadjen je simbol niza  na liniji 40
+INFO  09:54:53,233 - sad si u factorDesignator  na liniji 40
+INFO  09:54:53,233 - sad si u factorDesignator  na liniji 41
+INFO  09:54:53,233 - Obradjuje se print naredba na liniji 41
+INFO  09:54:53,233 - Obradjuje se enum naredba na liniji 42
+INFO  09:54:53,234 - sad si u factorDesignator  na liniji 42
+INFO  09:54:53,234 - Pronadjen je simbol niza  na liniji 42
+INFO  09:54:53,234 - sad si u factorDesignator  na liniji 42
+INFO  09:54:53,241 - Obradjuje se print naredba na liniji 42
+INFO  09:54:53,241 - sad si u factorConst  na liniji 45
+INFO  09:54:53,241 - tip strukture je sledeci 1 na liniji 45
+INFO  09:54:53,242 - sad si u factorConst  na liniji 46
+INFO  09:54:53,242 - tip strukture je sledeci 1 na liniji 46
+INFO  09:54:53,242 - Pronadjen je simbol niza  na liniji 46
+INFO  09:54:53,242 - sad si u factorConst  na liniji 46
+INFO  09:54:53,242 - tip strukture je sledeci 2 na liniji 46
+INFO  09:54:53,242 - sad si u factorDesignator  na liniji 47
+INFO  09:54:53,242 - Pronadjen je simbol niza  na liniji 47
+INFO  09:54:53,242 - sad si u factorConst  na liniji 47
+INFO  09:54:53,242 - tip strukture je sledeci 2 na liniji 47
+INFO  09:54:53,243 - sad si u factorDesignator  na liniji 48
+INFO  09:54:53,243 - sad si u factorConst  na liniji 48
+INFO  09:54:53,243 - tip strukture je sledeci 1 na liniji 48
+INFO  09:54:53,243 - Pronadjen je simbol niza  na liniji 48
+INFO  09:54:53,243 - sad si u factorConst  na liniji 48
+INFO  09:54:53,243 - tip strukture je sledeci 2 na liniji 48
+INFO  09:54:53,243 - sad si u factorConst  na liniji 49
+INFO  09:54:53,243 - tip strukture je sledeci 1 na liniji 49
+INFO  09:54:53,243 - sad si u factorConst  na liniji 49
+INFO  09:54:53,243 - tip strukture je sledeci 1 na liniji 49
+INFO  09:54:53,244 - Pronadjen je simbol niza  na liniji 49
+INFO  09:54:53,244 - sad si u factorDesignator  na liniji 49
+INFO  09:54:53,244 - Obradjuje se print naredba na liniji 49
+INFO  09:54:53,244 - sad si u factorDesignator  na liniji 50
+INFO  09:54:53,245 - sad si u factorConst  na liniji 50
+INFO  09:54:53,245 - tip strukture je sledeci 1 na liniji 50
+INFO  09:54:53,245 - Pronadjen je simbol niza  na liniji 50
+INFO  09:54:53,245 - sad si u factorDesignator  na liniji 50
+INFO  09:54:53,245 - Obradjuje se print naredba na liniji 50
+INFO  09:54:53,245 - sad si u factorDesignator  na liniji 53
+INFO  09:54:53,245 - sad si u factorDesignator  na liniji 53
+INFO  09:54:53,245 - sad si u factorDesignator  na liniji 53
+INFO  09:54:53,246 - sad si u factorConst  na liniji 53
+INFO  09:54:53,246 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,246 - sad si u factorConst  na liniji 53
+INFO  09:54:53,246 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,246 - sad si u factorConst  na liniji 53
+INFO  09:54:53,246 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,246 - sad si u factorConst  na liniji 53
+INFO  09:54:53,246 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,246 - sad si u factorConst  na liniji 53
+INFO  09:54:53,246 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,246 - sad si u factorConst  na liniji 53
+INFO  09:54:53,246 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,246 - sad si u factorConst  na liniji 53
+INFO  09:54:53,246 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,247 - Obradjuje se enum naredba na liniji 53
+INFO  09:54:53,247 - sad si u factorDesignator  na liniji 53
+INFO  09:54:53,247 - sad si u factorConst  na liniji 53
+INFO  09:54:53,247 - tip strukture je sledeci 1 na liniji 53
+INFO  09:54:53,247 - sad si u factorDesignator  na liniji 54
+INFO  09:54:53,247 - Obradjuje se print naredba na liniji 54
+INFO  09:54:53,247 - sad si u factorDesignator  na liniji 58
+INFO  09:54:53,247 - sad si u factorConst  na liniji 58
+INFO  09:54:53,247 - tip strukture je sledeci 1 na liniji 58
+INFO  09:54:53,248 - sad si u factorDesignator  na liniji 59
+INFO  09:54:53,248 - Obradjuje se print naredba na liniji 59
+ERROR 09:54:53,251 - Parsiranje NIJE uspesno zavrseno!

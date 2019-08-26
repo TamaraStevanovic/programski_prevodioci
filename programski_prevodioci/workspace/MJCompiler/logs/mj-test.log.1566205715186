@@ -1,0 +1,33 @@
+INFO  11:09:48,724 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  11:09:48,769 - #2 program
+INFO  11:09:48,769 - #27 MJProgram
+INFO  11:09:48,769 - #22 {
+INFO  11:09:48,771 - #4 void
+INFO  11:09:48,772 - #27 main
+INFO  11:09:48,772 - #18 (
+INFO  11:09:48,773 - #19 )
+INFO  11:09:48,773 - #27 int
+INFO  11:09:48,773 - #27 x
+INFO  11:09:48,775 - #16 ;
+INFO  11:09:48,776 - #22 {
+INFO  11:09:48,778 - #27 x
+INFO  11:09:48,778 - #13 =
+INFO  11:09:48,779 - #28 100
+INFO  11:09:48,779 - #16 ;
+INFO  11:09:48,780 - #3 print
+INFO  11:09:48,780 - #18 (
+INFO  11:09:48,780 - #27 x
+INFO  11:09:48,780 - #17 ,
+INFO  11:09:48,781 - #28 5
+INFO  11:09:48,781 - #19 )
+INFO  11:09:48,781 - #16 ;
+INFO  11:09:48,781 - #3 print
+INFO  11:09:48,781 - #18 (
+INFO  11:09:48,781 - #27 x
+INFO  11:09:48,781 - #17 ,
+INFO  11:09:48,783 - #28 5
+INFO  11:09:48,783 - #19 )
+INFO  11:09:48,783 - #16 ;
+INFO  11:09:48,783 - #23 }
+INFO  11:09:48,783 - #23 }
+ERROR 11:09:48,798 - Tipovi nisu kompatibilniu za dodelu na liniji 7

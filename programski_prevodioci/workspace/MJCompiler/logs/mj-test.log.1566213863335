@@ -1,0 +1,43 @@
+INFO  13:22:29,319 - Compiling source file: /home/bakson/Downloads/testProjectPrevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  13:22:29,358 - #2 program
+INFO  13:22:29,358 - #27 MJProgram
+INFO  13:22:29,359 - #22 {
+INFO  13:22:29,360 - #4 void
+INFO  13:22:29,361 - #27 main
+INFO  13:22:29,361 - #18 (
+INFO  13:22:29,361 - #19 )
+INFO  13:22:29,362 - #27 int
+INFO  13:22:29,362 - #27 x
+INFO  13:22:29,363 - #16 ;
+INFO  13:22:29,364 - #22 {
+INFO  13:22:29,365 - #27 x
+INFO  13:22:29,366 - #13 =
+INFO  13:22:29,366 - #28 100
+INFO  13:22:29,366 - #16 ;
+INFO  13:22:29,367 - #3 print
+INFO  13:22:29,367 - #18 (
+INFO  13:22:29,368 - #27 x
+INFO  13:22:29,368 - #17 ,
+INFO  13:22:29,368 - #28 5
+INFO  13:22:29,369 - #19 )
+INFO  13:22:29,369 - #16 ;
+INFO  13:22:29,369 - #3 print
+INFO  13:22:29,369 - #18 (
+INFO  13:22:29,369 - #27 x
+INFO  13:22:29,369 - #17 ,
+INFO  13:22:29,370 - #28 5
+INFO  13:22:29,370 - #19 )
+INFO  13:22:29,370 - #16 ;
+INFO  13:22:29,370 - #23 }
+INFO  13:22:29,370 - #23 }
+INFO  13:22:29,385 - sad si u factorConst  na liniji 7
+INFO  13:22:29,385 - tip strukture je sledeci rs.etf.pp1.symboltable.concepts.Struct@36f6e879 na liniji 7
+ERROR 13:22:29,385 - Expression nije tipa integer! na liniji 7
+ERROR 13:22:29,385 - Tipovi nisu kompatibilni za dodelu na liniji 7
+INFO  13:22:29,385 - sad si u factorDesignator  na liniji 8
+ERROR 13:22:29,386 - Expression nije tipa integer! na liniji 8
+INFO  13:22:29,386 - Obradjuje se print naredba na liniji 8
+INFO  13:22:29,386 - sad si u factorDesignator  na liniji 9
+ERROR 13:22:29,386 - Expression nije tipa integer! na liniji 9
+INFO  13:22:29,386 - Obradjuje se print naredba na liniji 9
+ERROR 13:22:29,387 - Parsiranje NIJE uspesno zavrseno!
