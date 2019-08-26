@@ -1,3 +1,7 @@
-/rs/
+/log4j.xml
+/mjlexer.flex
+/mjparser.cup
 /mjparser_astbuild.cup
+/program.mj
 /program.obj
+/rs/

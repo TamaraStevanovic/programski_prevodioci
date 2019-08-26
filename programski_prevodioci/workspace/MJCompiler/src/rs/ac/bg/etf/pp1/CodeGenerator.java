@@ -241,7 +241,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		// zato je valjda dovoljno samo da se uradi load
 		Code.load(factorDesignator.getDesignator().obj);
 	}
-	
+	//ovo sam sad dodala
 	/////////// iznad je u progresu//
 
 	// ako se designator odnosi na globalnu prom, onda ce se generisati fja
