@@ -78,7 +78,6 @@ nonterminal GlobVarDecl GlobVarDecl;
 nonterminal GlobVarElem GlobVarElem;
 nonterminal  EnumElem EnumElem;
 nonterminal MethodDeclList MethodDeclList;
-nonterminal FormPars FormPars;
 nonterminal VarDeclList VarDeclList;
 nonterminal StmtList StmtList;
 nonterminal Stmt Stmt; 
@@ -89,7 +88,8 @@ nonterminal java.util.List ActPars;
 nonterminal  rs.etf.pp1.symboltable.concepts.Struct Type, Expr, Term, Factor;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj GlobSingleVarElem, ProgName, Program, MethodDecl, MethodTypeName 
-,DesignatorStmt, Designator,DesignatorIdentity, EnumDeclName, EnumSingleElem, FormParam, EnumValue;
+,DesignatorStmt, Designator,DesignatorIdentity, EnumDeclName, EnumSingleElem, FormParam, FormPars, EnumValue;
+
 //nonterminal rs.etf.pp1.symboltable.concepts.Struct  VarDeclList;
 
 // ovim se dodaje polje tipa Struct, imena struct, u cvor stabla TypeConst

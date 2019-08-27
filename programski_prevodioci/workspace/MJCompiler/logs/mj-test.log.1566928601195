@@ -1,0 +1,65 @@
+INFO  19:56:23,945 - Compiling source file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  19:56:23,962 - #2 program
+INFO  19:56:23,962 - #27 mjtest1
+INFO  19:56:23,962 - #27 int
+INFO  19:56:23,962 - #27 x
+INFO  19:56:23,963 - #16 ;
+INFO  19:56:23,963 - #22 {
+INFO  19:56:23,963 - #4 void
+INFO  19:56:23,964 - #27 main
+INFO  19:56:23,964 - #18 (
+INFO  19:56:23,964 - #19 )
+INFO  19:56:23,964 - #27 int
+INFO  19:56:23,964 - #27 niz
+INFO  19:56:23,964 - #21 [
+INFO  19:56:23,964 - #20 ]
+INFO  19:56:23,964 - #16 ;
+INFO  19:56:23,964 - #22 {
+INFO  19:56:23,965 - #27 niz
+INFO  19:56:23,965 - #13 =
+INFO  19:56:23,965 - #6 new
+INFO  19:56:23,965 - #27 int
+INFO  19:56:23,965 - #21 [
+INFO  19:56:23,965 - #28 100
+INFO  19:56:23,965 - #20 ]
+INFO  19:56:23,965 - #16 ;
+INFO  19:56:23,966 - #27 niz
+INFO  19:56:23,966 - #21 [
+INFO  19:56:23,966 - #28 28
+INFO  19:56:23,966 - #20 ]
+INFO  19:56:23,966 - #13 =
+INFO  19:56:23,966 - #28 900
+INFO  19:56:23,966 - #16 ;
+INFO  19:56:23,967 - #27 niz
+INFO  19:56:23,967 - #21 [
+INFO  19:56:23,967 - #28 28
+INFO  19:56:23,967 - #20 ]
+INFO  19:56:23,967 - #15 --
+INFO  19:56:23,967 - #16 ;
+INFO  19:56:23,967 - #3 print
+INFO  19:56:23,967 - #18 (
+INFO  19:56:23,967 - #27 niz
+INFO  19:56:23,967 - #21 [
+INFO  19:56:23,967 - #28 28
+INFO  19:56:23,967 - #20 ]
+INFO  19:56:23,967 - #19 )
+INFO  19:56:23,968 - #16 ;
+INFO  19:56:23,968 - #23 }
+INFO  19:56:23,968 - #23 }
+INFO  19:56:23,975 - sad si u factorConst  na liniji 8
+INFO  19:56:23,975 - tip strukture je sledeci 1 na liniji 8
+INFO  19:56:23,976 - sad si u factorConst  na liniji 10
+INFO  19:56:23,976 - tip strukture je sledeci 1 na liniji 10
+INFO  19:56:23,976 - Pronadjen je simbol niza  na liniji 10
+INFO  19:56:23,976 - sad si u factorConst  na liniji 10
+INFO  19:56:23,976 - tip strukture je sledeci 1 na liniji 10
+INFO  19:56:23,976 - sad si u factorConst  na liniji 12
+INFO  19:56:23,976 - tip strukture je sledeci 1 na liniji 12
+INFO  19:56:23,976 - Pronadjen je simbol niza  na liniji 12
+INFO  19:56:23,976 - sad si u factorConst  na liniji 14
+INFO  19:56:23,976 - tip strukture je sledeci 1 na liniji 14
+INFO  19:56:23,976 - Pronadjen je simbol niza  na liniji 14
+INFO  19:56:23,976 - sad si u factorDesignator  na liniji 14
+INFO  19:56:23,977 - Obradjuje se print naredba na liniji 14
+INFO  19:56:23,978 - Generating bytecode file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj
+INFO  19:56:23,980 - Parsiranje uspesno zavrseno!

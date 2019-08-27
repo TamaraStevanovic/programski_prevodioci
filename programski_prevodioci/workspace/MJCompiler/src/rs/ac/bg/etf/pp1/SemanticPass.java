@@ -19,17 +19,13 @@ import rs.etf.pp1.symboltable.structure.SymbolDataStructure;
 public class SemanticPass extends VisitorAdaptor {
 
 	boolean errorDetected = false;
-	int printCallCount = 0;
+	// int printCallCount = 0;
 	boolean returnFound = false;
-	int nVars;
 
 	Struct currentType;
-	private List<Obj> enums = new ArrayList<Obj>();// da tu ulancam sve objektne cvorove razlicitih enuma na koje
-													// naidjem
-	
+
 	private int lastEnumVal = 0;
 
-	// List<Obj> formParams = new ArrayList<Obj>();
 	private boolean mainDef = false;
 	private Obj currMethod = null;
 
@@ -37,8 +33,7 @@ public class SemanticPass extends VisitorAdaptor {
 
 	private Struct returnStmtType = null;
 
-	////////////////// DATE METODE
-	////////////////// ///////////////////////////////////////////////////////////////////
+	////////////////// DATE METODE //////////////////////////////////////////////
 	Logger log = Logger.getLogger(getClass());
 	Struct boolType;
 	private Struct currentEnumType;
@@ -62,8 +57,6 @@ public class SemanticPass extends VisitorAdaptor {
 
 	/////////////////////////// PROGRAM //////////////////////////////////////////
 	public void visit(Program program) {
-		// obj je dva nivoa dole od neterminala Program;
-		// na dole uvek mozemo da dohvatamo sta nam treba
 		Tab.chainLocalSymbols(program.getProgName().obj);
 		Tab.closeScope();
 		if (mainDef == false)
@@ -79,7 +72,6 @@ public class SemanticPass extends VisitorAdaptor {
 
 	/////////////////////////////////////////////////////////////////////////////
 	public void visit(Type Type) {
-		System.out.println("******** Type");
 		currentType = Tab.noType;
 		String typeName = Type.getTypeName();
 		Obj typeObj = Tab.find(typeName);
@@ -96,6 +88,7 @@ public class SemanticPass extends VisitorAdaptor {
 		Type.struct = currentType;
 	}
 
+	/* *************************************************** */
 	public void visit(DesignatorSingle DesignatorSingle) {
 		DesignatorSingle.obj = Tab.noObj;
 		String name = DesignatorSingle.getName();
@@ -109,371 +102,9 @@ public class SemanticPass extends VisitorAdaptor {
 		}
 	}
 
-	//////////////////////// VARIJABLE ////////////////////////
-	public void visit(GlobVarSingleDefWithoutBracket GlobVarSingleDefWithoutBracket) {
-		String name = GlobVarSingleDefWithoutBracket.getVarName();
-		if (Tab.currentScope().findSymbol(name) == null) {
-			GlobVarSingleDefWithoutBracket.obj = Tab.insert(Obj.Var, name, currentType);
-		} else {
-			report_error("Visestruko definisanje simbola " + name, GlobVarSingleDefWithoutBracket);
-			GlobVarSingleDefWithoutBracket.obj = Tab.noObj;
-		}
-	}
-
-	// izmeniti
-	public void visit(GlobVarSingleDefWithBracket GlobVarSingleDefWithBracket) {
-		String name = GlobVarSingleDefWithBracket.getVarName();
-		if (Tab.currentScope().findSymbol(name) == null) {
-			GlobVarSingleDefWithBracket.obj = Tab.insert(Obj.Var, name, new Struct(Struct.Array, currentType));
-		} else {
-			report_error("Visestruko definisanje simbola " + name, GlobVarSingleDefWithBracket);
-			GlobVarSingleDefWithBracket.obj = Tab.noObj;
-		}
-	}
-	//////////////////// CONSTANTS
-	//////////////////// /////////////////////////////////////////////////////////////
-
-	public void visit(SingleConstElem SingleConstElem) {
-		String name = SingleConstElem.getConstName();
-		if (Tab.find(name) != Tab.noObj) {
-			report_error("Visestruko definisanje simbola " + name, SingleConstElem);
-		}
-		Obj o = Tab.insert(Obj.Con, name, currentType);
-		int address = SingleConstElem.getTypeConst().struct.getKind();
-		o.setAdr(address);
-	}
-
-	public void visit(CharacterConst CharacterConst) {
-		int value = CharacterConst.getValue();
-		Struct s = new Struct(value);
-		s.setElementType(Tab.charType);
-		CharacterConst.struct = s;
-	}
-
-	public void visit(BooleanConst BooleanConst) {
-		boolean value = BooleanConst.getValue();
-		Struct s = new Struct(value ? 1 : 0);
-		s.setElementType(boolType);
-		BooleanConst.struct = s;
-	}
-
-	public void visit(NumberConst NumberConst) {
-		// kada posecujemo ovaj cvor napravimo struct cvor sa njegovom vrednoscu
-		// a posle ce TypeConst biti bas taj cvor ako je u pitanju NUMBER
-		// i onda ce se sa SingleConstElem.getTypeConst().struct.getKind();
-		// dohvatiti ta vrednost
-		int value = NumberConst.getValue();
-		// System.out.println("Stampam vrednosttt" + value);
-		Struct s = new Struct(value);
-		s.setElementType(Tab.intType);
-		NumberConst.struct = s;
-	}
-
-	//////////////////////////// METODE
-	////////////////////////////////////
-	public void visit(MethodTypeAndName methodTypeAndName) {
-		Struct type = methodTypeAndName.getType().struct;
-		String name = methodTypeAndName.getMethodName();
-		currMethod = methodTypeAndName.obj = Tab.insert(Obj.Meth, name, type);
-		Tab.openScope();
-		returnFound = false;
-		// formParams.clear();
-	}
-
-	public void visit(MethodVoidAndName methodVoidAndName) {
-		// proverit da li je pitanju metoda main()
-		// ona sme da bude definisana samo jednom
-		Struct type = Tab.noType;
-		String name = methodVoidAndName.getMethodName();
-		if (name.contentEquals("main")) {
-			mainDef = true;
-			// da ubelezimo ako smo definisali main metod
-		}
-
-		// fali provera da li vec postoji u TS
-		if (Tab.find(name) != Tab.noObj) {
-			report_error("U programu je vec definisana metoda " + name, methodVoidAndName);
-		}
-		currMethod = methodVoidAndName.obj = Tab.insert(Obj.Meth, name, type);
-		Tab.openScope();
-		returnFound = false;
-		// formParams.clear();
-	}
-
-	public void visit(MethodDeclWithoutFormPars methodDeclWithoutFormPars) {
-		Tab.chainLocalSymbols(methodDeclWithoutFormPars.getMethodTypeName().obj);
-		// hashForm.put(methodDeclWithoutFormPars.obj.getName(), formParams);
-		Tab.closeScope();
-		if (!returnFound && currMethod.getType() != Tab.noType) {
-			report_error("Nedostaje return naredba funkciji " + currMethod.getName(), methodDeclWithoutFormPars);
-		}
-	}
-
-	public void visit(MethodDeclWithFormPars methodDeclWithFormPars) {
-		Tab.chainLocalSymbols(methodDeclWithFormPars.getMethodTypeName().obj);
-		// hashForm.put(methodDeclWithFormPars.obj.getName(), formParams);
-		Tab.closeScope();
-		if (!returnFound && currMethod.getType() != Tab.noType) {
-			report_error("Nedostaje return naredba funkciji " + currMethod.getName(), methodDeclWithFormPars);
-		}
-	}
-	////////////////////////// ENUMI //////////////////////////////////////////////
-
-	public void visit(EnumDecl enumDecl) {
-		lastEnumVal = 0;
-		SymbolDataStructure str = SymbolTableFactory.instance().createSymbolTableDataStructure();
-		/*
-		 * for (Obj object : currEnum) { str.insertKey(object); }
-		 */
-		// umesto ovoga gore, Tab.chainLocalSymbols(enumDecl.getEnumDeclName().obj),
-		// Tab.closeScope();
-		Tab.chainLocalSymbols(enumDecl.getEnumDeclName().obj);
-		Tab.closeScope();
-		enumDecl.getEnumDeclName().obj.getType().setMembers(str);
-		// enums.add(enumDecl.getEnumDeclName().obj);
-		// currEnum.clear();// brisemo tekuci enum
-	}
-
-	public void visit(EnumDeclName EnumDeclName) {
-		// System.out.println("UNOSENJE ENUMA U TS");
-		Obj typeObj = Tab.find(EnumDeclName.getEnumDeclName());
-		if (typeObj != Tab.noObj) {
-			report_error("Vec postoji enum sa imenom" + typeObj.getName(), EnumDeclName);
-		} else {
-			// nije nadjen i treba ga dodati
-			// tip nije int, nego new Struct(Struct.ENUM)!
-			// Obj enumNode= Tab.insert(Obj.Type, typeObj.getName(), Tab.intType);
-			Obj enumNode = Tab.insert(Obj.Type, EnumDeclName.getEnumDeclName(),
-					currentEnumType = new Struct(Struct.Enum));
-			EnumDeclName.obj = enumNode;
-			// nakon ovoga, uradi Tab.OpenScope();
-			Tab.openScope();
-		}
-	}
-
-	public void visit(EnumSingleDefDefault enumSingleDefDefault) {
-		// jedino ogranicenje je da vidimo da li je konkretna const vec definisana u
-		// ovom enumu
-		// pretazicemo ceo scope, al cemo proveriti da li je tipa trenutnog enuma
-		Obj typeObj = Tab.find(enumSingleDefDefault.getEnumName());
-		if (typeObj != Tab.noObj) {
-			// vec postoji simbol sa ovim imenom, ali on je mozda i neka druga var/const itd
-			if (typeObj.getType().getKind() == Struct.Enum) {
-				report_error("Vec postoji konstanta u tekucem enumu sa imenom" + typeObj.getName(),
-						enumSingleDefDefault);
-			}
-		} else {
-			Obj obj = Tab.insert(Obj.Con, enumSingleDefDefault.getEnumName(), currentEnumType);
-			enumSingleDefDefault.obj = obj;
-			report_info(
-					"Deklarisana je konstanta " + enumSingleDefDefault.getEnumName() + " sa vrednoscu " + lastEnumVal,
-					enumSingleDefDefault);
-		}
-		enumSingleDefDefault.obj.setAdr(lastEnumVal++);
-		// currEnum.add(enumSingleDefDefault.obj);
-	}
-
-	public void visit(EnumSingleDef enumSingleDef) {
-		Obj typeObj = Tab.find(enumSingleDef.getEnumName());
-		if (typeObj != Tab.noObj) {
-			// vec postoji ovaj simboj u ovom opsegu
-			if (typeObj.getType().getKind() == Struct.Enum) {
-				report_error("Vec postoji konstanta u tekucem enumu sa imenom" + typeObj.getName(), enumSingleDef);
-			}
-		} else {
-			Obj obj = Tab.insert(Obj.Con, enumSingleDef.getEnumName(), Tab.intType);
-			enumSingleDef.obj = obj;
-			report_info("Deklarisana je konstanta " + enumSingleDef.getEnumName() + " sa vrednoscu "
-					+ enumSingleDef.getVal(), enumSingleDef);
-		}
-		enumSingleDef.obj.setAdr(enumSingleDef.getVal());
-		// currEnum.add(enumSingleDef.obj);
-		lastEnumVal = enumSingleDef.getVal() + 1;
-
-	}
-	/////////////////////////////// PAREMTRI FUNKCIJE
-	/////////////////////////////// ///////////////////////////////////////////////////////
-
-	public void visit(FormalParamDef formalParamDef) {
-		// poukusavamo da nadjemo datu promenljivu u trenutnom scope
-		// ovde takodje zelimo da imamo pokazivac na Obj
-		Obj obj = Tab.currentScope.findSymbol(formalParamDef.getParamName());
-
-		if (obj != null) {
-			report_error("Postoji definisana promenljiva sa imenom " + formalParamDef.getParamName(), formalParamDef);
-		} else {
-			Obj node = Tab.insert(Obj.Var, formalParamDef.getParamName(), formalParamDef.getType().struct);
-			// formParams.add(node);
-		}
-	}
-
-	public void visit(FormalParamArrayDef formalParamArrayDef) {
-		Obj obj = Tab.currentScope.findSymbol(formalParamArrayDef.getParamName());
-
-		if (obj != null) {
-			report_error("Postoji definisana promenljiva sa imenom " + formalParamArrayDef.getParamName(),
-					formalParamArrayDef);
-		} else {
-
-			Obj node = Tab.insert(Obj.Var, formalParamArrayDef.getParamName(),
-					new Struct(Struct.Array, formalParamArrayDef.getType().struct));
-			// formParams.add(node);
-		}
-	}
-
-	//////////////////////////////// DESIGNATORI
-	//////////////////////////////// /////////////////////////////////////////////////////
-	public void visit(DesignatorStmtINC designatorStmtINC) {
-		System.out.println("SAD SI U designatorStmtINC");
-
-		// designator mora biti promenljiva ili element niza
-		// elementi niza se ubacuju kao Var
-		Obj obj = Tab.find(designatorStmtINC.getDesignator().obj.getName());
-		if (obj == Tab.noObj) {
-			// nije nadjen
-			report_error(obj.getName() + "nije ni deklarican", designatorStmtINC);
-		} else {
-			// nadjen je ali treba proveriti da li je tipa int
-			if (obj.getType().getKind() != Tab.intType.getKind() && obj.getKind() != Obj.Var) {
-				report_error(obj.getName() + "nije tipa integer i ne moze da se radi INC", designatorStmtINC);
-			}
-			// inc.getDesignator().obj.getType() == Tab.intType)
-		}
-	}
-
-	public void visit(DesignatorStmtDEC designatorStmtDEC) {
-		// designator mora biti promenljiva ili element niza
-		// elementi niza se ubacuju kao Var
-		System.out.println("SAD SI U designatorStmtDEC");
-		Obj obj = Tab.find(designatorStmtDEC.getDesignator().obj.getName());
-		if (obj == Tab.noObj) {
-			// nije nadjen
-			report_error(obj.getName() + "nije ni deklarican", designatorStmtDEC);
-		} else {
-			// nadjen je ali treba proveriti da li je tipa int
-			if (obj.getType().getKind() != Tab.intType.getKind() && obj.getKind() != Obj.Var) {
-				report_error(obj.getName() + "nije tipa integer i ne moze da se radi DEC", designatorStmtDEC);
-			}
-			// inc.getDesignator().obj.getType() == Tab.intType)
-		}
-	}
-
-	public void visit(DesignatorStmtWithoutParams designatorStmtWithoutParams) {
-		Obj obj = Tab.find(designatorStmtWithoutParams.obj.getName());
-		if (obj.getKind() != Obj.Meth) {
-			report_error("Nadjeni poziv nije metoda!", designatorStmtWithoutParams);
-		}
-	}
-
-	public void visit(DesignatorStmtWithParams designatorStmtWithParams) {
-		Obj obj = designatorStmtWithParams.getDesignator().obj;
-		if (obj.getKind() != Obj.Meth) {
-			report_error("Nadjeni poziv nije metoda!", designatorStmtWithParams);
-		} else {
-			// jeste metod, treba da vidimo slaganje po parametrima
-
-			// for(Obj o: designatorStmtWithParams.getDesignator().obj.getLocalSymbols()) {
-			// }
-
-			List<Obj> formalPars = hashForm.get(designatorStmtWithParams.getDesignator().obj.getName());
-			int sizeFormal = formalPars.size();
-
-			List<Struct> actParsList = designatorStmtWithParams.getActPars().list;
-
-			if (sizeFormal != actParsList.size()) {
-				report_error("Prosledjeni parametri se ne poklapaju po broju sa argumentima metode!",
-						designatorStmtWithParams);
-			} else {
-				// sada treba proveriti svaki element zasebno
-				for (int i = 0; i < sizeFormal; i++) {
-					if (formalPars.get(i).getType().getKind() != actParsList.get(i).getKind())
-						report_error("Prosledjeni parametri se ne poklapaju sa argumentima!", designatorStmtWithParams);
-				}
-			}
-
-		}
-	}
-
-	//////////////////////// ACT PARAMETERS ////////////////////////////
-	public void visit(SingleActParameter singleActParameter) {
-		singleActParameter.list = new ArrayList<Struct>();
-		singleActParameter.list.add(singleActParameter.getExpr().struct);
-		// actParams.add(singleActParameter.getExpr().struct);
-	}
-
-	public void visit(ActParameters actParameters) {
-		actParameters.list = actParameters.getActPars().list;
-		actParameters.list.add(actParameters.getExpr().struct);
-	}
-
-	//////////////////////////// POMOCNE
-	//////////////////////////// METODE///////////////////////////////////////////////////
-	private boolean testArrayKind(Struct str) {
-		if (str.getKind() == Struct.Array && testKind(str))
-			return true;
-		return false;
-	}
-
-	private boolean testKind(Struct str) {
-		if (str.getKind() == Tab.charType.getKind() || str.getKind() == Tab.intType.getKind()
-				|| str.getKind() == Struct.Bool)
-			return true;
-		return false;
-	}
-
-	///////////////////////////// STATEMENTS//////////////////////////
-	public void visit(ReadStatement readStatement) {
-		// designator mora biti promenljiva ili element niza ili polje unutar objekta
-		// designator mora biti int char ili bool
-		Obj obj = Tab.find(readStatement.getDesignator().obj.getName());
-		if (obj.getKind() != Obj.Var && obj.getKind() != Obj.Elem) {
-			report_error(obj.getName() + "nije promenljiva ni element niza!", readStatement);
-		}
-		if (obj.getType().getKind() != Struct.Bool && obj.getType().getKind() != Struct.Int
-				&& obj.getType().getKind() != Struct.Char) {
-			report_error(obj.getName() + "nije tipa int,char ili bool!", readStatement);
-		}
-	}
-
-	public void visit(PrintStatementTwoArg printStatementTwoArg) {
-		Struct exprType = printStatementTwoArg.getExpr().struct;
-		if (!testKind(exprType)) {
-			report_error("nije tipa int,char ili bool!", printStatementTwoArg);
-		}
-		report_info("Obradjuje se print naredba", printStatementTwoArg);
-	}
-
-	public void visit(PrintStatementOneArg printStatementOneArg) {
-		Struct exprType = printStatementOneArg.getExpr().struct;
-		if (!testKind(exprType)) {
-			report_error("nije tipa int,char ili bool!", printStatementOneArg);
-		}
-		report_info("Obradjuje se print naredba", printStatementOneArg);
-	}
-
-	// ??? sta jos ovde treba
-	public void visit(ReturnStmtWithoutExpr returnStmtWithoutExpr) {
-		if (currMethod.getType() != Tab.noType) {
-			report_error("Metoda " + currMethod.getName() + " nije void", returnStmtWithoutExpr);
-		}
-		returnStmtType = Tab.noType;
-		returnFound = true;
-	}
-
-	// ??? sta jos ovde treba
-	public void visit(ReturnStmtWithExpr returnStmtWithExpr) {
-		if (currMethod.getType() != returnStmtWithExpr.getExpr().struct) {
-			report_error("Povratna vrednost j eloseg tipa", returnStmtWithExpr);
-		}
-		returnStmtType = returnStmtWithExpr.getExpr().struct;
-		returnFound = true;
-	}
-
-	/////////////////////// DESIGNATOR ZA ENUM I NIZ/////////////////////////////
 	public void visit(DesignatorWithDOT designatorWithDOT) {
 		Obj obj = Tab.noObj;
 		obj = Tab.find(designatorWithDOT.getEnumIdentity());
-		System.out.println("aaaaaaaaaaaaaaaaaa " + obj.getName());
 		if (obj == Tab.noObj || obj.getType().getKind() != Struct.Enum) {
 			report_error("Ne postoji trazeni enum!", designatorWithDOT);
 			return;
@@ -496,35 +127,315 @@ public class SemanticPass extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorName designatorName) {
-		designatorName.obj= Tab.find(designatorName.getDesignatorName());
+		// u njegov objektni cvor upisujemo cvor iz TSa
+		designatorName.obj = Tab.find(designatorName.getDesignatorName());
 
 	}
 
 	public void visit(DesignatorWithExpr designatorWithExpr) {
 		Obj o = designatorWithExpr.getDesignatorIdentity().obj;
-			// nasao ga je u TS
-			if (o.getType().getKind() == Struct.Array) {
-				designatorWithExpr.obj = new Obj(Obj.Elem, o.getName(), o.getType().getElemType());
-				if (designatorWithExpr.getExpr().struct != Tab.intType
-						&& designatorWithExpr.getExpr().struct.getKind() != Struct.Enum) {
-					report_error("Expression nije tipa integer ", designatorWithExpr);
-					return;
-				}
-				report_info("Pronadjen je simbol niza ", designatorWithExpr);
-			} else {
-				report_error(o.getName() + " nije niz", designatorWithExpr);
-			
+		// nasao ga je u TS
+		if (o.getType().getKind() == Struct.Array) {
+			designatorWithExpr.obj = new Obj(Obj.Elem, o.getName(), o.getType().getElemType());
+			if (designatorWithExpr.getExpr().struct != Tab.intType
+					&& designatorWithExpr.getExpr().struct.getKind() != Struct.Enum) {
+				report_error("Expression nije tipa integer ", designatorWithExpr);
+				return;
+			}
+			report_info("Pronadjen je simbol niza ", designatorWithExpr);
+		} else {
+			report_error(o.getName() + " nije niz", designatorWithExpr);
+
 		}
 
 	}
+	/* ********** CONSTANTS *********** */
 
+	public void visit(SingleConstElem SingleConstElem) {
+		String name = SingleConstElem.getConstName();
+		if (Tab.find(name) != Tab.noObj) {
+			report_error("Visestruko definisanje simbola " + name, SingleConstElem);
+		}
+		Obj o = Tab.insert(Obj.Con, name, currentType);
+		int address = SingleConstElem.getTypeConst().struct.getKind();
+		o.setAdr(address);
+
+	}
+
+	public void visit(CharacterConst CharacterConst) {
+		int value = CharacterConst.getValue();
+		Struct s = new Struct(value);
+		s.setElementType(Tab.charType);
+		CharacterConst.struct = s;
+	}
+
+	public void visit(BooleanConst BooleanConst) {
+		boolean value = BooleanConst.getValue();
+		Struct s = new Struct(value ? 1 : 0);
+		s.setElementType(boolType);
+		BooleanConst.struct = s;
+	}
+
+	public void visit(NumberConst NumberConst) {
+		// kada posecujemo ovaj cvor napravimo struct cvor sa njegovom vrednoscu
+		// i onda ce se sa SingleConstElem.getTypeConst().struct.getKind();
+		// dohvatiti ta vrednost
+		int value = NumberConst.getValue();
+		// System.out.println("Stampam vrednosttt" + value);
+		Struct s = new Struct(value);
+		s.setElementType(Tab.intType);
+		NumberConst.struct = s;
+	}
+
+	/* ************** VARIJABLE **************** */
+	public void visit(GlobVarSingleDefWithoutBracket GlobVarSingleDefWithoutBracket) {
+		String name = GlobVarSingleDefWithoutBracket.getVarName();
+		if (Tab.currentScope().findSymbol(name) == null) {
+			GlobVarSingleDefWithoutBracket.obj = Tab.insert(Obj.Var, name, currentType);
+		} else {
+			report_error("Visestruko definisanje simbola " + name, GlobVarSingleDefWithoutBracket);
+			GlobVarSingleDefWithoutBracket.obj = Tab.noObj;
+		}
+	}
+
+	// izmeniti
+	public void visit(GlobVarSingleDefWithBracket GlobVarSingleDefWithBracket) {
+		String name = GlobVarSingleDefWithBracket.getVarName();
+		if (Tab.currentScope().findSymbol(name) == null) {
+			GlobVarSingleDefWithBracket.obj = Tab.insert(Obj.Var, name, new Struct(Struct.Array, currentType));
+		} else {
+			report_error("Visestruko definisanje simbola " + name, GlobVarSingleDefWithBracket);
+			GlobVarSingleDefWithBracket.obj = Tab.noObj;
+		}
+	}
+
+	/* ***************** METODE ***************** */
+	public void visit(MethodTypeAndName methodTypeAndName) {
+		Struct type = methodTypeAndName.getType().struct;
+		String name = methodTypeAndName.getMethodName();
+		if (Tab.find(name) != Tab.noObj) {
+			report_error("U programu je vec definisana metoda " + name, methodTypeAndName);
+		}
+		currMethod = methodTypeAndName.obj = Tab.insert(Obj.Meth, name, type);
+		Tab.openScope();
+		returnFound = false;
+		// formParams.clear();
+	}
+
+	public void visit(MethodVoidAndName methodVoidAndName) {
+		// proveriti da li je pitanju metoda main()
+		// ona sme da bude definisana samo jednom
+		Struct type = Tab.noType;
+		String name = methodVoidAndName.getMethodName();
+		if (name.contentEquals("main")) {
+			mainDef = true;
+			// da ubelezimo ako smo definisali main metod
+		}
+
+		// fali provera da li vec postoji u TS
+		if (Tab.find(name) != Tab.noObj) {
+			report_error("U programu je vec definisana metoda " + name, methodVoidAndName);
+		}
+		currMethod = methodVoidAndName.obj = Tab.insert(Obj.Meth, name, type);
+		Tab.openScope();
+		returnFound = false;
+	}
+
+	public void visit(MethodDeclWithoutFormPars methodDeclWithoutFormPars) {
+		Tab.chainLocalSymbols(methodDeclWithoutFormPars.getMethodTypeName().obj);
+		// hashForm.put(methodDeclWithoutFormPars.obj.getName(), formParams);
+		Tab.closeScope();
+		if (!returnFound && currMethod.getType() != Tab.noType) {
+			report_error("Nedostaje return naredba funkciji " + currMethod.getName(), methodDeclWithoutFormPars);
+		}
+	}
+
+	public void visit(MethodDeclWithFormPars methodDeclWithFormPars) {
+		currMethod.setFpPos(methodDeclWithFormPars.getFormPars().obj.getFpPos());
+		Tab.chainLocalSymbols(methodDeclWithFormPars.getMethodTypeName().obj);
+		// hashForm.put(methodDeclWithFormPars.obj.getName(), formParams);
+		Tab.closeScope();
+		if (!returnFound && currMethod.getType() != Tab.noType) {
+			report_error("Nedostaje return naredba funkciji " + currMethod.getName(), methodDeclWithFormPars);
+		}
+	}
+
+	/* ************************* ENUMI /************************** */
+	public void visit(EnumDeclName EnumDeclName) {
+		Obj typeObj = Tab.find(EnumDeclName.getEnumDeclName());
+		if (typeObj != Tab.noObj) {
+			report_error("Vec postoji enum sa imenom" + typeObj.getName(), EnumDeclName);
+		} else {
+			// nije nadjen i treba ga dodati
+			// tip nije int, nego new Struct(Struct.ENUM)!
+			// Obj enumNode= Tab.insert(Obj.Type, typeObj.getName(), Tab.intType);
+			Obj enumNode = Tab.insert(Obj.Type, EnumDeclName.getEnumDeclName(),
+					currentEnumType = new Struct(Struct.Enum));
+			EnumDeclName.obj = enumNode;
+			Tab.openScope();
+		}
+	}
+
+	public void visit(EnumDecl enumDecl) {
+		lastEnumVal = 0;
+		Tab.chainLocalSymbols(enumDecl.getEnumDeclName().obj);
+		Tab.closeScope();
+	}
+
+	public void visit(EnumSingleDef enumSingleDef) {
+		Obj typeObj = Tab.currentScope.findSymbol(enumSingleDef.getEnumName());
+		// da li treba obican find ili ovaj sa scope-om?
+		if (typeObj != null) {
+			// vec postoji ovaj simbol u ovom opsegu
+//			if (typeObj.getType().getKind() == Struct.Enum) {
+				report_error("Vec postoji konstanta u tekucem enumu sa imenom" + typeObj.getName(), enumSingleDef);
+//			}
+		} else {
+			Obj obj = Tab.insert(Obj.Con, enumSingleDef.getEnumName(), currentEnumType);
+			enumSingleDef.obj = obj;
+			report_info("Deklarisana je konstanta " + enumSingleDef.getEnumName() + " sa vrednoscu "
+					+ enumSingleDef.getVal(), enumSingleDef);
+		}
+		enumSingleDef.obj.setAdr(enumSingleDef.getVal());
+		lastEnumVal = enumSingleDef.getVal() + 1;
+
+	}
+
+	public void visit(EnumSingleDefDefault enumSingleDefDefault) {
+		// jedino ogranicenje je da vidimo da li je konkretna const vec definisana u
+		// ovom enumu
+		// pretazicemo ceo scope, al cemo proveriti da li je tipa trenutnog enuma
+		Obj typeObj = Tab.currentScope.findSymbol(enumSingleDefDefault.getEnumName());
+		if (typeObj != null) {
+			// vec postoji simbol sa ovim imenom, ali on je mozda i neka druga var/const itd
+//			if (typeObj.getType().getKind() == Struct.Enum) {
+				report_error("Vec postoji konstanta u tekucem enumu sa imenom" + typeObj.getName(),
+						enumSingleDefDefault);
+//			}
+		} else {
+			Obj obj = Tab.insert(Obj.Con, enumSingleDefDefault.getEnumName(), currentEnumType);
+			enumSingleDefDefault.obj = obj;
+			report_info(
+					"Deklarisana je konstanta " + enumSingleDefDefault.getEnumName() + " sa vrednoscu " + lastEnumVal,
+					enumSingleDefDefault);
+		}
+		enumSingleDefDefault.obj.setAdr(lastEnumVal++);
+	}
+
+	/* /**************************** PAREMETRI FUNKCIJE ***************** */
+
+	public void visit(FormalParamDef formalParamDef) {
+		// poukusavamo da nadjemo datu promenljivu u trenutnom scope
+		// ovde takodje zelimo da imamo pokazivac na Obj
+		Obj obj = Tab.currentScope.findSymbol(formalParamDef.getParamName());
+
+		if (obj != null) {
+			report_error("Postoji definisana promenljiva sa imenom " + formalParamDef.getParamName(), formalParamDef);
+		} else {
+			Obj node = Tab.insert(Obj.Var, formalParamDef.getParamName(), formalParamDef.getType().struct);
+			formalParamDef.obj = node;// ovu liniju sam dodala danas
+
+		}
+	}
+
+	public void visit(FormalParamArrayDef formalParamArrayDef) {
+		Obj obj = Tab.currentScope.findSymbol(formalParamArrayDef.getParamName());
+
+		if (obj != null) {
+			report_error("Postoji definisana promenljiva sa imenom " + formalParamArrayDef.getParamName(),
+					formalParamArrayDef);
+		} else {
+
+			Obj node = Tab.insert(Obj.Var, formalParamArrayDef.getParamName(),
+					new Struct(Struct.Array, formalParamArrayDef.getType().struct));
+			formalParamArrayDef.obj = node;// ovu liniju sam dodala danas
+		}
+	}
+	
+	public void visit(FormalParameterOne formalParameterOne) {
+		Obj fp = formalParameterOne.getFormParam().obj;
+		fp.setFpPos(1);
+		formalParameterOne.obj = fp;
+	}
+	
+	public void visit(FormalParametersMany formalParametersMany) {
+		Obj fpars = formalParametersMany.getFormPars().obj;
+		Obj fp = formalParametersMany.getFormParam().obj;
+		fp.setFpPos(fpars.getFpPos() + 1);
+		formalParametersMany.obj = fp;
+	}
+
+	/* ******************* STATEMENTS******************** */
+	public void visit(ReadStatement readStatement) {
+		Obj obj = readStatement.getDesignator().obj;
+		
+		if (obj.getKind() != Obj.Var && obj.getKind() != Obj.Elem) {
+			// Elem je koriscenje niza i taj cvor se pravi kad posecujemo DesignatorWithExpr
+			// Pri citanju to mora bit ili Var ili element niza
+			report_error(obj.getName() + "nije promenljiva ni element niza!", readStatement);
+		}
+		if (obj.getType().getKind() != Struct.Bool && obj.getType().getKind() != Struct.Int
+				&& obj.getType().getKind() != Struct.Char) {
+			// ta varijabla koja se koristi mora biti int char ili bool
+			report_error(obj.getName() + "nije tipa int,char ili bool!", readStatement);
+		}
+	}
+
+	public void visit(PrintStatementTwoArg printStatementTwoArg) {
+		Struct exprType = printStatementTwoArg.getExpr().struct;
+
+		if (!testKind(exprType)) {
+			report_error("nije tipa int,char ili bool!", printStatementTwoArg);
+		}
+		report_info("Obradjuje se print naredba", printStatementTwoArg);
+	}
+
+	public void visit(PrintStatementOneArg printStatementOneArg) {
+		Struct exprType = printStatementOneArg.getExpr().struct;
+
+		if (!testKind(exprType)) {
+			report_error("nije tipa int,char ili bool!", printStatementOneArg);
+		}
+		report_info("Obradjuje se print naredba", printStatementOneArg);
+	}
+
+	public void visit(ReturnStmtWithoutExpr returnStmtWithoutExpr) {
+		if (currMethod.getType() != Tab.noType) {
+			report_error("Metoda " + currMethod.getName() + " nije void", returnStmtWithoutExpr);
+		}
+		returnStmtType = Tab.noType;
+		returnFound = true;
+	}
+
+	public void visit(ReturnStmtWithExpr returnStmtWithExpr) {
+		if (currMethod.getType() != returnStmtWithExpr.getExpr().struct) {
+			report_error("Povratna vrednost je loseg tipa", returnStmtWithExpr);
+		}
+		returnStmtType = returnStmtWithExpr.getExpr().struct;
+		returnFound = true;
+	}
+
+	/* ***pomocne metode *** */
+	private boolean testArrayKind(Struct str) {
+		if (str.getKind() == Struct.Array && testKind(str))
+			return true;
+		return false;
+	}
+
+	private boolean testKind(Struct str) {
+		if (str.getKind() == Tab.charType.getKind() || str.getKind() == Tab.intType.getKind()
+				|| str.getKind() == Struct.Bool)
+			return true;
+		return false;
+	}
+
+	/* *** designatorStmts*** */
 	public void visit(DesignatorStmtAssign designatorStmtAssign) {
 		// ovde smo nakon sto smo posetili Designator(tu je utvrdjeno da postoji)
 		// i nakon sto smo procitali Expr
 		// treba da vidimo da li je designator promenljiva, element niza
 		// sada samo treba da vidimo da li su kompatibillnih tipova
 
-		System.out.println("Sad si u DesignatorStmtAssign    " + designatorStmtAssign.getDesignator().obj.getName());
 		if (designatorStmtAssign.getDesignator().obj.getKind() != Obj.Var
 				&& designatorStmtAssign.getDesignator().obj.getKind() != Obj.Elem) {
 			report_error("Designator nije ni promenljiva ni element niza ", designatorStmtAssign);
@@ -532,20 +443,114 @@ public class SemanticPass extends VisitorAdaptor {
 		Struct desType = designatorStmtAssign.getDesignator().obj.getType();
 		Struct exprType = designatorStmtAssign.getExpr().struct;
 
-		if (designatorStmtAssign.getDesignator().obj.getType().getKind() == Struct.Enum
-				&& designatorStmtAssign.getExpr().struct.getKind() == Struct.Int) {
+//		if (designatorStmtAssign.getDesignator().obj.getType().getKind() == Struct.Enum
+//				&& designatorStmtAssign.getExpr().struct.getKind() == Struct.Int) {
+//			report_error("Tipovi nisu kompatibilni za dodelu", designatorStmtAssign);
+//		} else {
+//
+//		}
+		if (!desType.assignableTo(exprType) && !(desType == Tab.intType && exprType.getKind() == Struct.Enum)) {
 			report_error("Tipovi nisu kompatibilni za dodelu", designatorStmtAssign);
-		} else {
-
 		}
-		if (!desType.assignableTo(exprType)) {
-			report_error("Tipovi nisu kompatibilni za dodelu", designatorStmtAssign);
-		}
-
 		// ako je Designator tipa int onda mozemo da desno imamo i ENUM i INT
-		// ako je Designator tipa ENUM, onda desno mozemo da imamo samo elemente TOG
-		// ENUMA
+		// ako je Designator tipa ENUM, onda desno mozemo da imamo samo elemente TOG ENUMA
+	
+	}
 
+	public void visit(DesignatorStmtINC designatorStmtINC) {
+		
+		// designator mora biti promenljiva ili element niza
+		// elementi niza se ubacuju kao Var
+		Obj obj = designatorStmtINC.getDesignator().obj;
+	
+			// nadjen je ali treba proveriti da li je tipa int
+			if (obj.getType() != Tab.intType || (obj.getKind() != Obj.Var && obj.getKind() != Obj.Elem)) {
+				report_error(obj.getName() + "nie tipa integer i ne moze da se radi INC", designatorStmtINC);
+			}
+		
+	}
+
+	public void visit(DesignatorStmtDEC designatorStmtDEC) {
+		// designator mora biti promenljiva ili element niza tj Var ili Elem, zar ne???
+		// elementi niza se ubacuju kao Var
+		Obj obj = designatorStmtDEC.getDesignator().obj;
+		
+		// nadjen je ali treba proveriti da li je tipa int
+		if (obj.getType() != Tab.intType || (obj.getKind() != Obj.Var && obj.getKind() != Obj.Elem)) {
+			report_error(obj.getName() + "nie tipa integer i ne moze da se radi INC", designatorStmtDEC);
+		}
+	}
+
+	public void visit(DesignatorStmtWithoutParams designatorStmtWithoutParams) {
+		Obj obj = designatorStmtWithoutParams.obj;
+		if (obj.getKind() != Obj.Meth) {
+			report_error("Nadjeni poziv nije metoda!", designatorStmtWithoutParams);
+		} else {
+			if (obj.getFpPos() > 0) {
+				report_error("Poziv funkcije "+obj.getName()+"bez parametara a treba " + obj.getFpPos(), designatorStmtWithoutParams);
+			}
+		}
+	}
+
+	public void visit(DesignatorStmtWithParams designatorStmtWithParams) {
+		Obj obj = designatorStmtWithParams.getDesignator().obj;
+		if (obj.getKind() != Obj.Meth) {
+			report_error("Nadjeni poziv nije metoda!", designatorStmtWithParams);
+		} else {
+			// jeste metod, treba da vidimo slaganje po parametrima
+
+			// for(Obj o: designatorStmtWithParams.getDesignator().obj.getLocalSymbols()) {
+			// }
+
+			List<Struct> actParsList = designatorStmtWithParams.getActPars().list;
+			for(Obj formPar: obj.getLocalSymbols()) {
+				if (formPar.getFpPos() == 0) {
+					break;
+				}
+				if (actParsList.isEmpty()) {
+					report_error("Premalo argumenata", designatorStmtWithParams);
+					break;
+				}
+				Struct actPar = actParsList.remove(0);
+				if (!actPar.assignableTo(formPar.getType())) {
+					report_error("Prosledjeni parametri se ne poklapaju sa argumentima!", designatorStmtWithParams);
+				}
+			}
+			if (!actParsList.isEmpty()) {
+				report_error("Previse argumenata", designatorStmtWithParams);
+			}
+		
+			
+			
+			
+//
+//			int sizeFormal = obj.getLocalSymbols().size();
+//
+//
+//			if (sizeFormal != actParsList.size()) {
+//				report_error("Prosledjeni parametri se ne poklapaju po broju sa argumentima metode!",
+//						designatorStmtWithParams);
+//			} else {
+//				// sada treba proveriti svaki element zasebno
+//				for (int i = 0; i < sizeFormal; i++) {
+//					if (formalPars.get(i).getType().getKind() != actParsList.get(i).getKind())
+//						
+//				}
+//			}
+
+		}
+	}
+	//////////////////// sredjeno je gore/////////////////////////
+
+	//////////////////////// ACT PARAMETERS ////////////////////////////
+	public void visit(SingleActParameter singleActParameter) {
+		singleActParameter.list = new ArrayList<Struct>();
+		singleActParameter.list.add(singleActParameter.getExpr().struct);
+	}
+
+	public void visit(ActParameters actParameters) {
+		actParameters.list = actParameters.getActPars().list;
+		actParameters.list.add(actParameters.getExpr().struct);
 	}
 
 	////////////////////////////////// TERM//////////////////////////////////////////
@@ -627,43 +632,59 @@ public class SemanticPass extends VisitorAdaptor {
 	public void visit(FactorDesingatorWithoutParams factorDesingatorWithoutParams) {
 		// ?? da li je ovo dobro
 		// bitno je samo da upisem tip, a kind je nebitan
-		Obj o = Tab.noObj;
-		o = Tab.find(factorDesingatorWithoutParams.getDesignator().obj.getName());
+		Obj o = factorDesingatorWithoutParams.getDesignator().obj;
 		if (o.getKind() == Obj.Meth) {
 			report_info("Pronajdena je metoda " + o.getName(), factorDesingatorWithoutParams);
 		} else {
 			report_error("Pronajden poziv " + o.getName() + "nije metoda!", factorDesingatorWithoutParams);
 
 		}
-		factorDesingatorWithoutParams.struct = new Struct(Struct.None,
-				factorDesingatorWithoutParams.getDesignator().obj.getType().getElemType());
+		factorDesingatorWithoutParams.struct = factorDesingatorWithoutParams.getDesignator().obj.getType();
 	}
 
 	public void visit(FactorDesignatorWithParams factorDesignatorWithParams) {
-		Obj o = Tab.noObj;
-		o = Tab.find(factorDesignatorWithParams.getDesignator().obj.getName());
+		Obj o = factorDesignatorWithParams.getDesignator().obj;
 		if (o.getKind() != Obj.Meth) {
 			report_error("Pronadjen poziv nije metoda!", factorDesignatorWithParams);
 		}
-		// proveriti da li se poklapaju tipovi stvarnih i prosledjenih argumenata
-		if (factorDesignatorWithParams.getActPars().list.size() != o.getLocalSymbols().size()) {
-			report_error("Nije isti broj formalnih parametara i argumenata poziva funkcije!",
-					factorDesignatorWithParams);
-		}
-
-		Iterator<Obj> it = o.getLocalSymbols().iterator();
-		ArrayList<Obj> lista = (ArrayList<Obj>) factorDesignatorWithParams.getActPars().list;
-		for (int i = 0; i < o.getLocalSymbols().size(); i++) {
-			if (it.next().getType().getKind() != lista.get(i).getType().getKind()) {
-				report_error("Tipovi formalnih i stvarnih argumenata se ne poklapaju!", factorDesignatorWithParams);
-				return;
+		
+		List<Struct> actParsList = factorDesignatorWithParams.getActPars().list;
+		for(Obj formPar: o.getLocalSymbols()) {
+			if (formPar.getFpPos() == 0) {
+				break;
+			}
+			if (actParsList.isEmpty()) {
+				report_error("Premalo argumenata", factorDesignatorWithParams);
+				break;
+			}
+			Struct actPar = actParsList.remove(0);
+			if (!actPar.assignableTo(formPar.getType())) {
+				report_error("Prosledjeni parametri se ne poklapaju sa argumentima!", factorDesignatorWithParams);
 			}
 		}
+		if (!actParsList.isEmpty()) {
+			report_error("Previse argumenata", factorDesignatorWithParams);
+		}
+
+		
+//		// proveriti da li se poklapaju tipovi stvarnih i prosledjenih argumenata
+//		if (factorDesignatorWithParams.getActPars().list.size() != o.getLocalSymbols().size()) {
+//			report_error("Nije isti broj formalnih parametara i argumenata poziva funkcije!",
+//					factorDesignatorWithParams);
+//		}
+//
+//		Iterator<Obj> it = o.getLocalSymbols().iterator();
+//		ArrayList<Obj> lista = (ArrayList<Obj>) factorDesignatorWithParams.getActPars().list;
+//		for (int i = 0; i < o.getLocalSymbols().size(); i++) {
+//			if (it.next().getType().getKind() != lista.get(i).getType().getKind()) {
+//				report_error("Tipovi formalnih i stvarnih argumenata se ne poklapaju!", factorDesignatorWithParams);
+//				return;
+//			}
+//		}
+
 		report_info("Pronadjena je metoda " + o.getName(), factorDesignatorWithParams);
 		// da li ovde sme da se stavi None? da li je uopste bitno sta je?
-		factorDesignatorWithParams.struct = new Struct(Struct.None,
-				factorDesignatorWithParams.getDesignator().obj.getType());
-
+		factorDesignatorWithParams.struct = factorDesignatorWithParams.getDesignator().obj.getType();
 	}
 
 	public void visit(FactorNew factorNew) {

@@ -44,7 +44,7 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.mainPc = Code.pc;
 		}
 
-		int fp = 0; // uradi jednom prilikom
+		int fp = methodTypeAndName.obj.getFpPos();
 		int v = methodTypeAndName.obj.getLocalSymbols().size();
 		Code.put(Code.enter);
 		Code.put(fp);
@@ -58,7 +58,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		if (methodVoidAndName.obj.getName().equals("main")) {
 			Code.mainPc = Code.pc;
 		}
-		int fp = 0; // uradi jednom prilikom
+		int fp = methodVoidAndName.obj.getFpPos();
 		int v = methodVoidAndName.obj.getLocalSymbols().size();
 		Code.put(Code.enter);
 		Code.put(fp);
@@ -211,6 +211,9 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorStmtINC increment) {
+		if (increment.getDesignator().obj.getKind() == Obj.Elem) {
+			Code.put(Code.dup2);
+		}
 		Code.load(increment.getDesignator().obj);
 		Code.loadConst(1);
 		Code.put(Code.add);
@@ -218,6 +221,9 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorStmtDEC decrement) {
+		if (decrement.getDesignator().obj.getKind() == Obj.Elem) {
+			Code.put(Code.dup2);
+		}
 		Code.load(decrement.getDesignator().obj);
 		Code.loadConst(1);
 		Code.put(Code.sub);// satvljamo operator za oduzimanje
