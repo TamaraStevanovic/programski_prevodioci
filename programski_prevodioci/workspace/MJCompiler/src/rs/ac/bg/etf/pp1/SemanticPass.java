@@ -26,9 +26,7 @@ public class SemanticPass extends VisitorAdaptor {
 	Struct currentType;
 	private List<Obj> enums = new ArrayList<Obj>();// da tu ulancam sve objektne cvorove razlicitih enuma na koje
 													// naidjem
-	// private List<Obj> currEnum = new ArrayList<Obj>();// da ulancavam constante
-	// trenutnog enuma koji obradjujem
-	// ovo je znak da je jedan enum deklarisan i da treba da se resetuje brojanje
+	
 	private int lastEnumVal = 0;
 
 	// List<Obj> formParams = new ArrayList<Obj>();
