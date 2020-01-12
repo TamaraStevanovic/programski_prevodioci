@@ -1,7 +1,4 @@
-/log4j.xml
-/mjlexer.flex
-/mjparser.cup
-/mjparser_astbuild.cup
-/program.mj
-/program.obj
+/test301.mj
+/test302.mj
+/test303.mj
 /rs/

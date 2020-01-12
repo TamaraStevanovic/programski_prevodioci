@@ -219,7 +219,6 @@ public class SemanticPass extends VisitorAdaptor {
 		currMethod = methodTypeAndName.obj = Tab.insert(Obj.Meth, name, type);
 		Tab.openScope();
 		returnFound = false;
-		// formParams.clear();
 	}
 
 	public void visit(MethodVoidAndName methodVoidAndName) {
@@ -232,7 +231,6 @@ public class SemanticPass extends VisitorAdaptor {
 			// da ubelezimo ako smo definisali main metod
 		}
 
-		// fali provera da li vec postoji u TS
 		if (Tab.find(name) != Tab.noObj) {
 			report_error("U programu je vec definisana metoda " + name, methodVoidAndName);
 		}
@@ -243,7 +241,6 @@ public class SemanticPass extends VisitorAdaptor {
 
 	public void visit(MethodDeclWithoutFormPars methodDeclWithoutFormPars) {
 		Tab.chainLocalSymbols(methodDeclWithoutFormPars.getMethodTypeName().obj);
-		// hashForm.put(methodDeclWithoutFormPars.obj.getName(), formParams);
 		Tab.closeScope();
 		if (!returnFound && currMethod.getType() != Tab.noType) {
 			report_error("Nedostaje return naredba funkciji " + currMethod.getName(), methodDeclWithoutFormPars);
@@ -253,7 +250,6 @@ public class SemanticPass extends VisitorAdaptor {
 	public void visit(MethodDeclWithFormPars methodDeclWithFormPars) {
 		currMethod.setFpPos(methodDeclWithFormPars.getFormPars().obj.getFpPos());
 		Tab.chainLocalSymbols(methodDeclWithFormPars.getMethodTypeName().obj);
-		// hashForm.put(methodDeclWithFormPars.obj.getName(), formParams);
 		Tab.closeScope();
 		if (!returnFound && currMethod.getType() != Tab.noType) {
 			report_error("Nedostaje return naredba funkciji " + currMethod.getName(), methodDeclWithFormPars);
@@ -443,12 +439,7 @@ public class SemanticPass extends VisitorAdaptor {
 		Struct desType = designatorStmtAssign.getDesignator().obj.getType();
 		Struct exprType = designatorStmtAssign.getExpr().struct;
 
-//		if (designatorStmtAssign.getDesignator().obj.getType().getKind() == Struct.Enum
-//				&& designatorStmtAssign.getExpr().struct.getKind() == Struct.Int) {
-//			report_error("Tipovi nisu kompatibilni za dodelu", designatorStmtAssign);
-//		} else {
-//
-//		}
+
 		if (!desType.assignableTo(exprType) && !(desType == Tab.intType && exprType.getKind() == Struct.Enum)) {
 			report_error("Tipovi nisu kompatibilni za dodelu", designatorStmtAssign);
 		}
@@ -477,12 +468,12 @@ public class SemanticPass extends VisitorAdaptor {
 		
 		// nadjen je ali treba proveriti da li je tipa int
 		if (obj.getType() != Tab.intType || (obj.getKind() != Obj.Var && obj.getKind() != Obj.Elem)) {
-			report_error(obj.getName() + "nie tipa integer i ne moze da se radi INC", designatorStmtDEC);
+			report_error(obj.getName() + "nije tipa integer i ne moze da se radi DEC", designatorStmtDEC);
 		}
 	}
 
 	public void visit(DesignatorStmtWithoutParams designatorStmtWithoutParams) {
-		Obj obj = designatorStmtWithoutParams.obj;
+		Obj obj = designatorStmtWithoutParams.getDesignator().obj;
 		if (obj.getKind() != Obj.Meth) {
 			report_error("Nadjeni poziv nije metoda!", designatorStmtWithoutParams);
 		} else {
@@ -519,28 +510,10 @@ public class SemanticPass extends VisitorAdaptor {
 			if (!actParsList.isEmpty()) {
 				report_error("Previse argumenata", designatorStmtWithParams);
 			}
-		
-			
-			
-			
-//
-//			int sizeFormal = obj.getLocalSymbols().size();
-//
-//
-//			if (sizeFormal != actParsList.size()) {
-//				report_error("Prosledjeni parametri se ne poklapaju po broju sa argumentima metode!",
-//						designatorStmtWithParams);
-//			} else {
-//				// sada treba proveriti svaki element zasebno
-//				for (int i = 0; i < sizeFormal; i++) {
-//					if (formalPars.get(i).getType().getKind() != actParsList.get(i).getKind())
-//						
-//				}
-//			}
+
 
 		}
 	}
-	//////////////////// sredjeno je gore/////////////////////////
 
 	//////////////////////// ACT PARAMETERS ////////////////////////////
 	public void visit(SingleActParameter singleActParameter) {
@@ -559,7 +532,7 @@ public class SemanticPass extends VisitorAdaptor {
 		System.out.println("sad si u ExprList");
 		if ((exprList.getExpr().struct != Tab.intType && exprList.getExpr().struct.getKind() != Struct.Enum)
 				|| (exprList.getTerm().struct != Tab.intType && exprList.getTerm().struct.getKind() != Struct.Enum)) {
-//slucaj da hocemo da sabiramo nesto sto nisu enumi ili integeri
+				//slucaj da hocemo da sabiramo nesto sto nisu enumi ili integeri
 			exprList.struct = Tab.noType;
 			report_error("(ExprList)Tipovi nisu kompatibilni", exprList);
 			return;
@@ -584,8 +557,6 @@ public class SemanticPass extends VisitorAdaptor {
 	}
 
 	public void visit(TermManyFactors termManyFactors) {
-		// System.out.println("Term:" + termManyFactors.getTerm().struct.getKind());
-		// System.out.println("Fact:" + termManyFactors.getFactor().struct.getKind());
 
 		if ((termManyFactors.getTerm().struct != Tab.intType
 				&& termManyFactors.getTerm().struct.getKind() != Struct.Enum)
@@ -609,9 +580,6 @@ public class SemanticPass extends VisitorAdaptor {
 	public void visit(FactorDesignator factorDesignator) {
 		report_info("sad si u factorDesignator ", factorDesignator);
 		// ovde je bitan samo tip Designatora, zar ne?
-		System.out.println("IME POSECIVANOG DESIGNATORA JE  " + factorDesignator.getDesignator().obj.getName());
-		System.out
-				.println("TIP POSECIVANOG DESIGNATORA JE  " + factorDesignator.getDesignator().obj.getType().getKind());
 
 		// PITANJE: DA LI OVDE DA PRAVIM NOVI SKROZ ILI NE??
 		factorDesignator.struct = factorDesignator.getDesignator().obj.getType();
@@ -623,7 +591,6 @@ public class SemanticPass extends VisitorAdaptor {
 
 	// ++
 	public void visit(FactorConst factorConst) {
-		report_info("sad si u factorConst ", factorConst);
 
 		factorConst.struct = factorConst.getTypeConst().struct.getElemType();
 		report_info("tip strukture je sledeci " + factorConst.struct.getKind(), factorConst);

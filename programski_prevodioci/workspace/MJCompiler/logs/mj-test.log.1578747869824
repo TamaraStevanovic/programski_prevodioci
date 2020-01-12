@@ -1,0 +1,57 @@
+INFO  14:04:26,451 - Compiling source file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
+INFO  14:04:26,500 - #2 program
+INFO  14:04:26,500 - #27 mjtest1
+INFO  14:04:26,500 - #22 {
+INFO  14:04:26,501 - #4 void
+INFO  14:04:26,501 - #27 main
+INFO  14:04:26,501 - #18 (
+INFO  14:04:26,502 - #19 )
+INFO  14:04:26,502 - #27 int
+INFO  14:04:26,502 - #27 niz
+INFO  14:04:26,503 - #21 [
+INFO  14:04:26,503 - #20 ]
+INFO  14:04:26,503 - #16 ;
+INFO  14:04:26,503 - #22 {
+INFO  14:04:26,504 - #27 niz
+INFO  14:04:26,505 - #13 =
+INFO  14:04:26,505 - #6 new
+INFO  14:04:26,505 - #27 int
+INFO  14:04:26,505 - #21 [
+INFO  14:04:26,505 - #28 100
+INFO  14:04:26,505 - #20 ]
+INFO  14:04:26,506 - #16 ;
+INFO  14:04:26,506 - #27 niz
+INFO  14:04:26,507 - #21 [
+INFO  14:04:26,507 - #28 28
+INFO  14:04:26,507 - #20 ]
+INFO  14:04:26,507 - #13 =
+INFO  14:04:26,507 - #28 900
+INFO  14:04:26,507 - #16 ;
+INFO  14:04:26,507 - #27 niz
+INFO  14:04:26,507 - #21 [
+INFO  14:04:26,507 - #28 28
+INFO  14:04:26,507 - #20 ]
+INFO  14:04:26,508 - #15 --
+INFO  14:04:26,508 - #16 ;
+INFO  14:04:26,508 - #3 print
+INFO  14:04:26,508 - #18 (
+INFO  14:04:26,508 - #27 niz
+INFO  14:04:26,508 - #21 [
+INFO  14:04:26,508 - #28 28
+INFO  14:04:26,508 - #20 ]
+INFO  14:04:26,508 - #19 )
+INFO  14:04:26,508 - #16 ;
+INFO  14:04:26,509 - #23 }
+INFO  14:04:26,509 - #23 }
+INFO  14:04:26,519 - tip strukture je sledeci 1 na liniji 7
+INFO  14:04:26,520 - tip strukture je sledeci 1 na liniji 9
+INFO  14:04:26,520 - Pronadjen je simbol niza  na liniji 9
+INFO  14:04:26,520 - tip strukture je sledeci 1 na liniji 9
+INFO  14:04:26,520 - tip strukture je sledeci 1 na liniji 11
+INFO  14:04:26,520 - Pronadjen je simbol niza  na liniji 11
+INFO  14:04:26,520 - tip strukture je sledeci 1 na liniji 13
+INFO  14:04:26,520 - Pronadjen je simbol niza  na liniji 13
+INFO  14:04:26,520 - sad si u factorDesignator  na liniji 13
+INFO  14:04:26,520 - Obradjuje se print naredba na liniji 13
+INFO  14:04:26,521 - Generating bytecode file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj
+INFO  14:04:26,524 - Parsiranje uspesno zavrseno!
