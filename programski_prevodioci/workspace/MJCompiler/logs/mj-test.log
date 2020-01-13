@@ -1,57 +1,319 @@
-INFO  14:04:29,827 - Compiling source file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.mj
-INFO  14:04:29,847 - #2 program
-INFO  14:04:29,847 - #27 mjtest1
-INFO  14:04:29,847 - #22 {
-INFO  14:04:29,848 - #4 void
-INFO  14:04:29,849 - #27 main
-INFO  14:04:29,849 - #18 (
-INFO  14:04:29,849 - #19 )
-INFO  14:04:29,849 - #27 int
-INFO  14:04:29,849 - #27 niz
-INFO  14:04:29,850 - #21 [
-INFO  14:04:29,850 - #20 ]
-INFO  14:04:29,850 - #16 ;
-INFO  14:04:29,851 - #22 {
-INFO  14:04:29,851 - #27 niz
-INFO  14:04:29,852 - #13 =
-INFO  14:04:29,852 - #6 new
-INFO  14:04:29,852 - #27 int
-INFO  14:04:29,852 - #21 [
-INFO  14:04:29,852 - #28 100
-INFO  14:04:29,852 - #20 ]
-INFO  14:04:29,853 - #16 ;
-INFO  14:04:29,853 - #27 niz
-INFO  14:04:29,853 - #21 [
-INFO  14:04:29,854 - #28 28
-INFO  14:04:29,854 - #20 ]
-INFO  14:04:29,854 - #13 =
-INFO  14:04:29,854 - #28 900
-INFO  14:04:29,854 - #16 ;
-INFO  14:04:29,854 - #27 niz
-INFO  14:04:29,854 - #21 [
-INFO  14:04:29,854 - #28 28
-INFO  14:04:29,854 - #20 ]
-INFO  14:04:29,854 - #15 --
-INFO  14:04:29,854 - #16 ;
-INFO  14:04:29,854 - #3 print
-INFO  14:04:29,855 - #18 (
-INFO  14:04:29,855 - #27 niz
-INFO  14:04:29,855 - #21 [
-INFO  14:04:29,855 - #28 28
-INFO  14:04:29,855 - #20 ]
-INFO  14:04:29,855 - #19 )
-INFO  14:04:29,855 - #16 ;
-INFO  14:04:29,855 - #23 }
-INFO  14:04:29,855 - #23 }
-INFO  14:04:29,861 - tip strukture je sledeci 1 na liniji 7
-INFO  14:04:29,861 - tip strukture je sledeci 1 na liniji 9
-INFO  14:04:29,861 - Pronadjen je simbol niza  na liniji 9
-INFO  14:04:29,861 - tip strukture je sledeci 1 na liniji 9
-INFO  14:04:29,861 - tip strukture je sledeci 1 na liniji 11
-INFO  14:04:29,861 - Pronadjen je simbol niza  na liniji 11
-INFO  14:04:29,862 - tip strukture je sledeci 1 na liniji 13
-INFO  14:04:29,862 - Pronadjen je simbol niza  na liniji 13
-INFO  14:04:29,862 - sad si u factorDesignator  na liniji 13
-INFO  14:04:29,862 - Obradjuje se print naredba na liniji 13
-INFO  14:04:29,863 - Generating bytecode file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj
-INFO  14:04:29,864 - Parsiranje uspesno zavrseno!
+INFO  14:46:05,846 - Compiling source file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/test301.mj
+INFO  14:46:05,865 - #2 program
+INFO  14:46:05,866 - #27 test301
+INFO  14:46:05,866 - #5 const
+INFO  14:46:05,866 - #27 int
+INFO  14:46:05,866 - #27 nula
+INFO  14:46:05,866 - #13 =
+INFO  14:46:05,866 - #28 0
+INFO  14:46:05,867 - #16 ;
+INFO  14:46:05,867 - #5 const
+INFO  14:46:05,868 - #27 int
+INFO  14:46:05,868 - #27 jedan
+INFO  14:46:05,868 - #13 =
+INFO  14:46:05,868 - #28 1
+INFO  14:46:05,868 - #16 ;
+INFO  14:46:05,868 - #5 const
+INFO  14:46:05,868 - #27 int
+INFO  14:46:05,868 - #27 pet
+INFO  14:46:05,869 - #13 =
+INFO  14:46:05,869 - #28 5
+INFO  14:46:05,869 - #16 ;
+INFO  14:46:05,869 - #27 int
+INFO  14:46:05,869 - #27 niz
+INFO  14:46:05,869 - #21 [
+INFO  14:46:05,869 - #20 ]
+INFO  14:46:05,869 - #16 ;
+INFO  14:46:05,869 - #27 char
+INFO  14:46:05,870 - #27 nizch
+INFO  14:46:05,870 - #21 [
+INFO  14:46:05,870 - #20 ]
+INFO  14:46:05,870 - #16 ;
+INFO  14:46:05,870 - #22 {
+INFO  14:46:05,870 - #4 void
+INFO  14:46:05,870 - #27 incInput
+INFO  14:46:05,871 - #18 (
+INFO  14:46:05,871 - #19 )
+INFO  14:46:05,871 - #27 int
+INFO  14:46:05,871 - #27 i
+INFO  14:46:05,871 - #16 ;
+INFO  14:46:05,871 - #22 {
+INFO  14:46:05,871 - #27 i
+INFO  14:46:05,871 - #13 =
+INFO  14:46:05,872 - #28 100
+INFO  14:46:05,872 - #16 ;
+INFO  14:46:05,872 - #3 print
+INFO  14:46:05,872 - #18 (
+INFO  14:46:05,872 - #27 i
+INFO  14:46:05,872 - #19 )
+INFO  14:46:05,872 - #16 ;
+INFO  14:46:05,872 - #27 i
+INFO  14:46:05,872 - #14 ++
+INFO  14:46:05,873 - #16 ;
+INFO  14:46:05,873 - #3 print
+INFO  14:46:05,873 - #18 (
+INFO  14:46:05,873 - #27 i
+INFO  14:46:05,873 - #19 )
+INFO  14:46:05,873 - #16 ;
+INFO  14:46:05,873 - #23 }
+INFO  14:46:05,873 - #4 void
+INFO  14:46:05,873 - #27 main
+INFO  14:46:05,873 - #18 (
+INFO  14:46:05,873 - #19 )
+INFO  14:46:05,873 - #27 int
+INFO  14:46:05,874 - #27 bodovi
+INFO  14:46:05,874 - #16 ;
+INFO  14:46:05,874 - #22 {
+INFO  14:46:05,874 - #27 bodovi
+INFO  14:46:05,874 - #13 =
+INFO  14:46:05,874 - #28 0
+INFO  14:46:05,874 - #16 ;
+INFO  14:46:05,874 - #27 bodovi
+INFO  14:46:05,874 - #14 ++
+INFO  14:46:05,874 - #16 ;
+INFO  14:46:05,874 - #27 bodovi
+INFO  14:46:05,874 - #13 =
+INFO  14:46:05,874 - #27 bodovi
+INFO  14:46:05,874 - #8 +
+INFO  14:46:05,875 - #27 jedan
+INFO  14:46:05,875 - #16 ;
+INFO  14:46:05,875 - #27 bodovi
+INFO  14:46:05,876 - #13 =
+INFO  14:46:05,876 - #27 bodovi
+INFO  14:46:05,876 - #10 *
+INFO  14:46:05,876 - #27 pet
+INFO  14:46:05,876 - #16 ;
+INFO  14:46:05,876 - #27 bodovi
+INFO  14:46:05,877 - #15 --
+INFO  14:46:05,877 - #16 ;
+INFO  14:46:05,877 - #3 print
+INFO  14:46:05,877 - #18 (
+INFO  14:46:05,877 - #27 bodovi
+INFO  14:46:05,877 - #19 )
+INFO  14:46:05,877 - #16 ;
+INFO  14:46:05,877 - #27 niz
+INFO  14:46:05,877 - #13 =
+INFO  14:46:05,877 - #6 new
+INFO  14:46:05,877 - #27 int
+INFO  14:46:05,877 - #21 [
+INFO  14:46:05,877 - #28 3
+INFO  14:46:05,877 - #20 ]
+INFO  14:46:05,878 - #16 ;
+INFO  14:46:05,878 - #27 niz
+INFO  14:46:05,878 - #21 [
+INFO  14:46:05,878 - #27 nula
+INFO  14:46:05,878 - #20 ]
+INFO  14:46:05,878 - #13 =
+INFO  14:46:05,878 - #27 jedan
+INFO  14:46:05,878 - #16 ;
+INFO  14:46:05,878 - #27 niz
+INFO  14:46:05,879 - #21 [
+INFO  14:46:05,879 - #28 1
+INFO  14:46:05,879 - #20 ]
+INFO  14:46:05,879 - #13 =
+INFO  14:46:05,879 - #28 2
+INFO  14:46:05,879 - #16 ;
+INFO  14:46:05,879 - #27 niz
+INFO  14:46:05,879 - #21 [
+INFO  14:46:05,879 - #27 niz
+INFO  14:46:05,879 - #21 [
+INFO  14:46:05,879 - #27 jedan
+INFO  14:46:05,879 - #20 ]
+INFO  14:46:05,879 - #20 ]
+INFO  14:46:05,879 - #13 =
+INFO  14:46:05,879 - #27 niz
+INFO  14:46:05,880 - #21 [
+INFO  14:46:05,880 - #27 niz
+INFO  14:46:05,880 - #21 [
+INFO  14:46:05,880 - #28 0
+INFO  14:46:05,880 - #20 ]
+INFO  14:46:05,880 - #20 ]
+INFO  14:46:05,880 - #10 *
+INFO  14:46:05,880 - #28 3
+INFO  14:46:05,880 - #16 ;
+INFO  14:46:05,880 - #27 bodovi
+INFO  14:46:05,880 - #13 =
+INFO  14:46:05,880 - #27 niz
+INFO  14:46:05,880 - #21 [
+INFO  14:46:05,880 - #28 2
+INFO  14:46:05,880 - #20 ]
+INFO  14:46:05,881 - #11 /
+INFO  14:46:05,881 - #27 niz
+INFO  14:46:05,881 - #21 [
+INFO  14:46:05,881 - #28 0
+INFO  14:46:05,881 - #20 ]
+INFO  14:46:05,881 - #16 ;
+INFO  14:46:05,881 - #3 print
+INFO  14:46:05,881 - #18 (
+INFO  14:46:05,881 - #27 bodovi
+INFO  14:46:05,881 - #19 )
+INFO  14:46:05,882 - #16 ;
+INFO  14:46:05,882 - #3 print
+INFO  14:46:05,882 - #18 (
+INFO  14:46:05,882 - #27 niz
+INFO  14:46:05,882 - #21 [
+INFO  14:46:05,882 - #28 2
+INFO  14:46:05,882 - #20 ]
+INFO  14:46:05,882 - #19 )
+INFO  14:46:05,882 - #16 ;
+INFO  14:46:05,882 - #27 nizch
+INFO  14:46:05,882 - #13 =
+INFO  14:46:05,882 - #6 new
+INFO  14:46:05,882 - #27 char
+INFO  14:46:05,882 - #21 [
+INFO  14:46:05,882 - #28 3
+INFO  14:46:05,882 - #20 ]
+INFO  14:46:05,882 - #16 ;
+INFO  14:46:05,883 - #27 nizch
+INFO  14:46:05,883 - #21 [
+INFO  14:46:05,883 - #28 0
+INFO  14:46:05,883 - #20 ]
+INFO  14:46:05,883 - #13 =
+INFO  14:46:05,883 - #29 a
+INFO  14:46:05,883 - #16 ;
+INFO  14:46:05,883 - #27 nizch
+INFO  14:46:05,883 - #21 [
+INFO  14:46:05,883 - #27 jedan
+INFO  14:46:05,883 - #20 ]
+INFO  14:46:05,883 - #13 =
+INFO  14:46:05,883 - #29 b
+INFO  14:46:05,883 - #16 ;
+INFO  14:46:05,883 - #27 nizch
+INFO  14:46:05,884 - #21 [
+INFO  14:46:05,884 - #27 pet
+INFO  14:46:05,884 - #9 -
+INFO  14:46:05,884 - #28 3
+INFO  14:46:05,884 - #20 ]
+INFO  14:46:05,884 - #13 =
+INFO  14:46:05,884 - #29 c
+INFO  14:46:05,884 - #16 ;
+INFO  14:46:05,884 - #3 print
+INFO  14:46:05,884 - #18 (
+INFO  14:46:05,884 - #27 nizch
+INFO  14:46:05,884 - #21 [
+INFO  14:46:05,884 - #28 1
+INFO  14:46:05,884 - #20 ]
+INFO  14:46:05,884 - #19 )
+INFO  14:46:05,885 - #16 ;
+INFO  14:46:05,885 - #3 print
+INFO  14:46:05,885 - #18 (
+INFO  14:46:05,885 - #27 nizch
+INFO  14:46:05,885 - #21 [
+INFO  14:46:05,885 - #27 jedan
+INFO  14:46:05,885 - #10 *
+INFO  14:46:05,885 - #28 2
+INFO  14:46:05,885 - #20 ]
+INFO  14:46:05,885 - #19 )
+INFO  14:46:05,885 - #16 ;
+INFO  14:46:05,885 - #27 bodovi
+INFO  14:46:05,885 - #13 =
+INFO  14:46:05,886 - #27 bodovi
+INFO  14:46:05,886 - #8 +
+INFO  14:46:05,886 - #18 (
+INFO  14:46:05,886 - #27 pet
+INFO  14:46:05,886 - #10 *
+INFO  14:46:05,886 - #27 jedan
+INFO  14:46:05,886 - #9 -
+INFO  14:46:05,886 - #28 1
+INFO  14:46:05,886 - #19 )
+INFO  14:46:05,886 - #10 *
+INFO  14:46:05,886 - #27 bodovi
+INFO  14:46:05,886 - #9 -
+INFO  14:46:05,886 - #18 (
+INFO  14:46:05,886 - #28 3
+INFO  14:46:05,886 - #12 %
+INFO  14:46:05,886 - #28 2
+INFO  14:46:05,887 - #8 +
+INFO  14:46:05,887 - #28 3
+INFO  14:46:05,887 - #10 *
+INFO  14:46:05,887 - #28 2
+INFO  14:46:05,887 - #9 -
+INFO  14:46:05,887 - #28 3
+INFO  14:46:05,887 - #19 )
+INFO  14:46:05,887 - #16 ;
+INFO  14:46:05,887 - #3 print
+INFO  14:46:05,887 - #18 (
+INFO  14:46:05,887 - #27 bodovi
+INFO  14:46:05,887 - #19 )
+INFO  14:46:05,887 - #16 ;
+INFO  14:46:05,887 - #27 incInput
+INFO  14:46:05,887 - #18 (
+INFO  14:46:05,888 - #19 )
+INFO  14:46:05,888 - #16 ;
+INFO  14:46:05,888 - #23 }
+INFO  14:46:05,888 - #23 }
+INFO  14:46:05,893 - tip strukture je sledeci 1 na liniji 17
+INFO  14:46:05,893 - sad si u factorDesignator  na liniji 18
+INFO  14:46:05,893 - Obradjuje se print naredba na liniji 18
+INFO  14:46:05,893 - sad si u factorDesignator  na liniji 20
+INFO  14:46:05,893 - Obradjuje se print naredba na liniji 20
+INFO  14:46:05,893 - tip strukture je sledeci 1 na liniji 26
+INFO  14:46:05,894 - sad si u factorDesignator  na liniji 28
+INFO  14:46:05,894 - sad si u factorDesignator  na liniji 28
+INFO  14:46:05,894 - sad si u factorDesignator  na liniji 29
+INFO  14:46:05,894 - sad si u factorDesignator  na liniji 29
+INFO  14:46:05,894 - sad si u factorDesignator  na liniji 31
+INFO  14:46:05,894 - Obradjuje se print naredba na liniji 31
+INFO  14:46:05,894 - tip strukture je sledeci 1 na liniji 34
+INFO  14:46:05,895 - sad si u factorDesignator  na liniji 35
+INFO  14:46:05,895 - Pronadjen je simbol niza  na liniji 35
+INFO  14:46:05,895 - sad si u factorDesignator  na liniji 35
+INFO  14:46:05,895 - tip strukture je sledeci 1 na liniji 36
+INFO  14:46:05,895 - Pronadjen je simbol niza  na liniji 36
+INFO  14:46:05,895 - tip strukture je sledeci 1 na liniji 36
+INFO  14:46:05,895 - sad si u factorDesignator  na liniji 37
+INFO  14:46:05,895 - Pronadjen je simbol niza  na liniji 37
+INFO  14:46:05,895 - sad si u factorDesignator  na liniji 37
+INFO  14:46:05,895 - Pronadjen je simbol niza  na liniji 37
+INFO  14:46:05,895 - tip strukture je sledeci 1 na liniji 37
+INFO  14:46:05,895 - Pronadjen je simbol niza  na liniji 37
+INFO  14:46:05,895 - sad si u factorDesignator  na liniji 37
+INFO  14:46:05,895 - Pronadjen je simbol niza  na liniji 37
+INFO  14:46:05,895 - sad si u factorDesignator  na liniji 37
+INFO  14:46:05,895 - tip strukture je sledeci 1 na liniji 37
+INFO  14:46:05,895 - tip strukture je sledeci 1 na liniji 38
+INFO  14:46:05,896 - Pronadjen je simbol niza  na liniji 38
+INFO  14:46:05,896 - sad si u factorDesignator  na liniji 38
+INFO  14:46:05,896 - tip strukture je sledeci 1 na liniji 38
+INFO  14:46:05,896 - Pronadjen je simbol niza  na liniji 38
+INFO  14:46:05,896 - sad si u factorDesignator  na liniji 38
+INFO  14:46:05,896 - sad si u factorDesignator  na liniji 39
+INFO  14:46:05,896 - Obradjuje se print naredba na liniji 39
+INFO  14:46:05,896 - tip strukture je sledeci 1 na liniji 40
+INFO  14:46:05,896 - Pronadjen je simbol niza  na liniji 40
+INFO  14:46:05,896 - sad si u factorDesignator  na liniji 40
+INFO  14:46:05,896 - Obradjuje se print naredba na liniji 40
+INFO  14:46:05,896 - tip strukture je sledeci 1 na liniji 43
+INFO  14:46:05,896 - tip strukture je sledeci 1 na liniji 44
+INFO  14:46:05,896 - Pronadjen je simbol niza  na liniji 44
+INFO  14:46:05,896 - tip strukture je sledeci 2 na liniji 44
+INFO  14:46:05,896 - sad si u factorDesignator  na liniji 45
+INFO  14:46:05,896 - Pronadjen je simbol niza  na liniji 45
+INFO  14:46:05,897 - tip strukture je sledeci 2 na liniji 45
+INFO  14:46:05,897 - sad si u factorDesignator  na liniji 46
+INFO  14:46:05,897 - tip strukture je sledeci 1 na liniji 46
+INFO  14:46:05,897 - Pronadjen je simbol niza  na liniji 46
+INFO  14:46:05,897 - tip strukture je sledeci 2 na liniji 46
+INFO  14:46:05,897 - tip strukture je sledeci 1 na liniji 47
+INFO  14:46:05,897 - Pronadjen je simbol niza  na liniji 47
+INFO  14:46:05,897 - sad si u factorDesignator  na liniji 47
+INFO  14:46:05,897 - Obradjuje se print naredba na liniji 47
+INFO  14:46:05,897 - sad si u factorDesignator  na liniji 48
+INFO  14:46:05,897 - tip strukture je sledeci 1 na liniji 48
+INFO  14:46:05,897 - Pronadjen je simbol niza  na liniji 48
+INFO  14:46:05,897 - sad si u factorDesignator  na liniji 48
+INFO  14:46:05,897 - Obradjuje se print naredba na liniji 48
+INFO  14:46:05,897 - sad si u factorDesignator  na liniji 51
+INFO  14:46:05,898 - sad si u factorDesignator  na liniji 51
+INFO  14:46:05,898 - sad si u factorDesignator  na liniji 51
+INFO  14:46:05,898 - tip strukture je sledeci 1 na liniji 51
+INFO  14:46:05,898 - sad si u factorDesignator  na liniji 51
+INFO  14:46:05,898 - tip strukture je sledeci 1 na liniji 51
+INFO  14:46:05,898 - tip strukture je sledeci 1 na liniji 51
+INFO  14:46:05,898 - tip strukture je sledeci 1 na liniji 51
+INFO  14:46:05,898 - tip strukture je sledeci 1 na liniji 51
+INFO  14:46:05,898 - tip strukture je sledeci 1 na liniji 51
+INFO  14:46:05,898 - sad si u factorDesignator  na liniji 52
+INFO  14:46:05,898 - Obradjuje se print naredba na liniji 52
+INFO  14:46:05,899 - Generating bytecode file: /home/tamara.stevanovic/git/programski_prevodioci/programski_prevodioci/workspace/MJCompiler/test/program.obj
+INFO  14:46:05,901 - Parsiranje uspesno zavrseno!

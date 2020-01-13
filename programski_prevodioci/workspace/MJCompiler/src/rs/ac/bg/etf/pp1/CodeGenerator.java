@@ -62,7 +62,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		int v = methodVoidAndName.obj.getLocalSymbols().size();
 		Code.put(Code.enter);
 		Code.put(fp);
-		Code.put(fp + v);
+		Code.put(v);
 		// potrebo je staviti i formalne parametre i lokalne var
 		returnDetected = false;
 
@@ -200,7 +200,7 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.rem);
 		}
 	}
-
+//---------------------------------------------------------------
 	public void visit(ReadStatement readStmt) {
 		if (readStmt.getDesignator().obj.getType() == Tab.charType) {
 			Code.put(Code.bread);
@@ -252,7 +252,7 @@ public class CodeGenerator extends VisitorAdaptor {
 //		Obj o = enumSingleElement.getEnumSingleElem().obj;
 //		Code.load(o);
 //	}
-//ne treba kod jer je ovo deklarisanje enuma!
+//		ne treba kod jer je ovo deklarisanje enuma!
 	/*
 	 * ovo ispod su sve smene kada se ovim cvorovima pristupa iz grane expr-a tj sve
 	 * mora da bude sastavni deo expr-a
@@ -263,7 +263,7 @@ public class CodeGenerator extends VisitorAdaptor {
 //	}
 
 //	public void visit(DesignatorWithDOT designatorWithDOT) {
-//lic void visit(DesignatorSingle designatorSingle) {
+//	public void visit(DesignatorSingle designatorSingle) {
 //	//NISTA NE RADIMO!
 	//
 //	}
